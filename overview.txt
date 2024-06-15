@@ -1,0 +1,50 @@
+
+
+
+
+
+
+Movement
+    4 way movement
+        8 is prob fine for now but idk not the visionTM
+    long term would like to end on discrete squares
+        I dont want to deal with the whole navigation stuff though
+    collide into walls
+    move down one ways
+    slide down ramps (totally lose control)
+
+    sliding -> while on the object (/tile?) you have a constant velocity in a direction
+
+
+
+
+
+
+
+
+
+
+
+
+
+Script
+Day 1
+You woke up from an awful nightmare and decided to take a walk.
+However, looking around, this world doesn't seem much better.
+Fuzzy and out of focus, half formed, or rather, half gone.
+I'll try to [][][][][] what I can (archive)
+
+You come across a strange creature.
+
+
+
+Ah, you know what this is. It's an oddity. A sprit, an aberration. Possibly a god.
+What's more, you know something very important. 
+1) This oddity is very real
+2) This oddity is a figment of your imagination
+
+
+
+Assets etc Used
+https://kenney.nl/assets/game-icons
+https://opengameart.org/content/zelda-like-tilesets-and-sprites

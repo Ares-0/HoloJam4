@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvbwtf7fufix4"]
+
+[ext_resource type="Script" path="res://source/levels/barrier_one_way_t.gd" id="1_8nft8"]
+[ext_resource type="Texture2D" uid="uid://bcj4gcr2knfyp" path="res://assets/player_arrow.png" id="1_mhbnw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8i68f"]
+size = Vector2(96, 96)
+
+[node name="WallT" type="StaticBody2D"]
+script = ExtResource("1_8nft8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.905882, 0, 0, 1)
+texture = ExtResource("1_mhbnw")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8i68f")
+one_way_collision = true

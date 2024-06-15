@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdw6d7knrxeit"]
+
+[ext_resource type="PackedScene" uid="uid://d21n3yip8h2sk" path="res://source/actors/Player.tscn" id="1_fa67i"]
+[ext_resource type="PackedScene" uid="uid://5coeu8nb6y1e" path="res://source/gui/handheld_overlay.tscn" id="1_k5ykt"]
+[ext_resource type="PackedScene" uid="uid://sg6nqm83dd52" path="res://source/levels/wall_t.tscn" id="3_twe4o"]
+[ext_resource type="PackedScene" uid="uid://bvbwtf7fufix4" path="res://source/levels/barrier_one_way_t.tscn" id="4_568km"]
+
+[node name="TestRoom" type="Node2D"]
+
+[node name="WallT" parent="." instance=ExtResource("3_twe4o")]
+position = Vector2(544, 233)
+scale = Vector2(1.91083, 0.526281)
+
+[node name="WallT3" parent="." instance=ExtResource("3_twe4o")]
+position = Vector2(824, 235)
+scale = Vector2(1.91083, 0.526281)
+
+[node name="WallT2" parent="." instance=ExtResource("4_568km")]
+position = Vector2(685, 234)
+scale = Vector2(1, 0.48)
+
+[node name="Player" parent="." instance=ExtResource("1_fa67i")]
+position = Vector2(583, 369)
+
+[node name="HandheldOverlay" parent="." instance=ExtResource("1_k5ykt")]
