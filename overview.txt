@@ -26,8 +26,14 @@ Major Checkpoints
 
 
 Tile stuff
-    Set up terrains for grass, sand, water, dark grass
-    Need to see how well I can adjust the colors (programmatically)
+    TODO: Need to see how well I can adjust the colors (programmatically)
+    TODO: Scale looks wonky
+    TODO: cliff side can be reversed, while technically following the rules
+
+    Done
+        Set up terrains for grass, sand, water, dark grass, cliff
+        added collisions to water tiles
+    
     Possible divisions of 720
         8 / 90
         9 / 80
@@ -64,3 +70,4 @@ Assets etc Used
 https://kenney.nl/assets/game-icons
 https://opengameart.org/content/zelda-like-tilesets-and-sprites
 https://schwarnhild.itch.io/basic-tileset-and-asset-pack-32x32-pixels
+https://godotengine.org/asset-library/asset/1806
