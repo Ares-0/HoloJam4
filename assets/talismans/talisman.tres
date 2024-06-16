@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://sgf7ls0to0dl"]
+
+[ext_resource type="Texture2D" uid="uid://cinefrnog7s6p" path="res://assets/talismans/talisman_01.png" id="1_drut2"]
+[ext_resource type="Texture2D" uid="uid://psxaisbf5rob" path="res://assets/talismans/talisman_02.png" id="2_y6fjh"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_drut2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y6fjh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
