@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://buyg41ugv1gto"]
+
+[ext_resource type="Script" path="res://source/tools/checkerboard.gd" id="1_6egcn"]
+
+[node name="Checkerboard" type="Node2D"]
+script = ExtResource("1_6egcn")

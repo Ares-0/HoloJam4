@@ -21,3 +21,13 @@ func move(_delta: float):
 	# velocity.y = move_toward(velocity.y, 0, SPEED)
 	move_and_slide()
 
+func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> void:
+	# limit_position: top left corner of clamp rect
+	# limit_size: width and height of clamp rect
+
+	# replace player size with something programmatic
+	global_position.x = clamp(global_position.x, 
+			limit_position.x + 50, limit_position.x + limit_size.x - 50)
+	global_position.y = clamp(global_position.y, 
+			limit_position.y + 50, limit_position.y + limit_size.y - 50)
+
