@@ -38,21 +38,15 @@ scale = Vector2(1.91083, 0.526281)
 position = Vector2(685, 234)
 scale = Vector2(1, 0.48)
 
-[node name="HandheldOverlay" parent="." instance=ExtResource("1_k5ykt")]
-visible = false
-
 [node name="CameraMain" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 anchor_mode = 0
 script = ExtResource("6_tb3ga")
 player = NodePath("../Player")
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
-offset_left = 720.0
-offset_top = 720.0
-offset_right = 760.0
-offset_bottom = 760.0
-scale = Vector2(18.0147, 17.992)
-border_width = 0.2
-
 [node name="CheckerboardTool" parent="." instance=ExtResource("7_7bp2o")]
 minSizeOfSquares = 720
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="HandheldOverlay" parent="UICanvasLayer" instance=ExtResource("1_k5ykt")]

@@ -7,19 +7,26 @@ extends Camera2D
 
 var current_cell: Vector2i
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	current_cell = get_current_cell()
 	update_position()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var old_cell = current_cell
-	update_position()
+	current_cell = get_current_cell()
 	
 	if old_cell != current_cell:
-		player.clamp_position_to_limits(global_position, size)
+		update_position()
+		player.clamp_position_to_limits(global_position - Vector2(ui_offset), size)
 
 func update_position() -> void:
-	current_cell = Vector2i(player.global_position) / size
 	global_position = current_cell * size + ui_offset
+
+func get_current_cell() -> Vector2i:
+	var last: Vector2 = player.global_position / Vector2(size)
+	# fix so negative numbers work
+	if last.x < 0:
+		last.x -= 1
+	if last.y < 0:
+		last.y -= 1
+	return Vector2i(last)
