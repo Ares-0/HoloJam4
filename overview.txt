@@ -1,6 +1,11 @@
 
 
-
+MVP Requirements
+    Basic dialog system (one way)
+    Fill out 3 paths
+    Fill 3 paths with hazards
+    "respawn" system
+        safe areas?
 
 
 

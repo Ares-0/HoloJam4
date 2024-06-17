@@ -8,15 +8,18 @@
 size = Vector2(58, 74)
 
 [node name="TalismanHolder" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_l1oij")
 
 [node name="SpriteMain" type="Sprite2D" parent="."]
 texture = ExtResource("1_21o42")
 
 [node name="SpritesT" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = ExtResource("2_jcjt8")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ntddk")
