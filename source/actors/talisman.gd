@@ -16,5 +16,6 @@ func _process(_delta):
 	pass
 
 func pick_up() -> void:
+	# DialogBus.display_dialog.emit("talisman_evil")
 	queue_free()
 	# is that it?

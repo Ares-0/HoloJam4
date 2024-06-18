@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtvvxxrnavdoc"]
+
+[ext_resource type="Script" path="res://source/gui/DialogBox.gd" id="1_ejpx0"]
+[ext_resource type="Texture2D" uid="uid://fti0ihellp24" path="res://assets/player.png" id="2_vmasb"]
+
+[node name="DialogBox" type="CanvasLayer"]
+script = ExtResource("1_ejpx0")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 544.0
+offset_top = 616.0
+offset_right = 800.0
+offset_bottom = 680.0
+texture = ExtResource("2_vmasb")
+
+[node name="TextLabel" type="Label" parent="Background"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 80.0
+text = "The quick brown fox jumps over the lazy dog"
+autowrap_mode = 2
+clip_text = true

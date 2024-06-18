@@ -23,6 +23,12 @@ func update_sprites() -> void:
 		$SpritesT.frame = number
 		$SpritesT.visible = true
 
+func interact():
+	# this is called on every interaction for common functions
+	pass
+	if not filled:
+		DialogBus.display_dialog.emit("t_holder_empty")
+
 func receive_talisman(num) -> void:
 	number = num
 	filled = true

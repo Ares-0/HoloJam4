@@ -17,6 +17,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+DialogBus="*res://source/singletons/DialogBus.gd"
 
 [display]
 
