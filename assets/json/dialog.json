@@ -8,5 +8,46 @@
     ],
     "talisman_01": [
         "It's a good talisman 01"
+    ],
+    "plot_0_intro": [
+        "You startle awake in a small clearing",
+        "You were having a horrible nightmare",
+        "but maybe you aren't fully awake yet..."
+    ],
+    "plot_1_oddity": [
+        "Hey there boss, how'd you sleep",
+        "I know I know, those nightmares are no joke",
+        "I've been watching over you for years now",
+        "and I've had enough of them, even if you haven't",
+        "I think now's the time to put an end to those nightmares",
+        "What do you say?",
+        "...",
+        "A memory, buried deep down, comes back to mind",
+        "From your time as an □□□□□□□□ you know this thing,",
+        "this spirit, is an aberration.",
+        "Dream world aside, this things power is no joke.",
+        "And that power comes from □□□□.",
+        "This aberration is very real.",
+        "It can □□□□□ help you.",
+        "□□□ □□□ □□□ □□□□ □□□□□□□□",
+        "...",
+        "Thought so",
+        "Alright see these talismans around us?",
+        "We burn all 8, you get some peace and quiet",
+        "Half done already, and one is close by, where you woke up",
+        "Well, you know",
+        "Head's up, there's angry, hateful spirits on the way to these things.",
+        "If they get close, I'll keep you safe.",
+        "No harm will come to you",
+        "I promise"
+    ],
+    "plot_1_oddity_debug": [
+        "Hi! Nightmares amirite?",
+        "Wanna find 4 more talismans? Me too",
+        "Then you can sleep good"
+    ],
+    "plot_2_talisman": [
+        "You take the talisman in your hands,",
+        "and feel the powerful swirl of emotions surrounding it"
     ]
 }

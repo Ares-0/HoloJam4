@@ -51,23 +51,38 @@ Tile stuff
 
 
 
+Plot Layout
+plot point number and the actions that cause the transitions
+
+-1 - debug
+0 - new game
+wake up 1 (auto)
+1 - player can move around in the main area
+talk to oddity 1
+2 - player can walk around in main area and 3 initial spokes
+pickup first talisman
+play that dialog
+3 - same as 2 but that dialog is done now
+all talismans to center
+ending 1
+4 - starting day 2
+wake up II (auto)
+5 - player can walk around top area only (blocked by plot armor dab)
+pickup first talisman II
+6 - player can walk around in the main area
+talk to oddity II
+7 - player can walk around the spokes (if the doors are opened)
+all talismans to outer -> door opens in middle
+player goes through door
+ending 2
+8 - done
+
+notes
+oddity probably has to bitch more at some point
+
 
 
 Script
-Day 1
-You woke up from an awful nightmare and decided to take a walk.
-However, looking around, this world doesn't seem much better.
-Fuzzy and out of focus, half formed, or rather, half gone.
-I'll try to [][][][][] what I can (archive)
-
-You come across a strange creature.
-
-
-
-Ah, you know what this is. It's an oddity. A sprit, an aberration. Possibly a god.
-What's more, you know something very important. 
-1) This oddity is very real
-2) This oddity is a figment of your imagination
 
 
 

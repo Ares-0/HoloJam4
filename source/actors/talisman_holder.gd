@@ -4,9 +4,11 @@ extends Node2D
 # A place that can hold or receive talismans
 @export var filled: bool = false # is it holding a talisman
 @export var number: int = 0 # what number talisman
+@export var inner: bool = false # flag if this is inner or outer holder
 
 func _ready():
 	update_sprites()
+	StateManager.update_holder.emit(inner, number, filled)
 
 func _process(_delta):
 	pass

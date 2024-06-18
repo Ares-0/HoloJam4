@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 DialogBus="*res://source/singletons/DialogBus.gd"
+StateManager="*res://source/singletons/StateManager.gd"
 
 [display]
 
