@@ -28,18 +28,21 @@ Movement
     sliding -> while on the object (/tile?) you have a constant velocity in a direction
 
 
-
-Major Checkpoints
-    tilesets
-    room transitions
-    dialog system?
-        interactive?
+Path Progress
+    Layout      Decoration      Hazards
+                0
+1
+        2
+3
+    4
+5
+                6
+    7
 
 
 
 Tile stuff
     TODO: Need to see how well I can adjust the colors (programmatically)
-    TODO: cliff side can be reversed, while technically following the rules
 
     Done
         Set up terrains for grass, sand, water, dark grass, cliff

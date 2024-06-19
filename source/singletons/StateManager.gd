@@ -6,9 +6,9 @@ extends Node
 
 var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
 var outer_talisman_states = []
-var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = 0		# what part of the story the player is on
 var day_num: int = 57392
+var part_num: int = 0 		# part one or two of the story # potentially redundant
+var plot_point: int = -2
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -46,6 +46,11 @@ func _process(_delta):
 	# check for triggers and advance state
 	if plot_point == -1:
 		return
+
+	if plot_point == -2:
+		for bar in noise_barriers:
+			bar.deactivate()
+
 	if plot_point == 0:
 		# any initial setup?
 		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
