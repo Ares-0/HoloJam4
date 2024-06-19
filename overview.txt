@@ -8,16 +8,19 @@ MVP Requirements
         safe areas?
 
 
+Bug Tracker
+    Careful to not let talisman holders be too close / overlap
+    Need locks on t holders that depend on plot
+
+Stretch Goals
+    Camera zooms in very slightly during dialog
+    Clamp to 4 way movement
 
 Movement
     4 way movement
-        8 is prob fine for now but idk not the visionTM
-    long term would like to end on discrete squares
-        I dont want to deal with the whole navigation stuff though
     collide into walls
     move down one ways
     slide down ramps (totally lose control)
-
     sliding -> while on the object (/tile?) you have a constant velocity in a direction
 
 
@@ -32,23 +35,12 @@ Major Checkpoints
 
 Tile stuff
     TODO: Need to see how well I can adjust the colors (programmatically)
-    TODO: Scale looks wonky
     TODO: cliff side can be reversed, while technically following the rules
 
     Done
         Set up terrains for grass, sand, water, dark grass, cliff
         added collisions to water tiles
-    
-    Possible divisions of 720
-        8 / 90
-        9 / 80
-        10 / 72
-        12 / 60
-        15 / 48 **?
-        16 / 45
-        18 / 40
-        20 / 36
-
+        Splitting the 720p area into 15 tiles of 48px
 
 
 Plot Layout

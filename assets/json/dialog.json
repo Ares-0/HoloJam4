@@ -2,13 +2,6 @@
     "t_holder_empty": [
         "A talisman can go here"
     ],
-    "talisman_evil": [
-        "It's an evil talisman woooo",
-        "So spooky and scary"
-    ],
-    "talisman_01": [
-        "It's a good talisman 01"
-    ],
     "plot_0_intro": [
         "You startle awake in a small clearing",
         "You were having a horrible nightmare",
@@ -49,5 +42,98 @@
     "plot_2_talisman": [
         "You take the talisman in your hands,",
         "and feel the powerful swirl of emotions surrounding it"
+    ],
+    "plot_3_ending": [
+        "You have cast away the nightmares... for now"
+    ],
+    "plot_4_intro": [
+        "You startle awake in a small clearing",
+        "You were having a horrible nightmare",
+        "but maybe you aren't fully awake yet...",
+        "One restful night did a world of good,",
+        "But now it's almost like it never happened",
+        "Except you remember one thing from the happy dream",
+        "A name",
+        "Shiori"
+    ],
+    "plot_5_talisman": [
+        "You take the talisman in your hands,",
+        "This time you recognize it",
+        "Not from your previous time here",
+        "From *before*",
+        "It's just a normal piece of paper, with a poem written on it.",
+        "Heavy eraser marks, lines scratched out, scribbles in the margins",
+        "It's an amateur poem for sure",
+        "It's full of heart",
+        "...",
+        "You feel an urge to preserve this poem",
+        "Not burn it",
+        "Archive it",
+        "You gently put it back where it was"
+    ],
+    "plot_6_oddity": [
+        "Hey there boss, how'd you sleep",
+        "I know I know, those nightmares are no joke",
+        "I've been watching over you for years now",
+        "and I've had enough of them, even if you haven't",
+        "I think now's the time to put an end to those nightmares",
+        "What do you say?",
+        "...",
+        "A deep buried memory comes to mind, now clear as day",
+        "From your time as an archiver, you know this thing",
+        "this spirit, is an aberration.",
+        "Dream world aside, this things power is no joke.",
+        "And that power comes from you.",
+        "This aberration is very real.",
+        "It can never help you.",
+        "But you can help yourself",
+        "...",
+        "~~~ Oddity bitches ~~~"
+    ],
+    "plot_7_ending": [
+        "woo you did it! you woke up!",
+        "Fire Fire Light the Fire!"
+    ],
+    "talisman_evil": [
+        "It's an evil talisman woooo",
+        "So spooky and scary"
+    ],
+    "talisman_01": [
+        "It's just a normal piece of paper, with a poem written on it.",
+        "Heavy eraser marks, lines scratched out, scribbles in the margins",
+        "It's an amateur poem for sure",
+        "...",
+        "It's full of heart"
+    ],
+    "talisman_02": [
+        "It's a drawing of a landscape,",
+        "with rolling fields and mountains in the distance",
+        "...",
+        "It's magnificent"
+    ],
+    "talisman_03": [
+        "It's a photograph of five girls out shopping",
+        "Slightly blurry, one of them blinked",
+        "...",
+        "It' beautiful"
+    ],
+    "talisman_04": [
+        "It's a short story about a girl auditioning to be an idol",
+        "She fails and fails, but she makes it",
+        "...",
+        "It's inspiring"
+    ],
+    "talisman_05": [
+        "It's a song, a duet with two singers",
+        "wip",
+        "...",
+        "It's moving"
+    ],
+    "talisman_06": [
+        "It's a hand-knit scarf, long and colorful",
+        "wip",
+        "...",
+        "It's comforting"
     ]
+    
 }

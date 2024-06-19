@@ -27,6 +27,7 @@ func _process(delta: float):
 			if parent is TalismanHolder:
 				interact_talisman_holder(parent)
 			# Oddity
+			# Actually the oddity is going to be all automatic aka not here
 
 	if not movement_frozen:
 		move(delta)
@@ -54,7 +55,6 @@ func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> v
 func pickup_talisman(object):
 	talisman_inventory[object.number] = true
 	object.pick_up()
-	# nearby_objects.erase(object) # doing this during the above loop is monka
 
 func interact_talisman_holder(object):
 	object.interact()
@@ -74,6 +74,7 @@ func interact_talisman_holder(object):
 			# Kinda awkward place for this but uhh
 			# If I pass the players inventory to the t holder it can figure this out
 			DialogBus.display_dialog.emit("t_holder_empty")
+
 	StateManager.debug_ui.update_right_text(str("inv: ", talisman_inventory, "\n\t"))
 
 func movement_freeze():
@@ -84,6 +85,10 @@ func movement_unfreeze():
 
 func _on_interact_area_area_entered(_area):
 	pass
+	# print(area.get_parent())
+	# $InteractArea.get_overlapping_areas()
 
 func _on_interact_area_area_exited(_area):
 	pass
+	# print(area.get_parent())
+	# $InteractArea.get_overlapping_areas()

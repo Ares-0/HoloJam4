@@ -7,7 +7,7 @@ extends Node
 var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
 var outer_talisman_states = []
 var part_num: int = 0 # part one or two of the story # potentially redundant
-var plot_point: int = 2 # what part of the story the player is on
+var plot_point: int = 0 # what part of the story the player is on
 var day_num: int = 57392
 
 # Other things everyone should have access to
@@ -40,7 +40,17 @@ func _process(_delta):
 	if plot_point == 0:
 		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
 		DialogBus.display_dialog.emit("plot_0_intro")
-		plot_point += 1
+		increment_plot_point()
+	
+	if plot_point == 3 and not false in inner_talisman_states:
+		# If all inner talismans are full, trigger ending 1
+		execute_ending_one()
+		increment_plot_point()
+
+	if plot_point == 4:
+		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
+		DialogBus.display_dialog.emit("plot_4_intro")
+		increment_plot_point()
 
 func on_update_holder(inner: bool, number: int, filled: bool):
 	# print("updating holder")
@@ -54,6 +64,16 @@ func on_update_holder(inner: bool, number: int, filled: bool):
 func increment_plot_point():
 	# used by other actors to progress the plot
 	plot_point += 1
+	debug_ui.update_left_text(get_state_string())
+
+func increment_day_num():
+	# TODO: make it pick from a random range
+	day_num += 1
+
+func execute_ending_one():
+	DialogBus.display_text.emit(str("You have cast away the nightmares... for now"))
+	increment_day_num()
+	part_num += 1
 
 func get_state_string() -> String:
 	# return a string format of current state

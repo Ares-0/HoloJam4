@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdw6d7knrxeit"]
+[gd_scene load_steps=13 format=3 uid="uid://cdw6d7knrxeit"]
 
 [ext_resource type="PackedScene" uid="uid://d21n3yip8h2sk" path="res://source/actors/Player.tscn" id="1_fa67i"]
 [ext_resource type="PackedScene" uid="uid://5coeu8nb6y1e" path="res://source/gui/handheld_overlay.tscn" id="1_k5ykt"]
 [ext_resource type="PackedScene" uid="uid://sg6nqm83dd52" path="res://source/levels/wall_t.tscn" id="3_twe4o"]
 [ext_resource type="TileSet" uid="uid://mndoxu163t1" path="res://source/levels/tilemap_t.tres" id="4_0mgk4"]
 [ext_resource type="PackedScene" uid="uid://bvbwtf7fufix4" path="res://source/levels/barrier_one_way_t.tscn" id="4_568km"]
-[ext_resource type="Script" path="res://source/CameraMain.gd" id="6_tb3ga"]
+[ext_resource type="PackedScene" uid="uid://byntc7irdjwfm" path="res://source/actors/Oddity.tscn" id="6_00cqv"]
+[ext_resource type="Script" path="res://source/actors/CameraMain.gd" id="6_tb3ga"]
 [ext_resource type="PackedScene" uid="uid://buyg41ugv1gto" path="res://source/tools/checkerboard.tscn" id="7_7bp2o"]
 [ext_resource type="PackedScene" uid="uid://dtvvxxrnavdoc" path="res://source/gui/DialogBox.tscn" id="7_h31uc"]
 [ext_resource type="PackedScene" uid="uid://bihi6veygos4j" path="res://source/actors/talisman.tscn" id="8_3oo4s"]
@@ -51,6 +52,9 @@ player = NodePath("../Player")
 [node name="Player" parent="." instance=ExtResource("1_fa67i")]
 z_index = 10
 position = Vector2(383, 447)
+
+[node name="Oddity" parent="." instance=ExtResource("6_00cqv")]
+position = Vector2(361, 986)
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
