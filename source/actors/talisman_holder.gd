@@ -59,6 +59,10 @@ func give_talisman() -> int:
 	if StateManager.plot_point == 2:
 		DialogBus.display_dialog.emit("plot_2_talisman")
 		StateManager.increment_plot_point()
+	if StateManager.plot_point == 5:
+		DialogBus.display_dialog.emit("plot_5_talisman")
+		StateManager.increment_plot_point()
+		return -1
 
 	filled = false
 	update_sprites()

@@ -19,7 +19,7 @@ func converse():
 		DialogBus.display_dialog.emit("plot_1_oddity_debug")
 		StateManager.increment_plot_point()
 	if StateManager.plot_point == 6:
-		DialogBus.display_dialog.emit("plot_1_oddity_debug")
+		DialogBus.display_dialog.emit("plot_6_oddity_debug")
 		StateManager.increment_plot_point()
 
 func _on_area_2d_area_entered(area):

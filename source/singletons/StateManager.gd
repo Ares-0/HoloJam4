@@ -43,6 +43,7 @@ func _process(_delta):
 	if plot_point == -1:
 		return
 	if plot_point == 0:
+		# any initial setup?
 		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
 		DialogBus.display_dialog.emit("plot_0_intro")
 		increment_plot_point()
@@ -56,6 +57,11 @@ func _process(_delta):
 		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
 		DialogBus.display_dialog.emit("plot_4_intro")
 		increment_plot_point()
+	
+	if plot_point == 7 and not false in outer_talisman_states:
+		# If all outer talismans are full, trigger ending 2
+		execute_ending_two()
+		increment_plot_point() # lol
 
 func on_update_holder(inner: bool, number: int, filled: bool):
 	# print("updating holder")
@@ -80,6 +86,9 @@ func execute_ending_one():
 	increment_day_num()
 	reset_talismans()
 	part_num += 1
+
+func execute_ending_two():
+	DialogBus.display_text.emit(str("Fire fire light the fire"))
 
 func reset_talismans() -> void:
 	for i in range(0, 8):

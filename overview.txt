@@ -62,6 +62,7 @@ wake up II (auto)
 5 - player can walk around top area only (blocked by plot armor dab)
 pickup first talisman II
 6 - player can walk around in the main area
+    maybe can't pick up talismans from outer?
 talk to oddity II
 7 - player can walk around the spokes (if the doors are opened)
 all talismans to outer -> door opens in middle
