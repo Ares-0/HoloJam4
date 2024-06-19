@@ -13,6 +13,8 @@ var day_num: int = 57392
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
 var debug_ui
+var t_holders_inner = []
+var t_holders_outer = []
 
 signal update_holder(inner: bool, number: int, filled: bool)
 
@@ -26,6 +28,9 @@ func _ready():
 	inner_talisman_states.fill(false)
 	outer_talisman_states.resize(8)
 	outer_talisman_states.fill(false)	
+
+	t_holders_inner.resize(8)
+	t_holders_outer.resize(8)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -73,7 +78,17 @@ func increment_day_num():
 func execute_ending_one():
 	DialogBus.display_text.emit(str("You have cast away the nightmares... for now"))
 	increment_day_num()
+	reset_talismans()
 	part_num += 1
+
+func reset_talismans() -> void:
+	for i in range(0, 8):
+		if i in [0, 2, 4, 6]: # readability is king
+			t_holders_outer[i].reset(true)
+			t_holders_inner[i].reset(false)
+		else:
+			t_holders_outer[i].reset(false)
+			t_holders_inner[i].reset(true)
 
 func get_state_string() -> String:
 	# return a string format of current state

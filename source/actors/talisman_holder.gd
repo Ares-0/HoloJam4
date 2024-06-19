@@ -3,17 +3,33 @@ extends Node2D
 
 # A place that can hold or receive talismans
 @export var filled: bool = false # is it holding a talisman
-@export var number: int = 0 # what number talisman
 @export var inner: bool = false # flag if this is inner or outer holder
+@export var holder_number: int = 0 # what number holder this is
+@export var talisman_number: int = 0 # what talisman it's actually holding
+# half of the t holders SHOULD start with a particular talisman number, for plot
+# If they get swapped around and mixed up thats fine, but the start is deterministic
 
 func _ready():
+	StateManager.update_holder.emit(inner, holder_number, filled)
+	talisman_number = holder_number
 	update_sprites()
-	StateManager.update_holder.emit(inner, number, filled)
+	
+	# gross
+	if inner:
+		StateManager.t_holders_inner[holder_number] = self
+	else:
+		StateManager.t_holders_outer[holder_number] = self
 
 func _process(_delta):
 	pass
 
-func is_filled():
+func reset(fill: bool):
+	talisman_number = holder_number
+	filled = fill
+	update_sprites()
+	StateManager.update_holder.emit(inner, holder_number, filled)
+
+func is_filled() -> bool:
 	return filled
 
 func update_sprites() -> void:
@@ -22,7 +38,7 @@ func update_sprites() -> void:
 		$SpritesT.visible = false
 	else:
 		$SpriteMain.visible = false
-		$SpritesT.frame = number
+		$SpritesT.frame = talisman_number
 		$SpritesT.visible = true
 
 func interact():
@@ -33,10 +49,10 @@ func interact():
 	# 	DialogBus.display_dialog.emit("t_holder_empty")
 
 func receive_talisman(num) -> void:
-	number = num
+	talisman_number = num
 	filled = true
 	update_sprites()
-	StateManager.update_holder.emit(inner, number, filled)
+	StateManager.update_holder.emit(inner, talisman_number, filled)
 
 func give_talisman() -> int:
 	# if plot point 2, play first time dialog
@@ -46,5 +62,5 @@ func give_talisman() -> int:
 
 	filled = false
 	update_sprites()
-	StateManager.update_holder.emit(inner, number, filled)
-	return number
+	StateManager.update_holder.emit(inner, talisman_number, filled)
+	return talisman_number

@@ -53,7 +53,7 @@ func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> v
 			limit_position.y + 50, limit_position.y + limit_size.y - 50)
 
 func pickup_talisman(object):
-	talisman_inventory[object.number] = true
+	talisman_inventory[object.talisman_number] = true
 	object.pick_up()
 
 func interact_talisman_holder(object):
@@ -62,7 +62,7 @@ func interact_talisman_holder(object):
 	# if not, place any talisman
 	if object.is_filled():
 		# take talisman from holder to inventory
-		talisman_inventory[object.number] = true
+		talisman_inventory[object.talisman_number] = true
 		object.give_talisman()
 	else:
 		# move talisman from inventory to holder
