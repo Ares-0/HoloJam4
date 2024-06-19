@@ -16,6 +16,7 @@ func _ready():
 	scene_text = load_scene_text()
 	DialogBus.connect("display_dialog", on_display_dialog)
 	DialogBus.connect("display_text", on_display_text)
+	self.visible = true
 
 func _process(_delta):
 	if in_progress:

@@ -6,15 +6,18 @@ extends Node
 
 var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
 var outer_talisman_states = []
-var part_num: int = 0 # part one or two of the story # potentially redundant
-var plot_point: int = -1 # what part of the story the player is on
+var part_num: int = 0 		# part one or two of the story # potentially redundant
+var plot_point: int = 0		# what part of the story the player is on
 var day_num: int = 57392
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
+var player
+var camera
 var debug_ui
 var t_holders_inner = []
 var t_holders_outer = []
+var noise_barriers = []
 
 signal update_holder(inner: bool, number: int, filled: bool)
 
@@ -31,6 +34,7 @@ func _ready():
 
 	t_holders_inner.resize(8)
 	t_holders_outer.resize(8)
+	noise_barriers.resize(8)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -77,6 +81,31 @@ func increment_plot_point():
 	plot_point += 1
 	debug_ui.update_left_text(get_state_string())
 
+	# check if any work needs to be done for new state
+	if plot_point == 2:
+		# turn off part 1 barriers
+		noise_barriers[2].deactivate()
+		noise_barriers[4].deactivate()
+		noise_barriers[6].deactivate()
+	
+	if plot_point == 4:
+		# activate everything
+		for bar in noise_barriers:
+			bar.activate()
+	
+	if plot_point == 5:
+		noise_barriers[0].activate()
+	
+	if plot_point == 6:
+		noise_barriers[0].deactivate()
+	
+	if plot_point == 7:
+		# turn off part 2 barriers
+		noise_barriers[1].deactivate()
+		noise_barriers[3].deactivate()
+		noise_barriers[5].deactivate()
+		noise_barriers[7].deactivate()
+
 func increment_day_num():
 	# TODO: make it pick from a random range
 	day_num += 1
@@ -86,6 +115,8 @@ func execute_ending_one():
 	increment_day_num()
 	reset_talismans()
 	part_num += 1
+	player.set_position(player.ORIGIN)
+	camera.check_for_update()
 
 func execute_ending_two():
 	DialogBus.display_text.emit(str("Fire fire light the fire"))

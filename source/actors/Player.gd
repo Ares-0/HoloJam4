@@ -6,28 +6,33 @@ var talisman_inventory = []
 @export var SPRINT_SCALE: float = 2.0 # debug only
 var movement_frozen: bool = false # used to stop movement during dialog # feels awk
 var sprinting = 0 # debug only
+var ORIGIN: Vector2 = Vector2(289, -1798)
 
 func _ready():
 	talisman_inventory.resize(8)
 	talisman_inventory.fill(false)
 	DialogBus.connect("dialog_start", movement_freeze)
 	DialogBus.connect("dialog_done", movement_unfreeze)
+	StateManager.player = self
+
+	# await StateManager.ready
+	# await StateManager.debug_ui.ready
+	# StateManager.debug_ui.update_right_text(str("inv: ", talisman_inventory, "\n\t"))
 
 func _process(delta: float):
 	if Input.is_action_just_pressed("sprint"):
 		sprinting = not sprinting
 	if Input.is_action_just_pressed("action_button"):
 		for object in $InteractArea.get_overlapping_areas():
+			# TODO: maybe only interact with one thing
+
 			var parent = object.get_parent()
-			# Now start object specific interactions
-			# Ground talisman
+			# Ground talisman # technically doesn't happen
 			if parent is Talisman:
 				pickup_talisman(parent)
 			# T Holder
 			if parent is TalismanHolder:
 				interact_talisman_holder(parent)
-			# Oddity
-			# Actually the oddity is going to be all automatic aka not here
 
 	if not movement_frozen:
 		move(delta)

@@ -8,10 +8,14 @@ extends Camera2D
 var current_cell: Vector2i
 
 func _ready():
+	StateManager.camera = self
 	current_cell = get_current_cell()
 	update_position()
 
 func _process(_delta):
+	check_for_update()
+
+func check_for_update():
 	var old_cell = current_cell
 	current_cell = get_current_cell()
 	
