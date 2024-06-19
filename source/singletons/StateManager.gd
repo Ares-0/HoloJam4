@@ -7,7 +7,7 @@ extends Node
 var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
 var outer_talisman_states = []
 var part_num: int = 0 # part one or two of the story # potentially redundant
-var plot_point: int = 0 # what part of the story the player is on
+var plot_point: int = -1 # what part of the story the player is on
 var day_num: int = 57392
 
 # Other things everyone should have access to

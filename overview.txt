@@ -1,9 +1,11 @@
 
 
 MVP Requirements
-    Basic dialog system (one way)
-    Fill out 3 paths
-    Fill 3 paths with hazards
+    Dialog
+        Setup real background
+        Format text
+    Fill out 8 paths
+    Fill 7 paths with hazards
     "respawn" system
         safe areas?
 
@@ -11,10 +13,12 @@ MVP Requirements
 Bug Tracker
     Careful to not let talisman holders be too close / overlap
     Need locks on t holders that depend on plot
+    Grass tiles too scruffy
 
 Stretch Goals
     Camera zooms in very slightly during dialog
     Clamp to 4 way movement
+    Text splays out over time
 
 Movement
     4 way movement
@@ -82,5 +86,4 @@ Script
 Assets etc Used
 https://kenney.nl/assets/game-icons
 https://opengameart.org/content/zelda-like-tilesets-and-sprites
-https://schwarnhild.itch.io/basic-tileset-and-asset-pack-32x32-pixels
 https://godotengine.org/asset-library/asset/1806
