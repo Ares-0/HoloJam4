@@ -28,15 +28,23 @@ func update_sprites() -> void:
 func interact():
 	# this is called on every interaction for common functions
 	pass
-	if not filled:
-		DialogBus.display_dialog.emit("t_holder_empty")
+	# TODO: this should only be after a certain plot point
+	# if not filled:
+	# 	DialogBus.display_dialog.emit("t_holder_empty")
 
 func receive_talisman(num) -> void:
 	number = num
 	filled = true
 	update_sprites()
+	StateManager.update_holder.emit(inner, number, filled)
 
 func give_talisman() -> int:
+	# if plot point 2, play first time dialog
+	if StateManager.plot_point == 2:
+		DialogBus.display_dialog.emit("plot_2_talisman")
+		StateManager.increment_plot_point()
+
 	filled = false
 	update_sprites()
+	StateManager.update_holder.emit(inner, number, filled)
 	return number

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu1pxn25e2v02"]
+
+[ext_resource type="Script" path="res://source/gui/DebugInfo.gd" id="1_sdsgg"]
+
+[node name="DebugInfo" type="CanvasLayer"]
+script = ExtResource("1_sdsgg")
+
+[node name="LabelA" type="Label" parent="."]
+offset_right = 312.0
+offset_bottom = 288.0
+text = "This is some debug text"
+
+[node name="LabelB" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -312.0
+offset_bottom = 280.08
+grow_horizontal = 0
+text = "This is some more debug text"
+horizontal_alignment = 2

@@ -70,6 +70,11 @@ func interact_talisman_holder(object):
 		if idx >= 0:
 			talisman_inventory[idx] = false
 			object.receive_talisman(idx)
+		else:
+			# Kinda awkward place for this but uhh
+			# If I pass the players inventory to the t holder it can figure this out
+			DialogBus.display_dialog.emit("t_holder_empty")
+	StateManager.debug_ui.update_right_text(str("inv: ", talisman_inventory, "\n\t"))
 
 func movement_freeze():
 	movement_frozen = true
