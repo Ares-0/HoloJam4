@@ -8,7 +8,7 @@ var inner_talisman_states = [] # array of bools, if true, inner T holder has tal
 var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = -2
+var plot_point: int = -3
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -50,6 +50,9 @@ func _process(_delta):
 	if plot_point == -2:
 		for bar in noise_barriers:
 			bar.deactivate()
+	
+	if plot_point == -3:
+		show_all_dialog()
 
 	if plot_point == 0:
 		# any initial setup?
@@ -144,3 +147,26 @@ func get_state_string() -> String:
 	last += str("part: ", part_num, "\t\tplot_point: " , plot_point, "\n\t")
 
 	return last
+
+func show_all_dialog() -> void:
+	# I could make this smart or...
+	DialogBus.display_dialog.emit("test")
+	DialogBus.display_dialog.emit("t_holder_empty")
+	DialogBus.display_dialog.emit("plot_0_intro")
+	DialogBus.display_dialog.emit("plot_1_oddity")
+	DialogBus.display_dialog.emit("plot_1_oddity_debug")
+	DialogBus.display_dialog.emit("plot_2_talisman")
+	DialogBus.display_dialog.emit("plot_3_ending")
+	DialogBus.display_dialog.emit("plot_4_intro")
+	DialogBus.display_dialog.emit("plot_5_talisman")
+	DialogBus.display_dialog.emit("plot_6_oddity")
+	DialogBus.display_dialog.emit("plot_6_oddity_debug")
+	DialogBus.display_dialog.emit("plot_7_ending")
+	DialogBus.display_dialog.emit("talisman_evil")
+	DialogBus.display_dialog.emit("talisman_01")
+	DialogBus.display_dialog.emit("talisman_02")
+	DialogBus.display_dialog.emit("talisman_03")
+	DialogBus.display_dialog.emit("talisman_04")
+	DialogBus.display_dialog.emit("talisman_05")
+	DialogBus.display_dialog.emit("talisman_06")
+	
