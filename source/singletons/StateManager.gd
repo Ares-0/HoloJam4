@@ -8,7 +8,7 @@ var inner_talisman_states = [] # array of bools, if true, inner T holder has tal
 var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = 4
+var plot_point: int = 1
 var active: bool = false # is the game focused # hmm
 
 # Other things everyone should have access to
@@ -16,6 +16,9 @@ var active: bool = false # is the game focused # hmm
 var player
 var camera
 var debug_ui
+var hh_overlay
+var pauser
+
 var t_holders_inner = []
 var t_holders_outer = []
 var noise_barriers = []
@@ -41,7 +44,6 @@ func _ready():
 	t_holders_inner.resize(8)
 	t_holders_outer.resize(8)
 	noise_barriers.resize(8)
-	print("state manager ready")
 
 func _process(_delta):
 	# if Engine.get_frames_drawn() % 60 == 0:

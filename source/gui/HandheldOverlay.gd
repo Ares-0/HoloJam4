@@ -16,6 +16,7 @@ func _ready():
 	shadow_DD.visible = false
 	shadow_DR.visible = false
 	shadow_DL.visible = false
+	StateManager.hh_overlay = self
 
 func _process(_delta):
 	if Input.is_action_just_pressed("action_button"):

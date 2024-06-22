@@ -19,11 +19,19 @@ func _ready():
 	self.visible = true
 
 func _process(_delta):
+	# if pausing isn't fully ready, dont accept inputs
+	# If currently paused dont accept inputs
+	if StateManager.pauser == null or StateManager.pauser.paused:
+		return
+
 	if in_progress:
 		if Input.is_action_just_pressed("action_button"):
 			# this is annoying but I dont have time rn
 			if Engine.get_frames_drawn() != frame_updated:
 				next_line()
+	
+	if in_progress and not get_tree().paused:
+		get_tree().paused = true
 
 func load_scene_text():
 	var file = FileAccess.open(scene_text_file, FileAccess.READ)

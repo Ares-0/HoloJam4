@@ -3,14 +3,10 @@ extends Control
 
 @onready var VersionL = $VersionL
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	VersionL.text = "v" + StateManager.version_number
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+	if StateManager.hh_overlay != null: # coming from game case?
+		StateManager.hh_overlay.hide()
 
 func _on_new_game_pressed():
 	StateManager.new_game()

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://1rb4cuhjuetr" path="res://assets/overlay_D_press.png" id="4_gebjk"]
 
 [node name="HandheldOverlay" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

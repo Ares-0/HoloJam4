@@ -11,6 +11,8 @@ MVP Requirements
 
 
 Bug Tracker
+    Pausing during dialog is a mess
+
     Careful to not let talisman holders be too close / overlap
     Need locks on t holders that depend on plot
     Grass tiles too scruffy

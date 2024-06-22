@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://u04l6arn8bdt"]
+[gd_scene load_steps=6 format=3 uid="uid://u04l6arn8bdt"]
 
 [ext_resource type="Texture2D" uid="uid://d0osxwsl7dl18" path="res://assets/main_menu_mock/title.png" id="1_i4ibx"]
 [ext_resource type="Script" path="res://source/levels/TitleScreen.gd" id="1_ksgbn"]
+[ext_resource type="PackedScene" uid="uid://5coeu8nb6y1e" path="res://source/gui/HandheldOverlay.tscn" id="2_tj3ti"]
 [ext_resource type="Texture2D" uid="uid://dwdo0jocfnnh" path="res://assets/main_menu_mock/label_options.png" id="4_fturt"]
 [ext_resource type="Texture2D" uid="uid://qd01dbkdph4w" path="res://assets/main_menu_mock/characters.png" id="6_eqr3l"]
 
@@ -25,6 +26,10 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "v0.0.0"
 horizontal_alignment = 2
+
+[node name="HandheldOverlay" parent="." instance=ExtResource("2_tj3ti")]
+visible = false
+layout_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
