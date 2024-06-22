@@ -8,7 +8,8 @@ var inner_talisman_states = [] # array of bools, if true, inner T holder has tal
 var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = -3
+var plot_point: int = 4
+var active: bool = false # is the game focused # hmm
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -19,10 +20,15 @@ var t_holders_inner = []
 var t_holders_outer = []
 var noise_barriers = []
 
+var version_number = "0.5.0" # this is totally here temporarily
+
 signal update_holder(inner: bool, number: int, filled: bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# I gotta see how returning to main menu affects stuff
+	# print("readying") 
+
 	# signals
 	self.connect("update_holder", on_update_holder)
 
@@ -35,13 +41,18 @@ func _ready():
 	t_holders_inner.resize(8)
 	t_holders_outer.resize(8)
 	noise_barriers.resize(8)
+	print("state manager ready")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# if Engine.get_frames_drawn() % 60 == 0:
-	# 	var state_str = get_state_string()
-	# 	# print(state_str)
-	# 	debug_ui.update_left_text(state_str)
+
+	# Ok so in hindsight, a lot of this should not have been so automatic
+	# So, gotta make sure stuff is actually ready
+	# await self.ready
+	# if not active:
+	# 	return
+	if debug_ui == null: # awk
+		return
 
 	# check for triggers and advance state
 	if plot_point == -1:
@@ -85,7 +96,7 @@ func on_update_holder(inner: bool, number: int, filled: bool):
 	debug_ui.update_left_text(get_state_string())
 
 func increment_plot_point():
-	# used by other actors to progress the plot
+	# used by other actors to setup next plot state
 	plot_point += 1
 	debug_ui.update_left_text(get_state_string())
 
@@ -128,6 +139,12 @@ func execute_ending_one():
 
 func execute_ending_two():
 	DialogBus.display_text.emit(str("Fire fire light the fire"))
+
+func new_game() -> void:
+	plot_point = 0
+	part_num = 0
+	day_num = 57392
+	active = true
 
 func reset_talismans() -> void:
 	for i in range(0, 8):

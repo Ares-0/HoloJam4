@@ -1,3 +1,91 @@
-[gd_scene format=3 uid="uid://u04l6arn8bdt"]
+[gd_scene load_steps=5 format=3 uid="uid://u04l6arn8bdt"]
 
-[node name="TitleScreen" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://d0osxwsl7dl18" path="res://assets/main_menu_mock/title.png" id="1_i4ibx"]
+[ext_resource type="Script" path="res://source/levels/TitleScreen.gd" id="1_ksgbn"]
+[ext_resource type="Texture2D" uid="uid://dwdo0jocfnnh" path="res://assets/main_menu_mock/label_options.png" id="4_fturt"]
+[ext_resource type="Texture2D" uid="uid://qd01dbkdph4w" path="res://assets/main_menu_mock/characters.png" id="6_eqr3l"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 717.0
+script = ExtResource("1_ksgbn")
+
+[node name="VersionL" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.0.0"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_i4ibx")
+stretch_mode = 2
+
+[node name="MenuActions" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuActions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 44
+text = "Continue"
+
+[node name="New Game" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuActions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 44
+text = "New Game"
+
+[node name="OptionsT" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuActions"]
+layout_mode = 2
+texture = ExtResource("4_fturt")
+stretch_mode = 2
+
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuActions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 44
+text = "Quit"
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Boxes" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("6_eqr3l")
+stretch_mode = 2
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/Quit" to="." method="_on_quit_pressed"]

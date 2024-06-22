@@ -33,7 +33,7 @@ player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_fa67i")]
 z_index = 10
-position = Vector2(237, 278)
+position = Vector2(237, -1808)
 
 [node name="Oddity" parent="." instance=ExtResource("6_00cqv")]
 position = Vector2(361, 986)
@@ -189,10 +189,9 @@ color = Color(0.1705, 0.93, 0, 0.447059)
 polygon = PackedVector2Array(0, -720, 720, -720, 720, 1440, 0, 1440)
 
 [node name="Barriers" type="Node2D" parent="."]
-visible = false
 
 [node name="NoiseBarrier_00" parent="Barriers" instance=ExtResource("12_j5dl1")]
-position = Vector2(419, -1525)
+position = Vector2(431, -1525)
 rotation = 0.0
 active = false
 
