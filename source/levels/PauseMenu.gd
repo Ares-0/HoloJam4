@@ -33,4 +33,5 @@ func _on_menu_b_pressed():
 	paused = false
 	StateManager.hh_overlay.hide()
 	get_tree().paused = false
+	StateManager.game_room.game_ready = false
 	get_tree().change_scene_to_file("res://source/levels/TitleScreen.tscn")

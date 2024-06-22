@@ -1,6 +1,8 @@
 class_name CameraMain
 extends Camera2D
 
+signal change_screen()
+
 @export var player: Player
 @onready var size: Vector2i = Vector2i(720, 720) # my cropped screen size
 @onready var ui_offset: Vector2i = Vector2i(-280, 0) # to center on actual screen
@@ -22,6 +24,8 @@ func check_for_update():
 	if old_cell != current_cell:
 		update_position()
 		player.clamp_position_to_limits(global_position - Vector2(ui_offset), size)
+		change_screen.emit()
+		StateManager.player_position = player.global_position
 
 func update_position() -> void:
 	global_position = current_cell * size + ui_offset

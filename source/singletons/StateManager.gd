@@ -8,8 +8,9 @@ var inner_talisman_states = [] # array of bools, if true, inner T holder has tal
 var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = 1
+var plot_point: int = 0
 var active: bool = false # is the game focused # hmm
+var player_position: Vector2 = Vector2(237, -1808)
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -18,6 +19,7 @@ var camera
 var debug_ui
 var hh_overlay
 var pauser
+var game_room
 
 var t_holders_inner = []
 var t_holders_outer = []
@@ -45,6 +47,12 @@ func _ready():
 	t_holders_outer.resize(8)
 	noise_barriers.resize(8)
 
+	if player != null:
+		player.global_position = player_position
+
+# func _enter_tree():
+# 	print("state manager entering")
+
 func _process(_delta):
 	# if Engine.get_frames_drawn() % 60 == 0:
 
@@ -54,6 +62,11 @@ func _process(_delta):
 	# if not active:
 	# 	return
 	if debug_ui == null: # awk
+		return
+	
+	if game_room == null:
+		return
+	if game_room.game_ready == false:
 		return
 
 	# check for triggers and advance state
@@ -147,6 +160,16 @@ func new_game() -> void:
 	part_num = 0
 	day_num = 57392
 	active = true
+
+func resume() -> void:
+	player.set_global_position(player_position)
+
+func are_references_ready() -> bool:
+	var references = [player, camera, debug_ui, hh_overlay, pauser, game_room]
+	# print(references)
+	if null in references:
+		return false
+	return true
 
 func reset_talismans() -> void:
 	for i in range(0, 8):
