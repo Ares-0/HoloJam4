@@ -9,7 +9,7 @@ var frame_updated = 0
 var text_queue = []
 
 @onready var background = $Background
-@onready var text_label = $Background/TextLabel
+@onready var text_label = $Background/Control/TextLabel
 
 func _ready():
 	background.visible = false

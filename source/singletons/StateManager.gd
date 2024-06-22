@@ -151,6 +151,7 @@ func get_state_string() -> String:
 func show_all_dialog() -> void:
 	# I could make this smart or...
 	DialogBus.display_dialog.emit("test")
+	# DialogBus.display_dialog.emit("font_test")
 	DialogBus.display_dialog.emit("t_holder_empty")
 	DialogBus.display_dialog.emit("plot_0_intro")
 	DialogBus.display_dialog.emit("plot_1_oddity")
