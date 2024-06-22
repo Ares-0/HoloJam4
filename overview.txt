@@ -20,6 +20,7 @@ Stretch Goals
     Clamp to 4 way movement
     Text splays out over time
     Avatars by box during dialog
+    Simulate button pushing
 
 Movement
     4 way movement

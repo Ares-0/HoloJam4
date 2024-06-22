@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5coeu8nb6y1e"]
+[gd_scene load_steps=5 format=3 uid="uid://5coeu8nb6y1e"]
 
 [ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/hh_overlay.png" id="1_0lym4"]
 [ext_resource type="Script" path="res://source/gui/HandheldOverlay.gd" id="1_imlce"]
+[ext_resource type="Texture2D" uid="uid://bhw1lpd06kthp" path="res://assets/overlay_B_press.png" id="3_4netq"]
+[ext_resource type="Texture2D" uid="uid://1rb4cuhjuetr" path="res://assets/overlay_D_press.png" id="4_gebjk"]
 
 [node name="HandheldOverlay" type="Control"]
 layout_mode = 3
@@ -17,3 +19,67 @@ layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("1_0lym4")
+
+[node name="ShadowB" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1074.0
+offset_top = 504.0
+offset_right = 1135.0
+offset_bottom = 566.0
+texture = ExtResource("3_4netq")
+stretch_mode = 2
+
+[node name="ShadowA" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1156.0
+offset_top = 454.0
+offset_right = 1217.0
+offset_bottom = 516.0
+texture = ExtResource("3_4netq")
+stretch_mode = 2
+
+[node name="DPad" type="Control" parent="."]
+modulate = Color(0.516569, 0.600586, 0.716327, 1)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShadowDU" type="TextureRect" parent="DPad"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 428.0
+offset_right = 180.0
+offset_bottom = 490.0
+texture = ExtResource("4_gebjk")
+stretch_mode = 2
+
+[node name="ShadowDR" type="TextureRect" parent="DPad"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 480.0
+offset_right = 274.0
+offset_bottom = 542.0
+rotation = 1.5708
+texture = ExtResource("4_gebjk")
+stretch_mode = 2
+
+[node name="ShadowDL" type="TextureRect" parent="DPad"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 522.0
+offset_right = 129.0
+offset_bottom = 584.0
+rotation = -1.5708
+texture = ExtResource("4_gebjk")
+stretch_mode = 2
+flip_h = true
+
+[node name="ShadowDD" type="TextureRect" parent="DPad"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 574.0
+offset_right = 222.0
+offset_bottom = 636.0
+rotation = 3.14159
+texture = ExtResource("4_gebjk")
+stretch_mode = 2
