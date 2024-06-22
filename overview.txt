@@ -1,9 +1,6 @@
 
 
 MVP Requirements
-    Dialog
-        Setup real background
-        Format text
     Fill out 8 paths
     Fill 7 paths with hazards
     "respawn" system
@@ -17,7 +14,6 @@ Bug Tracker
 
 Stretch Goals
     Camera zooms in very slightly during dialog
-    Clamp to 4 way movement
     Text splays out over time
     Avatars by box during dialog
 

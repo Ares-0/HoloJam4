@@ -40,11 +40,19 @@ func _process(delta: float):
 	# print($InteractArea.get_overlapping_areas())
 
 func move(_delta: float):
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	# squash diagonals?
+	if abs(direction.x) > 0 and direction.y > 0:
+		direction = Vector2(0, 1)
+	if abs(direction.x) > 0 and direction.y < 0:
+		direction = Vector2(0, -1)
+
 	var total_speed = SPEED + SPEED*SPRINT_SCALE*int(sprinting)
 	velocity = direction * total_speed
 	# velocity.x = move_toward(velocity.x, 0, SPEED)
 	# velocity.y = move_toward(velocity.y, 0, SPEED)
+	choose_sprite(direction)
 	move_and_slide()
 
 func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> void:
@@ -81,6 +89,18 @@ func interact_talisman_holder(object):
 			DialogBus.display_dialog.emit("t_holder_empty")
 
 	StateManager.debug_ui.update_right_text(str("inv: ", talisman_inventory, "\n\t"))
+
+func choose_sprite(direction: Vector2) -> void:
+	# left and right are shown if moving left or right
+	if direction.x == -1:
+		$AnimatedSprite2D.frame = 2
+	if direction.x == 1:
+		$AnimatedSprite2D.frame = 3
+	# diagonals overwrite LR with UD
+	if direction.y > 0.5:
+		$AnimatedSprite2D.frame = 0
+	if direction.y <= -0.5:
+		$AnimatedSprite2D.frame = 1
 
 func movement_freeze():
 	movement_frozen = true
