@@ -9,6 +9,9 @@ extends Node2D
 # half of the t holders SHOULD start with a particular talisman number, for plot
 # If they get swapped around and mixed up thats fine, but the start is deterministic
 
+# If a holder is locked, interacting with it will not remove the talisman
+var locked: bool = false
+
 func _ready():
 	StateManager.update_holder.emit(inner, holder_number, filled)
 	talisman_number = holder_number
@@ -63,6 +66,27 @@ func give_talisman() -> int:
 		DialogBus.display_dialog.emit("plot_5_talisman")
 		StateManager.increment_plot_point()
 		return -1
+
+	# Read talisman descriptions on pickup
+	if StateManager.plot_point == 7 or StateManager.plot_point == 6:
+		match talisman_number:
+			0:
+				DialogBus.display_dialog.emit("talisman_00")
+				return -1
+			1:
+				DialogBus.display_dialog.emit("talisman_01")
+				if not inner: return -1 # take from inners only
+			3:
+				DialogBus.display_dialog.emit("talisman_03")
+				if not inner: return -1
+			5:
+				DialogBus.display_dialog.emit("talisman_05")
+				if not inner: return -1
+			7:
+				DialogBus.display_dialog.emit("talisman_07")
+				if not inner: return -1
+			_:
+				DialogBus.display_text.emit("A talisman, or rather a work of art")
 
 	filled = false
 	update_sprites()

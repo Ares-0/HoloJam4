@@ -17,6 +17,7 @@ var part_num: int = 0 		# part one or two of the story # potentially redundant
 var plot_point: int = -2
 # var active: bool = false # is the game focused # hmm
 var player_position: Vector2 = Vector2(237, -1808)
+var plot_in_progress: bool = false
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -88,26 +89,30 @@ func _process(_delta):
 	if plot_point == -3:
 		show_all_dialog()
 
+	# Ok so what's actually happening here is annoying
+	# The awaits mean these checks are going to complete multiple times
+	# And the plot points incrementing was luckily hiding bugs
+	# But a flag might be prudent
+	if plot_in_progress:
+		return
+
 	if plot_point == 0:
 		# any initial setup?
 		execute_intro_one()
-		increment_plot_point()
 	
 	if plot_point == 3 and not false in inner_talisman_states:
 		# If all inner talismans are full, trigger ending 1
 		execute_ending_one()
-		increment_plot_point()
 
 	if plot_point == 4:
 		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
 		DialogBus.display_dialog.emit("plot_4_intro")
 		increment_plot_point()
-	
+
 	if plot_point == 7 and not false in outer_talisman_states:
 		# If all outer talismans are full, trigger ending 2
 		execute_ending_two()
-		increment_plot_point() # lol
-	
+
 	if Input.is_action_just_pressed("debug_01"):
 		execute_ending_one()
 
@@ -120,9 +125,13 @@ func on_update_holder(inner: bool, number: int, filled: bool):
 		outer_talisman_states[number] = filled
 	debug_ui.update_left_text(get_state_string())
 
-func increment_plot_point():
+func increment_plot_point(dry_run: bool = false):
 	# used by other actors to setup next plot state
-	plot_point += 1
+	# dry run is like doing the work but not changing the plot point
+
+	if not dry_run:
+		plot_point += 1
+
 	debug_ui.update_left_text(get_state_string())
 
 	# check if any work needs to be done for new state
@@ -155,6 +164,7 @@ func increment_day_num():
 	day_num += 1
 
 func execute_intro_one():
+	plot_in_progress = true
 	# hh_overlay.set_fade(1)
 	await get_tree().create_timer(1.0).timeout
 	DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
@@ -162,8 +172,12 @@ func execute_intro_one():
 	hh_overlay.animplayer.play("FadeFromBlack")
 
 	DialogBus.display_dialog.emit("plot_0_intro")
+	
+	plot_in_progress = false
+	increment_plot_point()
 
 func execute_ending_one():
+	plot_in_progress = true
 	Ending01Player.play("Ending01")
 	await Ending01Player.animation_finished
 
@@ -187,13 +201,21 @@ func execute_ending_one():
 	part_num += 1
 	player.set_position(player.ORIGIN)
 	camera.check_for_update()
+	Ending01Player.play("reset_fires") # lmao even
 
 	hh_overlay.animplayer.play("FadeFromBlack")
 	# hh_overlay.set_fade(0) # feels cool but feels unintentional
 	await hh_overlay.animplayer.animation_finished
 
+	plot_in_progress = false
+	increment_plot_point()
+
 func execute_ending_two():
+	plot_in_progress = true
 	DialogBus.display_text.emit(str("Fire fire light the fire"))
+	
+	plot_in_progress = false
+	increment_plot_point()
 
 func new_game() -> void:
 	plot_point = 0
@@ -204,6 +226,7 @@ func new_game() -> void:
 func resume() -> void:
 	# if plot_point > 0:
 	player.set_global_position(player_position)
+	increment_plot_point(true)
 
 func are_references_ready() -> bool:
 	var references = [player, camera, debug_ui, hh_overlay, pauser, game_room]

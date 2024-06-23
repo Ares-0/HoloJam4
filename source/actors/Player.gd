@@ -75,8 +75,9 @@ func interact_talisman_holder(object):
 	# if not, place any talisman
 	if object.is_filled():
 		# take talisman from holder to inventory
-		talisman_inventory[object.talisman_number] = true
-		object.give_talisman()
+		var num = object.give_talisman()
+		if num >= 0: # can return -1, refusing the give
+			talisman_inventory[num] = true
 	else:
 		# move talisman from inventory to holder
 		var idx: int = talisman_inventory.find(true)

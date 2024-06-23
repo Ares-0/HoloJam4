@@ -72,7 +72,7 @@
         "But now it's almost like it never happened",
         "Except you remember one thing from the happy dream",
         "A name",
-        "Shiori"
+        "\"Shiori\""
     ],
     "plot_5_talisman": [
         "You take the talisman in your hands,",
@@ -122,14 +122,14 @@
         "It's an evil talisman woooo",
         "So spooky and scary"
     ],
-    "talisman_01": [
+    "talisman_00": [
         "It's just a normal piece of paper, with a poem written on it.",
         "Heavy eraser marks, lines scratched out, scribbles in the margins",
         "It's an amateur poem for sure",
         "...",
         "It's full of heart"
     ],
-    "talisman_02": [
+    "talisman_01": [
         "It's a drawing of a landscape,",
         "with rolling fields and mountains in the distance",
         "...",
@@ -141,23 +141,22 @@
         "...",
         "It' beautiful"
     ],
-    "talisman_04": [
+    "talisman_05": [
         "It's a short story about a girl auditioning to be an idol",
         "She fails and fails, but she makes it",
         "...",
         "It's inspiring"
     ],
-    "talisman_05": [
+    "talisman_07": [
         "It's a song, a duet with two singers",
         "wip",
         "...",
         "It's moving"
     ],
-    "talisman_06": [
+    "talisman_02": [
         "It's a hand-knit scarf, long and colorful",
         "wip",
         "...",
         "It's comforting"
     ]
-    
 }
