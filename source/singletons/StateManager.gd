@@ -8,7 +8,7 @@ var inner_talisman_states = [] # array of bools, if true, inner T holder has tal
 var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = 0
+var plot_point: int = -2
 var active: bool = false # is the game focused # hmm
 var player_position: Vector2 = Vector2(237, -1808)
 
@@ -20,6 +20,8 @@ var debug_ui
 var hh_overlay
 var pauser
 var game_room
+
+var Ending01Player
 
 var t_holders_inner = []
 var t_holders_outer = []
@@ -100,6 +102,9 @@ func _process(_delta):
 		# If all outer talismans are full, trigger ending 2
 		execute_ending_two()
 		increment_plot_point() # lol
+	
+	if Input.is_action_just_pressed("debug_01"):
+		execute_ending_one()
 
 func on_update_holder(inner: bool, number: int, filled: bool):
 	# print("updating holder")
@@ -145,12 +150,33 @@ func increment_day_num():
 	day_num += 1
 
 func execute_ending_one():
-	DialogBus.display_text.emit(str("You have cast away the nightmares... for now"))
+	Ending01Player.play("Ending01")
+	await Ending01Player.animation_finished
+
+	DialogBus.display_dialog.emit("plot_3_ending")
+	await DialogBus.dialog_done
+
+	hh_overlay.animplayer.play("FadeToBlack")
+	await hh_overlay.animplayer.animation_finished
+	DialogBus.display_dialog.emit("plot_3_ending_b")
+	await DialogBus.dialog_done
+
+	# wait 3 seconds
+	await get_tree().create_timer(3.0).timeout
+
+	DialogBus.display_dialog_big.emit("plot_3_ending_c")
+	await DialogBus.dialog_done
+
+	# Setup next day
 	increment_day_num()
 	reset_talismans()
 	part_num += 1
 	player.set_position(player.ORIGIN)
 	camera.check_for_update()
+
+	hh_overlay.animplayer.play("FadeFromBlack")
+	# hh_overlay.set_fade(0) # feels cool but feels unintentional
+	await hh_overlay.animplayer.animation_finished
 
 func execute_ending_two():
 	DialogBus.display_text.emit(str("Fire fire light the fire"))
@@ -162,7 +188,8 @@ func new_game() -> void:
 	active = true
 
 func resume() -> void:
-	player.set_global_position(player_position)
+	if plot_point > 0:
+		player.set_global_position(player_position)
 
 func are_references_ready() -> bool:
 	var references = [player, camera, debug_ui, hh_overlay, pauser, game_room]

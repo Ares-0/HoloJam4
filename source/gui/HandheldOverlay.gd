@@ -1,12 +1,16 @@
 class_name HandheldOverlay
 extends Control
 
+# The fade to black really would be better elsewhere buut
+# It fits pretty nicely honestly so rolling with it
+
 @onready var shadow_A = $ShadowA
 @onready var shadow_B = $ShadowB
 @onready var shadow_DU = $DPad/ShadowDU
 @onready var shadow_DD = $DPad/ShadowDD
 @onready var shadow_DR = $DPad/ShadowDR
 @onready var shadow_DL = $DPad/ShadowDL
+@onready var animplayer = $AnimationPlayer
 
 func _ready():
 	self.visible = true
@@ -17,6 +21,7 @@ func _ready():
 	shadow_DR.visible = false
 	shadow_DL.visible = false
 	StateManager.hh_overlay = self
+	$ColorRectBlack.color.a = 0
 
 func _process(_delta):
 	if Input.is_action_just_pressed("action_button"):
@@ -43,4 +48,7 @@ func _process(_delta):
 		shadow_DL.visible = true
 	if Input.is_action_just_released("move_left"):
 		shadow_DL.visible = false
+
+func set_fade(alpha) -> void:
+	$ColorRectBlack.color.a = alpha
 

@@ -1,4 +1,4 @@
-class_name TestRoom
+class_name World
 extends Node2D
 
 # I think this script will just be for setting up stuff

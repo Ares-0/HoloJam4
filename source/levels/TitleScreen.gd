@@ -15,12 +15,12 @@ func _ready():
 
 func _on_new_game_pressed():
 	StateManager.new_game()
-	get_tree().change_scene_to_file("res://source/levels/TestRoom.tscn")
+	get_tree().change_scene_to_file("res://source/levels/World.tscn")
 
 func _on_continue_pressed():
 	# Keep the already existing save data
 	# TODO: Probably need to check if any exists first?
-	get_tree().change_scene_to_file("res://source/levels/TestRoom.tscn")
+	get_tree().change_scene_to_file("res://source/levels/World.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

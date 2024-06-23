@@ -50,7 +50,19 @@
         "and feel the powerful swirl of emotions surrounding it"
     ],
     "plot_3_ending": [
-        "You have cast away the nightmares... for now"
+        "These things can't hurt you anymore, promise",
+        "See you on the other side"
+    ],
+    "plot_3_ending_b": [
+        "You have cast away the nightmares...",
+        "for now..."
+    ],
+    "plot_3_ending_c": [
+        "hey",
+        "HEY",
+        "you have to wake up!",
+        "Shiori!",
+        "you have to wa..."
     ],
     "plot_4_intro": [
         "You startle awake in a small clearing",
