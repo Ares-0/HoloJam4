@@ -17,7 +17,7 @@ func _ready():
 
 	# await StateManager.ready
 	# await StateManager.debug_ui.ready
-	# StateManager.debug_ui.update_right_text(str("inv: ", talisman_inventory, "\n\t"))
+	# StateManager.debug_ui.update_right_text(0, str("inv: ", talisman_inventory))
 
 func _process(delta: float):
 	if Input.is_action_just_pressed("sprint"):
@@ -30,9 +30,11 @@ func _process(delta: float):
 			# Ground talisman # technically doesn't happen
 			if parent is Talisman:
 				pickup_talisman(parent)
+				break
 			# T Holder
 			if parent is TalismanHolder:
 				interact_talisman_holder(parent)
+				break
 
 	if not movement_frozen:
 		move(delta)
@@ -89,7 +91,7 @@ func interact_talisman_holder(object):
 			# If I pass the players inventory to the t holder it can figure this out
 			DialogBus.display_dialog.emit("t_holder_empty")
 
-	StateManager.debug_ui.update_right_text(str("inv: ", talisman_inventory, "\n\t"))
+	StateManager.debug_ui.update_right_text(0, str("inv: ", talisman_inventory))
 
 func choose_sprite(direction: Vector2) -> void:
 	# left and right are shown if moving left or right

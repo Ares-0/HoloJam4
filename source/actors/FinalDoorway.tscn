@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0per6ccqcing"]
+
+[ext_resource type="Script" path="res://source/actors/FinalDoorway.gd" id="1_0i68l"]
+[ext_resource type="Texture2D" uid="uid://rhbojk07jxjb" path="res://assets/door/final_door_01.png" id="1_5q4of"]
+[ext_resource type="TileSet" uid="uid://mndoxu163t1" path="res://source/levels/tilemap_t.tres" id="2_asrav"]
+[ext_resource type="Texture2D" uid="uid://b1bps2mpp3shx" path="res://assets/door/final_door_02.png" id="2_usmm8"]
+[ext_resource type="Texture2D" uid="uid://gqu5xpt6itih" path="res://assets/door/final_door_03.png" id="3_a244b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_im3et"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5q4of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_usmm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a244b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftqum"]
+size = Vector2(5.33333, 9)
+
+[node name="FinalDoorway" type="Area2D"]
+z_index = 2
+scale = Vector2(6, 6)
+script = ExtResource("1_0i68l")
+
+[node name="Fountain" type="TileMap" parent="."]
+position = Vector2(-12, -9)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("2_asrav")
+format = 2
+layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(0, 1507328, 1, 1, 1507328, 1, 2, 1507328, 1, 65538, 1507328, 1, 65537, 1507328, 1, 65536, 1507328, 1, 131072, 1507328, 1, 131073, 1507328, 1, 131074, 1507328, 1)
+layer_1/name = "Objects"
+layer_1/tile_data = PackedInt32Array(0, 1441792, 9, 65536, 1441792, 10, 131072, 1441792, 11, 1, 1507328, 9, 65537, 1507328, 10, 131073, 1507328, 11, 2, 1572864, 9, 65538, 1572864, 10, 131074, 1572864, 11)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_im3et")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.16667)
+shape = SubResource("RectangleShape2D_ftqum")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

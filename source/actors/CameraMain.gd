@@ -26,6 +26,7 @@ func check_for_update():
 		player.clamp_position_to_limits(global_position - Vector2(ui_offset), size)
 		change_screen.emit()
 		StateManager.player_position = player.global_position
+		StateManager.debug_ui.update_right_text(1, str(current_cell))
 
 func update_position() -> void:
 	global_position = current_cell * size + ui_offset

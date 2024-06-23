@@ -16,7 +16,7 @@ var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
 var plot_point: int = -2
 # var active: bool = false # is the game focused # hmm
-var player_position: Vector2 = Vector2(237, -1808)
+var player_position: Vector2 = Vector2(278, -1808)
 var plot_in_progress: bool = false
 
 # Other things everyone should have access to
@@ -27,6 +27,7 @@ var debug_ui
 var hh_overlay
 var pauser
 var game_room
+var final_door
 
 var Ending01Player
 
@@ -83,6 +84,7 @@ func _process(_delta):
 		return
 
 	if plot_point == -2:
+		hh_overlay.set_fade(0)
 		for bar in noise_barriers:
 			bar.deactivate()
 	
@@ -110,11 +112,19 @@ func _process(_delta):
 		increment_plot_point()
 
 	if plot_point == 7 and not false in outer_talisman_states:
-		# If all outer talismans are full, trigger ending 2
+		# If all outer talismans are full, open door
+		final_door.activate()
+		increment_plot_point()
+
+	if plot_point == 8 and camera.current_cell == Vector2i(0, 1):
 		execute_ending_two()
 
 	if Input.is_action_just_pressed("debug_01"):
-		execute_ending_one()
+		# execute_ending_two()
+		if final_door.active:
+			final_door.deactivate()
+		else:
+			final_door.activate()
 
 func on_update_holder(inner: bool, number: int, filled: bool):
 	# print("updating holder")
