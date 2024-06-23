@@ -10,12 +10,20 @@ var text_queue = []
 
 @onready var background = $Background
 @onready var text_label = $Background/Control/TextLabel
+@onready var background_big = $BackgroundBig
+@onready var text_label_big = $BackgroundBig/Control/TextLabel
+
+var active_bg
+var active_label
 
 func _ready():
 	background.visible = false
+	background_big.visible = false
 	scene_text = load_scene_text()
 	DialogBus.connect("display_dialog", on_display_dialog)
 	DialogBus.connect("display_text", on_display_text)
+	DialogBus.connect("display_dialog_big", on_display_dialog_big)
+	DialogBus.connect("display_text_big", on_display_text_big)
 	self.visible = true
 
 func _process(_delta):
@@ -38,7 +46,7 @@ func load_scene_text():
 	return JSON.parse_string(file.get_as_text())
 
 func show_text():
-	text_label.text = text_queue.pop_front()
+	active_label.text = text_queue.pop_front()
 
 func next_line():
 	if text_queue.size() > 0:
@@ -48,7 +56,7 @@ func next_line():
 
 func finish():
 	text_label.text = ""
-	background.visible = false
+	active_bg.visible = false
 	in_progress = false
 	get_tree().paused = false # turns out this is very important!
 	DialogBus.dialog_done.emit()
@@ -57,15 +65,31 @@ func display():
 	frame_updated = Engine.get_frames_drawn()
 	if not in_progress:
 		get_tree().paused = true
-		background.visible = true
+		active_bg.visible = true
 		in_progress = true
 		show_text()
 		DialogBus.dialog_start.emit()
 
 func on_display_dialog(text_key: String):
 	text_queue.append_array((scene_text.get(text_key)))
+	active_bg = background
+	active_label = text_label
 	display()
 
 func on_display_text(raw_text: String):
 	text_queue.append(raw_text)
+	active_bg = background
+	active_label = text_label
+	display()
+
+func on_display_dialog_big(text_key: String):
+	text_queue.append_array((scene_text.get(text_key)))
+	active_bg = background_big
+	active_label = text_label_big
+	display()
+
+func on_display_text_big(raw_text: String):
+	text_queue.append(raw_text)
+	active_bg = background_big
+	active_label = text_label_big
 	display()
