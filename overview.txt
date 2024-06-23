@@ -90,3 +90,4 @@ https://kenney.nl/assets/game-icons
 https://opengameart.org/content/zelda-like-tilesets-and-sprites
 https://datagoblin.itch.io/monogram
 https://godotengine.org/asset-library/asset/1806
+https://opengameart.org/content/fire-0
