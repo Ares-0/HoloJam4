@@ -21,7 +21,7 @@ func _ready():
 	shadow_DR.visible = false
 	shadow_DL.visible = false
 	StateManager.hh_overlay = self
-	$ColorRectBlack.color.a = 0
+	$ColorRectBlack.color.a = 1
 
 func _process(_delta):
 	if Input.is_action_just_pressed("action_button"):

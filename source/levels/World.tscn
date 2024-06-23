@@ -159,7 +159,7 @@ player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_h6476")]
 z_index = 10
-position = Vector2(305, 797)
+position = Vector2(237, -1808)
 
 [node name="Oddity" parent="." instance=ExtResource("5_snidi")]
 position = Vector2(361, 986)

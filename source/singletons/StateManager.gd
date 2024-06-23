@@ -4,12 +4,18 @@ extends Node
 # Using this info to share the exact game state
 # to ensure everything acts correctly at the correct time
 
+# TODO: Update: ok I put a lot of shit in here that doesn't belong here
+# This should only have states and functions about updating the states
+# and actors that we need easy access to
+# Something else should be doing logic for the game
+# Something that isn't an always on singleton
+
 var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
 var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
 var plot_point: int = -2
-var active: bool = false # is the game focused # hmm
+# var active: bool = false # is the game focused # hmm
 var player_position: Vector2 = Vector2(237, -1808)
 
 # Other things everyone should have access to
@@ -84,8 +90,7 @@ func _process(_delta):
 
 	if plot_point == 0:
 		# any initial setup?
-		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
-		DialogBus.display_dialog.emit("plot_0_intro")
+		execute_intro_one()
 		increment_plot_point()
 	
 	if plot_point == 3 and not false in inner_talisman_states:
@@ -149,6 +154,15 @@ func increment_day_num():
 	# TODO: make it pick from a random range
 	day_num += 1
 
+func execute_intro_one():
+	# hh_overlay.set_fade(1)
+	await get_tree().create_timer(1.0).timeout
+	DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
+	await DialogBus.dialog_done
+	hh_overlay.animplayer.play("FadeFromBlack")
+
+	DialogBus.display_dialog.emit("plot_0_intro")
+
 func execute_ending_one():
 	Ending01Player.play("Ending01")
 	await Ending01Player.animation_finished
@@ -185,11 +199,11 @@ func new_game() -> void:
 	plot_point = 0
 	part_num = 0
 	day_num = 57392
-	active = true
+	# active = true
 
 func resume() -> void:
-	if plot_point > 0:
-		player.set_global_position(player_position)
+	# if plot_point > 0:
+	player.set_global_position(player_position)
 
 func are_references_ready() -> bool:
 	var references = [player, camera, debug_ui, hh_overlay, pauser, game_room]
