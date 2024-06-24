@@ -29,8 +29,13 @@ func _ready():
 func _process(_delta):
 	# if pausing isn't fully ready, dont accept inputs
 	# If currently paused dont accept inputs
-	if StateManager.pauser == null or StateManager.pauser.paused:
-		return
+	var scene_now = get_tree().current_scene
+	# complicated ramifications of thinking I'd never change scenes
+	if scene_now is World :
+		if StateManager.pauser == null or StateManager.pauser.paused:
+			return
+	if scene_now is FinalCutscene:
+		pass # ?
 
 	if in_progress:
 		if Input.is_action_just_pressed("action_button"):

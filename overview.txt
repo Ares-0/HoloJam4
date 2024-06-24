@@ -8,9 +8,8 @@ MVP Requirements
 
 
 Bug Tracker
-    Overlapping talisman holders is annoying
-    Need locks on t holders that depend on plot
     Grass tiles too scruffy
+    Returning to menu does not store all necessary states
 
 Stretch Goals
     Camera zooms in very slightly during dialog

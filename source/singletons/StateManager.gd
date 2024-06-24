@@ -15,7 +15,6 @@ var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
 var plot_point: int = -2
-# var active: bool = false # is the game focused # hmm
 var player_position: Vector2 = Vector2(278, -1808)
 var plot_in_progress: bool = false
 
@@ -69,8 +68,7 @@ func _process(_delta):
 	# Ok so in hindsight, a lot of this should not have been so automatic
 	# So, gotta make sure stuff is actually ready
 	# await self.ready
-	# if not active:
-	# 	return
+
 	if debug_ui == null: # awk
 		return
 	
@@ -124,10 +122,11 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("debug_01"):
 		# execute_ending_two()
-		if final_door.active:
-			final_door.deactivate()
-		else:
-			final_door.activate()
+		# if final_door.active:
+		# 	final_door.deactivate()
+		# else:
+		# 	final_door.activate()
+		get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
 
 func on_update_holder(inner: bool, number: int, filled: bool):
 	# print("updating holder")
@@ -226,10 +225,18 @@ func execute_ending_one():
 func execute_ending_two():
 	plot_in_progress = true
 	DialogBus.display_text.emit(str("Cool one liner"))
+	await DialogBus.dialog_done
 
 	hh_overlay.animplayer.play("FadeToBlack")
 	await hh_overlay.animplayer.animation_finished
 	
+	DialogBus.display_dialog.emit("plot_9_ending")
+	await DialogBus.dialog_done
+
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
+
+	# does code get here
 	plot_in_progress = false
 	increment_plot_point()
 
@@ -237,7 +244,6 @@ func new_game() -> void:
 	plot_point = 0
 	part_num = 0
 	day_num = 57392
-	# active = true
 
 func resume() -> void:
 	# if plot_point > 0:
