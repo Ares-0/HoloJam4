@@ -36,6 +36,9 @@ func _process(delta: float):
 				interact_talisman_holder(parent)
 				break
 
+	if Input.is_action_just_pressed("debug_02"):
+		debug_conjure_talisman()
+
 	if not movement_frozen:
 		move(delta)
 	# print(talisman_inventory)
@@ -67,7 +70,15 @@ func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> v
 	global_position.y = clamp(global_position.y, 
 			limit_position.y + 50, limit_position.y + limit_size.y - 50)
 
+func debug_conjure_talisman():
+	for i in range(len(talisman_inventory)):
+		if talisman_inventory[i] == false:
+			talisman_inventory[i] = true
+			break
+	StateManager.debug_ui.update_right_text(0, str("inv: ", talisman_inventory))
+
 func pickup_talisman(object):
+	# this doesn't have or really need any dupe checking
 	talisman_inventory[object.talisman_number] = true
 	object.pick_up()
 

@@ -24,7 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftqum"]
-size = Vector2(5.33333, 9)
+size = Vector2(3.33333, 7.33333)
 
 [node name="FinalDoorway" type="Area2D"]
 z_index = 2

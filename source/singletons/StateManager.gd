@@ -117,7 +117,10 @@ func _process(_delta):
 		increment_plot_point()
 
 	if plot_point == 8 and camera.current_cell == Vector2i(0, 1):
-		execute_ending_two()
+		DialogBus.display_dialog.emit("plot_8_ending")
+		increment_plot_point()
+
+	# ending 2 triggered from final doorway overlap
 
 	if Input.is_action_just_pressed("debug_01"):
 		# execute_ending_two()
@@ -222,7 +225,10 @@ func execute_ending_one():
 
 func execute_ending_two():
 	plot_in_progress = true
-	DialogBus.display_text.emit(str("Fire fire light the fire"))
+	DialogBus.display_text.emit(str("Cool one liner"))
+
+	hh_overlay.animplayer.play("FadeToBlack")
+	await hh_overlay.animplayer.animation_finished
 	
 	plot_in_progress = false
 	increment_plot_point()

@@ -115,6 +115,13 @@
         "Noooooo"
     ],
     "plot_8_ending": [
+        "Hey, are you sure about this",
+        "You're only hurting yourself you know",
+        "Destroy those and forget about them",
+        "It's easier that way"
+    ],
+    "plot_9_ending": [
+        "",
         "woo you did it! you woke up!",
         "Fire Fire Light the Fire!"
     ],
@@ -151,12 +158,16 @@
         "It's a song, a duet with two singers",
         "wip",
         "...",
-        "It's moving"
+        "It's very moving"
     ],
     "talisman_02": [
         "It's a hand-knit scarf, long and colorful",
         "wip",
         "...",
         "It's comforting"
+    ],
+    "talisman_bad": [
+        "On second thought, not here",
+        "I want to keep these safe"
     ]
 }

@@ -29,4 +29,5 @@ func deactivate():
 
 func _on_area_entered(area):
 	if area.get_parent() == StateManager.player: 
-		print(area.get_parent())
+		# I bet it is more proper to emit a signal here
+		StateManager.execute_ending_two()

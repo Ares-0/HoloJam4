@@ -8,6 +8,7 @@
 size = Vector2(58, 74)
 
 [node name="TalismanHolder" type="Node2D"]
+z_index = 3
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_l1oij")
 
