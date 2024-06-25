@@ -1,21 +1,27 @@
 
 
 MVP Requirements
-    Fill out 8 paths
+    Move holders to correct spots
+    Fill out 3 more paths
+    Credits screen
+    upload to itch
+
     Fill 7 paths with hazards
     "respawn" system
-        safe areas?
-
+    Music
+    SFX
 
 Bug Tracker
     Grass tiles too scruffy
-    Returning to menu does not store all necessary states
+    Continue Game does not store all necessary states?
+        door status and stuff?
 
 Stretch Goals
     Camera zooms in very slightly during dialog
     Text splays out over time
     Avatars by box during dialog
     Lock player in room sometimes
+    Some edgy filter on top of the game screen
 
 Movement
     4 way movement

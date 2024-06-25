@@ -8,10 +8,16 @@ func _ready():
 	StateManager.debug_ui = self
 	self.visible = true
 	right_strings.resize(8)
+	left_strings.resize(8)
 
 # These might grow in complexity over time
-func update_left_text(text: String) -> void:
-	$LabelA.text = text
+func update_left_text(row: int, text: String) -> void:
+	left_strings[row] = text
+	var last = ""
+	for t in left_strings:
+		last = last + str(t) + "\n"
+	
+	$LabelA.text = last
 
 func update_right_text(row: int, text: String) -> void:
 	right_strings[row] = text

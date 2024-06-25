@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://iy5mrohbpkhv"]
 
 [ext_resource type="Script" path="res://source/actors/Enemy.gd" id="1_h6whk"]
-[ext_resource type="Texture2D" uid="uid://fti0ihellp24" path="res://assets/player.png" id="1_qpfa7"]
+[ext_resource type="Texture2D" uid="uid://b4e3xsnk8n28q" path="res://assets/mobs/tako_evil.png" id="2_mxamx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqflf"]
 size = Vector2(80, 80)
@@ -10,7 +10,8 @@ size = Vector2(80, 80)
 script = ExtResource("1_h6whk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qpfa7")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_mxamx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_eqflf")

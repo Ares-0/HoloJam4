@@ -1,19 +1,19 @@
 class_name Enemy
 extends CharacterBody2D
 
+var active: bool = false # if on screen and performing logic
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-
 func _physics_process(_delta):
-	pass
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction = Input.get_axis("ui_left", "ui_right")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-#
-	#move_and_slide()
+	if active:
+		set_rotation(get_rotation() + 0.1)
+		print(Engine.get_frames_drawn(), "\t", self.name, " is active, ", active)
+
+func activate() -> void:
+	active = true
+
+func deactivate() -> void:
+	active = false
+	# reset position and other states?

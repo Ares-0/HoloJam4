@@ -45,6 +45,7 @@ func _ready():
 
 	# signals
 	self.connect("update_holder", on_update_holder)
+	# self.connect("change_screen", on_update_screen)
 
 	# blank all the arrays
 	inner_talisman_states.resize(8)
@@ -56,8 +57,8 @@ func _ready():
 	t_holders_outer.resize(8)
 	noise_barriers.resize(8)
 
-	if player != null:
-		player.global_position = player_position
+	# if player != null:
+	# 	player.global_position = player_position
 
 # func _enter_tree():
 # 	print("state manager entering")
@@ -76,7 +77,7 @@ func _process(_delta):
 		return
 	if game_room.game_ready == false:
 		return
-
+	# update_state_string()
 	# check for triggers and advance state
 	if plot_point == -1:
 		return
@@ -135,7 +136,16 @@ func on_update_holder(inner: bool, number: int, filled: bool):
 		inner_talisman_states[number] = filled
 	else:
 		outer_talisman_states[number] = filled
-	debug_ui.update_left_text(get_state_string())
+	# debug_ui.update_left_text(0, get_state_string())
+	update_state_string()
+
+# func on_update_screen() -> void:
+# 	print("change screen")
+# 	# activate enemies on screen
+# 	for body in camera.previous_nearby_bodies:
+# 		body.deactivate()
+# 	for body in camera.nearby_bodies:
+# 		body.activate()
 
 func increment_plot_point(dry_run: bool = false):
 	# used by other actors to setup next plot state
@@ -144,7 +154,8 @@ func increment_plot_point(dry_run: bool = false):
 	if not dry_run:
 		plot_point += 1
 
-	debug_ui.update_left_text(get_state_string())
+	# debug_ui.update_left_text(0, get_state_string())
+	update_state_string()
 
 	# check if any work needs to be done for new state
 	if plot_point == 2:
@@ -246,8 +257,8 @@ func new_game() -> void:
 	day_num = 57392
 
 func resume() -> void:
-	# if plot_point > 0:
-	player.set_global_position(player_position)
+	if plot_point > 0:
+		player.set_global_position(player_position)
 	increment_plot_point(true)
 
 func are_references_ready() -> bool:
@@ -276,6 +287,12 @@ func get_state_string() -> String:
 
 	return last
 
+func update_state_string() -> void:
+	debug_ui.update_left_text(0, str(Engine.get_frames_drawn()))
+	debug_ui.update_left_text(1, str("ti: ", inner_talisman_states))
+	debug_ui.update_left_text(2, str("to: ", outer_talisman_states))
+	debug_ui.update_left_text(3, str("part: ", part_num, "\t\tplot_point: " , plot_point))
+
 func show_all_dialog() -> void:
 	# I could make this smart or...
 	DialogBus.display_dialog.emit("test")
@@ -290,7 +307,7 @@ func show_all_dialog() -> void:
 	DialogBus.display_dialog.emit("plot_5_talisman")
 	DialogBus.display_dialog.emit("plot_6_oddity")
 	DialogBus.display_dialog.emit("plot_6_oddity_debug")
-	DialogBus.display_dialog.emit("plot_7_ending")
+	DialogBus.display_dialog.emit("plot_8_ending")
 	DialogBus.display_dialog.emit("talisman_evil")
 	DialogBus.display_dialog.emit("talisman_01")
 	DialogBus.display_dialog.emit("talisman_02")

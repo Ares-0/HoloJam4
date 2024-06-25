@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://ur0ficfpai5a"]
+
+[ext_resource type="Texture2D" uid="uid://cv20385xdtnfc" path="res://assets/cutscene/shiori_final_03.png" id="1_8cw7v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_223x3"]
+font_size = 56
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ypvcj"]
+font_size = 27
+font_color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.666, 0.666)
+texture = ExtResource("1_8cw7v")
+
+[node name="BG Color" type="ColorRect" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Thanks" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 88.0
+offset_right = 798.0
+offset_bottom = 165.0
+text = "Thanks for Playing"
+label_settings = SubResource("LabelSettings_223x3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 260.0
+offset_right = 565.0
+offset_bottom = 330.0
+text = "Made for HoloJam 4 
+
+World Tilemap: ArMM1998
+https://opengameart.org/content/zelda-like-tilesets-and-sprites
+
+Dialog Font: Monogram from datagoblin
+https://datagoblin.itch.io/monogram
+
+Fire Sprite: Spring Sprint
+https://opengameart.org/content/fire-0"
+label_settings = SubResource("LabelSettings_ypvcj")

@@ -76,6 +76,7 @@ func display():
 		DialogBus.dialog_start.emit()
 
 func on_display_dialog(text_key: String):
+	# TODO: better error reporting about failures
 	text_queue.append_array((scene_text.get(text_key)))
 	active_bg = background
 	active_label = text_label
