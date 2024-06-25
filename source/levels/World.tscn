@@ -526,10 +526,13 @@ position = Vector2(352, 1093)
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Mobs" instance=ExtResource("16_jb708")]
-position = Vector2(424, 366)
+position = Vector2(-277, 164)
+talisman_number = 6
 
 [node name="Enemy3" parent="Mobs" instance=ExtResource("16_jb708")]
-position = Vector2(258, 499)
+position = Vector2(-327, 496)
+talisman_number = 6
 
 [node name="Enemy2" parent="Mobs" instance=ExtResource("16_jb708")]
-position = Vector2(-316, 372)
+position = Vector2(-576, 482)
+talisman_number = 6

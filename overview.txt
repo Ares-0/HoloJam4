@@ -22,6 +22,7 @@ Stretch Goals
     Avatars by box during dialog
     Lock player in room sometimes
     Some edgy filter on top of the game screen
+    The paths you go on first are less mobbed, later paths more mobbed
 
 Movement
     4 way movement

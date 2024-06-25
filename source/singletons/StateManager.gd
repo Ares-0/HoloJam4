@@ -136,16 +136,7 @@ func on_update_holder(inner: bool, number: int, filled: bool):
 		inner_talisman_states[number] = filled
 	else:
 		outer_talisman_states[number] = filled
-	# debug_ui.update_left_text(0, get_state_string())
 	update_state_string()
-
-# func on_update_screen() -> void:
-# 	print("change screen")
-# 	# activate enemies on screen
-# 	for body in camera.previous_nearby_bodies:
-# 		body.deactivate()
-# 	for body in camera.nearby_bodies:
-# 		body.activate()
 
 func increment_plot_point(dry_run: bool = false):
 	# used by other actors to setup next plot state
@@ -154,7 +145,6 @@ func increment_plot_point(dry_run: bool = false):
 	if not dry_run:
 		plot_point += 1
 
-	# debug_ui.update_left_text(0, get_state_string())
 	update_state_string()
 
 	# check if any work needs to be done for new state

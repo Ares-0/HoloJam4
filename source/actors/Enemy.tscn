@@ -1,17 +1,90 @@
-[gd_scene load_steps=4 format=3 uid="uid://iy5mrohbpkhv"]
+[gd_scene load_steps=12 format=3 uid="uid://iy5mrohbpkhv"]
 
 [ext_resource type="Script" path="res://source/actors/Enemy.gd" id="1_h6whk"]
 [ext_resource type="Texture2D" uid="uid://b4e3xsnk8n28q" path="res://assets/mobs/tako_evil.png" id="2_mxamx"]
+[ext_resource type="Texture2D" uid="uid://d4lcq87df2x6x" path="res://assets/mobs/tako_creepy.png" id="3_5s8cw"]
+[ext_resource type="Texture2D" uid="uid://d2i017nlwpr5l" path="res://assets/mobs/tako_normal.png" id="4_3c81e"]
+[ext_resource type="Texture2D" uid="uid://cdtorfrf76lwr" path="res://assets/mobs/tako_creepy_back.png" id="5_ieyul"]
+[ext_resource type="Texture2D" uid="uid://ewtlj3oldn34" path="res://assets/mobs/tako_evil_back.png" id="6_rkkq1"]
+[ext_resource type="Texture2D" uid="uid://daavk2lw5l3x5" path="res://assets/mobs/tako_normal_back.png" id="7_470r0"]
+[ext_resource type="FontFile" uid="uid://f3oi0feh6n3g" path="res://assets/fonts/monogram_a.ttf" id="8_jcypu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqflf"]
-size = Vector2(80, 80)
+size = Vector2(38, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2im2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5s8cw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mxamx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3c81e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ieyul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rkkq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_470r0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3j8ed"]
+font = ExtResource("8_jcypu")
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_h6whk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_mxamx")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_eqflf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_2im2g")
+
+[node name="LabelAor" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
+scale = Vector2(1.2, 1.2)
+
+[node name="LabelLeft" type="Label" parent="LabelAor"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.6653
+offset_top = -85.3617
+offset_right = -40.6653
+offset_bottom = -72.3617
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 0.785398
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "!@#$#$%^"
+label_settings = SubResource("LabelSettings_3j8ed")
+horizontal_alignment = 2
+
+[node name="LabelRight" type="Label" parent="LabelAor"]
+offset_left = 9.09604
+offset_top = -12.933
+offset_right = 58.096
+offset_bottom = 10.067
+rotation = -0.785398
+text = "!@#$#$%^"
+label_settings = SubResource("LabelSettings_3j8ed")
