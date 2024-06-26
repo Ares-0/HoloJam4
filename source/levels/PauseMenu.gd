@@ -5,9 +5,12 @@ extends Control
 
 var paused: bool = false
 
+@onready var goal_label = $MarginContainer/CenterContainer/VBoxContainer/Goal
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	StateManager.pauser = self
+	update_goal("")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -25,6 +28,9 @@ func unpause():
 	paused = false
 	hide()
 	get_tree().paused = false
+
+func update_goal(text: String) -> void:
+	goal_label.text = text
 
 func _on_resume_b_pressed():
 	unpause()

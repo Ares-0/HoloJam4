@@ -34,7 +34,7 @@ func _process(_delta):
 		if angry and current_frame > last_update + next_update:
 			update_curses()
 			last_update = current_frame
-			next_update = randi_range(15, 30)
+			next_update = randi_range(10, 25)
 
 func update_facing() -> void:
 	var line = StateManager.player.position.y

@@ -277,7 +277,7 @@ player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_h6476")]
 z_index = 10
-position = Vector2(278, -71)
+position = Vector2(278, -1808)
 
 [node name="Oddity" parent="." instance=ExtResource("5_snidi")]
 position = Vector2(361, 986)
@@ -1426,7 +1426,7 @@ talisman_number = 7
 position = Vector2(-508, -1272)
 talisman_number = 7
 
-[node name="Label" type="Label" parent="."]
+[node name="Controls_Label1" type="Label" parent="."]
 offset_left = 439.0
 offset_top = -2045.0
 offset_right = 589.0
@@ -1434,7 +1434,7 @@ offset_bottom = -1996.0
 text = "Interact: 
 SPACEBAR"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Controls_Label2" type="Label" parent="."]
 offset_left = 139.0
 offset_top = -2046.0
 offset_right = 289.0

@@ -61,6 +61,7 @@ theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Continue" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuActions"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 44
@@ -72,7 +73,14 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 44
 text = "New Game"
 
+[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuActions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 44
+text = "Credits"
+
 [node name="OptionsT" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuActions"]
+visible = false
 layout_mode = 2
 texture = ExtResource("4_fturt")
 stretch_mode = 2
@@ -93,4 +101,5 @@ stretch_mode = 2
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/Quit" to="." method="_on_quit_pressed"]

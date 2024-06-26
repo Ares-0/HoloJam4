@@ -6,7 +6,7 @@ var right_strings = []
 
 func _ready():
 	StateManager.debug_ui = self
-	self.visible = true
+	self.visible = false
 	right_strings.resize(8)
 	left_strings.resize(8)
 

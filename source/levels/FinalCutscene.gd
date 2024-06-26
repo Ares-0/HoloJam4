@@ -23,6 +23,10 @@ func play_scene():
 	animation_p.play("DropHandheld")
 	await animation_p.animation_finished
 
+	DialogBus.display_text_big.emit("Day 1 of the escape")
+	await DialogBus.dialog_done
+	await get_tree().create_timer(0.75).timeout
+
 	DialogBus.display_text_big.emit("Fire")
 	DialogBus.display_text_big.emit("Fire!")
 	await DialogBus.dialog_done
@@ -30,7 +34,7 @@ func play_scene():
 	await sprites.animation_finished
 	await get_tree().create_timer(0.75).timeout
 	DialogBus.display_text_big.emit("Light the Fire!")
-	
+
 	end_scene()
 
 func end_scene():

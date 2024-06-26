@@ -17,12 +17,12 @@
         "It's a talisman of sorts"
     ],
     "plot_1_oddity": [
-        "Hey there boss, how'd you sleep",
-        "I know I know, those nightmares are no joke",
-        "I've been watching over you for years now",
-        "and I've had enough of them, even if you haven't",
-        "I think now's the time to put an end to those nightmares",
-        "What do you say?",
+        "\"Hey there boss, how'd you sleep\"",
+        "\"I know I know, those nightmares are no joke\"",
+        "\"I've had an eye on you for years now\"",
+        "\"and I've had enough of them, even if you haven't\"",
+        "\"I think now's the time to put an end to those nightmares\"",
+        "\"What do you say?\"",
         "...",
         "A memory, buried deep down, comes back to mind",
         "From your time as an ■■■■■■■■ you know this thing,",
@@ -33,15 +33,13 @@
         "It can ■■■■■ help you.",
         "■■■ ■■■ ■■■ ■■■■ ■■■■■■■■",
         "...",
-        "Thought so",
-        "Alright see these talismans around us?",
-        "We burn all 8, you get some peace and quiet",
-        "Half done already, and one is close by, where you woke up",
-        "Well, you know",
-        "Head's up, there's angry, hateful spirits on the way to these things.",
-        "If they get close, I'll keep you safe.",
-        "No harm will come to you",
-        "I promise"
+        "\"Thought so\"",
+        "\"Alright see these talismans around us?\"",
+        "\"We burn all 8, you get some peace and quiet",
+        "\"Head's up, there's angry, hateful spirits on the way to these things.\"",
+        "\"This ritual will silence them as well.\"",
+        "\"No harm will come to you,\"",
+        "\"I promise\""
     ],
     "plot_1_oddity_debug": [
         "Hi! Nightmares amirite?",
@@ -53,19 +51,19 @@
         "and feel the powerful swirl of emotions surrounding it"
     ],
     "plot_3_ending": [
-        "These things can't hurt you anymore, promise",
-        "See you on the other side"
+        "\"These things can't hurt you anymore, promise\"",
+        "\"See you on the other side\""
     ],
     "plot_3_ending_b": [
         "You have cast away the nightmares...",
         "for now..."
     ],
     "plot_3_ending_c": [
-        "hey",
-        "HEY",
-        "its time to wake up!",
-        "Shiori!",
-        "you have to wa..."
+        "\"hey\"",
+        "\"HEY\"",
+        "\"its time to wake up!\"",
+        "\"Shiori!\"",
+        "\"you have to wa...\""
     ],
     "plot_4_intro": [
         "You startle awake in a small clearing",
@@ -93,12 +91,12 @@
         "You gently put it back where it was"
     ],
     "plot_6_oddity": [
-        "Hey there boss, how'd you sleep",
-        "I know I know, those nightmares are no joke",
-        "I've been watching over you for years now",
-        "and I've had enough of them, even if you haven't",
-        "I think now's the time to put an end to those nightmares",
-        "What do you say?",
+        "\"Hey there boss, how'd you sleep\"",
+        "\"I know I know, those nightmares are no joke\"",
+        "\"I've had an eye on you for years now\"",
+        "\"and I've had enough of them, even if you haven't\"",
+        "\"I think now's the time to put an end to those nightmares\"",
+        "\"What do you say?\"",
         "...",
         "A deep buried memory comes to mind, now clear as day",
         "From your time as an archiver, you know this thing",
@@ -109,7 +107,10 @@
         "It can never help you.",
         "But you can help yourself",
         "...",
-        "~~~ Oddity bitches ~~~"
+        "\"I'll keep them actually. I'm good.\"",
+        "The Oddity squirms and starts yelling",
+        "But you tune out his hollow words and carry on.",
+        "This time, to bring the talismans outward."
     ],
     "plot_6_oddity_debug": [
         "Hi! Nightmares amirite?",
@@ -118,15 +119,19 @@
         "Noooooo"
     ],
     "plot_8_ending": [
-        "Hey, are you sure about this",
-        "You're only hurting yourself you know",
-        "Destroy those and forget about them",
-        "It's easier that way"
+        "\"Hey hey hey hey, are you sure about this\"",
+        "\"I mean reeeallly sure?\"",
+        "\"You're only hurting yourself you know\"",
+        "\"Destroy those and forget about them\"",
+        "\"It's easier that way\""
+    ],
+    "plot_8_one_liner": [
+        "cool one liner"
     ],
     "plot_9_ending": [
-        "small dialog",
-        "woo you did it! you woke up!",
-        "Fire Fire Light the Fire!"
+        "Stepping through the door, a feeling of calm comes over you",
+        "No more nightmares, no more dreams",
+        "Instead just..."
     ],
     "talisman_evil": [
         "It's an evil talisman woooo",
@@ -155,19 +160,13 @@
         "It's a short story about a girl auditioning to be an idol",
         "She fails and fails, but she makes it",
         "...",
-        "It's inspiring"
+        "It's encouraging"
     ],
     "talisman_07": [
         "It's a song, a duet with two singers",
-        "wip",
+        "Each a star on their own, and together something more",
         "...",
-        "It's very moving"
-    ],
-    "talisman_02": [
-        "It's a hand-knit scarf, long and colorful",
-        "wip",
-        "...",
-        "It's comforting"
+        "It's inspiring"
     ],
     "talisman_bad": [
         "On second thought, not here",

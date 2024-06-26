@@ -3,15 +3,17 @@
 MVP Requirements
     Fill out last path
     Credits screen
+    Main menu
+    
     upload to itch
-    lock first 4 inner talismans during day 1
-    objective in pause menu?
-    replace temp dialog
+        contact info
+
+    always double check dialog
+        objective in pause menu
         oddity stuff
-        finish that one talisman wording
+        talisman wording
 
 Post Jam
-    "respawn" system
     Music
     SFX
 
@@ -21,6 +23,7 @@ Bug Tracker
         door status and stuff?
 
 Stretch Goals
+    lock first 4 inner talismans during day 1
     Camera zooms in very slightly during dialog
     Text splays out over time
     Avatars by box during dialog

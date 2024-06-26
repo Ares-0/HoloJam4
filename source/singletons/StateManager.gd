@@ -112,7 +112,8 @@ func _process(_delta):
 		execute_ending_one()
 
 	if plot_point == 4:
-		DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
+		# DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
+		DialogBus.display_text.emit(str("Day ", day_num))
 		DialogBus.display_dialog.emit("plot_4_intro")
 		increment_plot_point()
 
@@ -152,6 +153,7 @@ func increment_plot_point(dry_run: bool = false):
 		plot_point += 1
 
 	update_state_string()
+	update_pause_goals()
 
 	# check if any work needs to be done for new state
 	if plot_point == 2:
@@ -178,6 +180,26 @@ func increment_plot_point(dry_run: bool = false):
 		noise_barriers[5].deactivate()
 		noise_barriers[7].deactivate()
 
+func update_pause_goals():
+	var last = ""
+	var goals_list = [
+		"Wake up",
+		"Take the talisman, then look around",
+		"Bring the 8 talismans to the center",
+		"Bring the 8 talismans to the center",
+		"Wake up",
+		"Leave the talisman, then look around",
+		"Bring the 8 talismans to the outsides",
+		"Bring the 8 talismans to the outsides",
+		"",
+		"",
+		"",
+		"",
+	]
+	
+	last = goals_list[plot_point]
+	pauser.update_goal(last)
+
 func increment_day_num():
 	# TODO: make it pick from a random range
 	day_num += 1
@@ -186,7 +208,8 @@ func execute_intro_one():
 	plot_in_progress = true
 	# hh_overlay.set_fade(1)
 	await get_tree().create_timer(1.0).timeout
-	DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
+	# DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
+	DialogBus.display_text.emit(str("Day ", day_num))
 	await DialogBus.dialog_done
 	hh_overlay.animplayer.play("FadeFromBlack")
 
@@ -231,7 +254,8 @@ func execute_ending_one():
 
 func execute_ending_two():
 	plot_in_progress = true
-	DialogBus.display_text.emit(str("Cool one liner"))
+	# DialogBus.display_text.emit(str("Cool one liner"))
+	DialogBus.display_dialog.emit("plot_8_one_liner")
 	await DialogBus.dialog_done
 
 	hh_overlay.animplayer.play("FadeToBlack")
