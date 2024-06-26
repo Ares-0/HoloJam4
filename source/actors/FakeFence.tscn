@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://di55cl41cedjx"]
+
+[ext_resource type="Script" path="res://source/actors/FakeFence.gd" id="1_j3nu2"]
+[ext_resource type="TileSet" uid="uid://mndoxu163t1" path="res://source/levels/tilemap_t.tres" id="1_nkkr7"]
+
+[node name="FakeFence" type="Node2D"]
+script = ExtResource("1_j3nu2")
+
+[node name="Fence" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("1_nkkr7")
+format = 2
+layer_0/name = "Objects"
+layer_0/tile_data = PackedInt32Array(0, 0, 17, 65536, 262144, 18, 131072, 262144, 18, 196608, 262144, 18, 262144, 458752, 18, 327680, 393216, 17)
