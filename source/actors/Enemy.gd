@@ -71,15 +71,16 @@ func get_holder_status() -> void:
 		unanger()
 
 func on_update_holder(inner: bool, number: int, filled: bool) -> void:
-	#print("update~")
-	if not inner and filled and number == talisman_number:
-		anger()
-	else:
-		unanger() # whats a getter # whats a setter
+	if number == talisman_number and not inner: # if .this cares about this update
+		if filled:
+			anger()
+		else:
+			unanger() # whats a getter # whats a setter
 
 func anger() -> void:
 	angry = true
-	chance_swap_label(0)
+	LabelL.visible = use_left_label
+	LabelR.visible = !use_left_label
 	chance_swap_label(0.5)
 
 func unanger() -> void:

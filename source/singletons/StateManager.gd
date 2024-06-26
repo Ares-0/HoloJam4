@@ -14,7 +14,7 @@ var inner_talisman_states = [] # array of bools, if true, inner T holder has tal
 var outer_talisman_states = []
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = -2
+var plot_point: int = 0
 var player_position: Vector2 = Vector2(278, -1808)
 var plot_in_progress: bool = false
 
@@ -101,6 +101,12 @@ func _process(_delta):
 		# any initial setup?
 		execute_intro_one()
 	
+	if plot_point == 1:
+		if true in player.talisman_inventory:
+			noise_barriers[0].deactivate()
+		# DO NOT ADVANCE PLOT POINT
+		# THIS IS WHY I NEED A REAL STATE MACHINE
+
 	if plot_point == 3 and not false in inner_talisman_states:
 		# If all inner talismans are full, trigger ending 1
 		execute_ending_one()
@@ -247,7 +253,7 @@ func new_game() -> void:
 	day_num = 57392
 
 func resume() -> void:
-	if plot_point > 0:
+	if plot_point >= 0:
 		player.set_global_position(player_position)
 	increment_plot_point(true)
 

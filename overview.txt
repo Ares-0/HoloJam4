@@ -1,12 +1,16 @@
 
 
 MVP Requirements
-    Move holders to correct spots
-    Fill out 3 more paths
+    Fill out last path
     Credits screen
     upload to itch
+    lock first 4 inner talismans during day 1
+    objective in pause menu?
+    replace temp dialog
+        oddity stuff
+        finish that one talisman wording
 
-    Fill 7 paths with hazards
+Post Jam
     "respawn" system
     Music
     SFX

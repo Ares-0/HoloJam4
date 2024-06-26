@@ -77,6 +77,8 @@ func display():
 
 func on_display_dialog(text_key: String):
 	# TODO: better error reporting about failures
+	assert(scene_text.has(text_key))
+
 	text_queue.append_array((scene_text.get(text_key)))
 	active_bg = background
 	active_label = text_label

@@ -441,7 +441,6 @@ polygon = PackedVector2Array(0, -720, 720, -720, 720, 1440, 0, 1440)
 [node name="NoiseBarrier_00" parent="Barriers" instance=ExtResource("12_jtd2k")]
 position = Vector2(431, -1525)
 rotation = 0.0
-active = false
 
 [node name="NoiseBarrier_01" parent="Barriers" instance=ExtResource("12_jtd2k")]
 position = Vector2(730, -407)
@@ -1426,3 +1425,19 @@ talisman_number = 7
 [node name="Enemy4" parent="Mobs/Path07" instance=ExtResource("16_jb708")]
 position = Vector2(-508, -1272)
 talisman_number = 7
+
+[node name="Label" type="Label" parent="."]
+offset_left = 439.0
+offset_top = -2045.0
+offset_right = 589.0
+offset_bottom = -1996.0
+text = "Interact: 
+SPACEBAR"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 139.0
+offset_top = -2046.0
+offset_right = 289.0
+offset_bottom = -1997.0
+text = "Move:
+WASD / ↑←↓→"

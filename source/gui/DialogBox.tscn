@@ -49,6 +49,16 @@ label_settings = SubResource("LabelSettings_uhw0b")
 autowrap_mode = 2
 clip_text = true
 
+[node name="NextLabel" type="Label" parent="Background/Control"]
+offset_left = 166.667
+offset_top = 33.75
+offset_right = 210.667
+offset_bottom = 51.75
+text = "SPACE →"
+label_settings = SubResource("LabelSettings_uhw0b")
+autowrap_mode = 2
+clip_text = true
+
 [node name="BackgroundBig" type="NinePatchRect" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -81,6 +91,17 @@ layout_mode = 0
 offset_right = 205.0
 offset_bottom = 46.0
 text = "the quick brown fox jumps over the lazy dog"
+label_settings = SubResource("LabelSettings_uhw0b")
+autowrap_mode = 2
+clip_text = true
+
+[node name="NextLabel" type="Label" parent="BackgroundBig/Control"]
+layout_mode = 0
+offset_left = 166.917
+offset_top = 33.9167
+offset_right = 210.917
+offset_bottom = 51.9167
+text = "SPACE →"
 label_settings = SubResource("LabelSettings_uhw0b")
 autowrap_mode = 2
 clip_text = true

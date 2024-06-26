@@ -55,10 +55,15 @@ func receive_talisman(num) -> void:
 	talisman_number = num
 	filled = true
 	update_sprites()
-	StateManager.update_holder.emit(inner, talisman_number, filled)
+	# is there ever I case where I would want to know the talisman number
+	# and not the holder number??
+	# StateManager.update_holder.emit(inner, talisman_number, filled)
+	StateManager.update_holder.emit(inner, holder_number, filled)
 
 func give_talisman() -> int:
 	# if plot point 2, play first time dialog
+	if StateManager.plot_point == 1:
+		DialogBus.display_dialog.emit("plot_1_talisman")
 	if StateManager.plot_point == 2:
 		DialogBus.display_dialog.emit("plot_2_talisman")
 		StateManager.increment_plot_point()

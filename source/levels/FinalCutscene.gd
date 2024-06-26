@@ -9,7 +9,7 @@ func _ready():
 	pass # Replace with function body.
 	sprites.frame = 0
 	
-	print("final cutscene active")
+	# print("final cutscene active")
 	play_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
