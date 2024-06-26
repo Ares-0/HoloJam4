@@ -42,6 +42,7 @@ animations = [{
 font = ExtResource("8_jcypu")
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = 11
 script = ExtResource("1_h6whk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -58,7 +59,7 @@ anchors_preset = 0
 offset_top = -16.0
 offset_right = 40.0
 offset_bottom = 24.0
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1.4, 1.4)
 
 [node name="LabelLeft" type="Label" parent="LabelAor"]
 layout_mode = 1
