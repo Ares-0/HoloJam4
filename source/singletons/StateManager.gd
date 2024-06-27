@@ -254,9 +254,8 @@ func execute_ending_one():
 
 func execute_ending_two():
 	plot_in_progress = true
-	# DialogBus.display_text.emit(str("Cool one liner"))
-	DialogBus.display_dialog.emit("plot_8_one_liner")
-	await DialogBus.dialog_done
+	# DialogBus.display_dialog.emit("plot_8_one_liner")
+	# await DialogBus.dialog_done
 
 	hh_overlay.animplayer.play("FadeToBlack")
 	await hh_overlay.animplayer.animation_finished

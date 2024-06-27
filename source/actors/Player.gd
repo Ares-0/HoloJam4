@@ -36,8 +36,8 @@ func _process(delta: float):
 				interact_talisman_holder(parent)
 				break
 
-	if Input.is_action_just_pressed("debug_02"):
-		debug_conjure_talisman()
+	# if Input.is_action_just_pressed("debug_02"):
+	# 	debug_conjure_talisman()
 
 	if not movement_frozen:
 		move(delta)

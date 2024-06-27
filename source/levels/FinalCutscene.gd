@@ -21,7 +21,7 @@ func _process(_delta):
 
 func play_scene():
 	playing = true
-	DialogBus.display_text_big.emit("big dialog with overlay")
+	DialogBus.display_text_big.emit("instead...")
 	await DialogBus.dialog_done
 
 	animation_p.play("DropHandheld")

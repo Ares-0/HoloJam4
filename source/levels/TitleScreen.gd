@@ -6,8 +6,8 @@ extends Control
 
 func _ready():
 	VersionL.text = "v" + StateManager.version_number
-	if StateManager.hh_overlay != null: # coming from game case?
-		StateManager.hh_overlay.hide()
+	# if StateManager.hh_overlay != null: # coming from game case?
+	# 	StateManager.hh_overlay.hide()
 	if StateManager.plot_point > 0:
 		continue_B.disabled = false
 	else:

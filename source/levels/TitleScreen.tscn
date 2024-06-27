@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://u04l6arn8bdt"]
+[gd_scene load_steps=7 format=3 uid="uid://u04l6arn8bdt"]
 
 [ext_resource type="Texture2D" uid="uid://d0osxwsl7dl18" path="res://assets/main_menu_mock/title.png" id="1_i4ibx"]
 [ext_resource type="Script" path="res://source/levels/TitleScreen.gd" id="1_ksgbn"]
-[ext_resource type="PackedScene" uid="uid://5coeu8nb6y1e" path="res://source/gui/HandheldOverlay.tscn" id="2_tj3ti"]
 [ext_resource type="Texture2D" uid="uid://dwdo0jocfnnh" path="res://assets/main_menu_mock/label_options.png" id="4_fturt"]
-[ext_resource type="Texture2D" uid="uid://qd01dbkdph4w" path="res://assets/main_menu_mock/characters.png" id="6_eqr3l"]
+[ext_resource type="Texture2D" uid="uid://daiobq78nsj3a" path="res://assets/talismans/talismans_fan.png" id="5_ja55n"]
+[ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/hh_overlay.png" id="6_dtuwm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hd33d"]
+font_size = 61
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.388235)
+shadow_offset = Vector2(3, 3)
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -27,15 +33,17 @@ grow_vertical = 0
 text = "v0.0.0"
 horizontal_alignment = 2
 
-[node name="HandheldOverlay" parent="." instance=ExtResource("2_tj3ti")]
-visible = false
-layout_mode = 1
+[node name="Overlay" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("6_dtuwm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 250.0
+offset_right = -228.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 100
@@ -49,7 +57,15 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.29
+text = "Archiver's Bookmarks"
+label_settings = SubResource("LabelSettings_hd33d")
+
+[node name="TitleMock" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_i4ibx")
 stretch_mode = 2
@@ -95,9 +111,15 @@ text = "Quit"
 layout_mode = 2
 
 [node name="Boxes" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer"]
+visible = false
 layout_mode = 2
-texture = ExtResource("6_eqr3l")
+texture = ExtResource("5_ja55n")
 stretch_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(787.876, 438.966)
+scale = Vector2(1.07144, 1.07144)
+texture = ExtResource("5_ja55n")
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MenuActions/New Game" to="." method="_on_new_game_pressed"]

@@ -1,17 +1,14 @@
 
 
 MVP Requirements
-*** Main menu
-
 *   can easily double the enemies in most screens
-**  disable shift and P and O
 
     upload to itch
         contact info
 
     always double check dialog
-**      COOL ONE LINER
-**      BIG DIALOG WITH OVERLAY
+        COOL ONE LINER
+        BIG DIALOG WITH OVERLAY
         objective in pause menu
         oddity stuff
         talisman wording
