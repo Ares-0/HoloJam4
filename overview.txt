@@ -1,20 +1,18 @@
 
 
 MVP Requirements
-    Main menu
-    Give some life to the oddity
+*** Main menu
+*   Give some life to the oddity
 
-    something glitches when switching to final scene
-        I think its the world unspawning everything
-    can easily double the enemies in most screens
-    disable shift
+*   can easily double the enemies in most screens
+**  disable shift and P and O
 
     upload to itch
         contact info
 
     always double check dialog
-        COOL ONE LINER
-        BIG DIALOG WITH OVERLAY
+**      COOL ONE LINER
+**      BIG DIALOG WITH OVERLAY
         objective in pause menu
         oddity stuff
         talisman wording
@@ -22,6 +20,10 @@ MVP Requirements
 Post Jam
     Music
     SFX
+    something glitches when switching to final scene
+        I think its the world unspawning everything
+            known issue, slotted for 4.3
+    dude how did I number the talismans inconsistently
 
 Bug Tracker
     Grass tiles too scruffy
