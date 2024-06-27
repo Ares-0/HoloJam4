@@ -7,15 +7,19 @@
 radius = 110.0
 
 [node name="Oddity" type="Node2D"]
+z_index = 5
+rotation = 2.27765
 script = ExtResource("1_b13d8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(0, -128)
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
 texture = ExtResource("1_wue3m")
 
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
+[node name="Area2D" type="Area2D" parent="Body"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Area2D"]
 shape = SubResource("CircleShape2D_r6hpi")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Body/Area2D" to="." method="_on_area_2d_area_entered"]

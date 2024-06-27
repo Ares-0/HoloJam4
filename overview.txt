@@ -2,7 +2,6 @@
 
 MVP Requirements
 *** Main menu
-*   Give some life to the oddity
 
 *   can easily double the enemies in most screens
 **  disable shift and P and O

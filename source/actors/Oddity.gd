@@ -5,14 +5,15 @@ extends Node2D
 # reeeally all this has to do is talk a bit then get "picked up"
 # Then talk a bit more later
 
+@onready var body = $Body
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _process(delta):
+	set_rotation(get_rotation() + delta*0.9)
+	body.set_rotation(randi_range(0, 1000))
 
 func converse():
 	if StateManager.plot_point == 1:
