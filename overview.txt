@@ -1,14 +1,20 @@
 
 
 MVP Requirements
-    Fill out last path
-    Credits screen
     Main menu
-    
+    Give some life to the oddity
+
+    something glitches when switching to final scene
+        I think its the world unspawning everything
+    can easily double the enemies in most screens
+    disable shift
+
     upload to itch
         contact info
 
     always double check dialog
+        COOL ONE LINER
+        BIG DIALOG WITH OVERLAY
         objective in pause menu
         oddity stuff
         talisman wording

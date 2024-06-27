@@ -82,6 +82,7 @@ label_settings = SubResource("LabelSettings_3j8ed")
 horizontal_alignment = 2
 
 [node name="LabelRight" type="Label" parent="LabelAor"]
+layout_mode = 0
 offset_left = 9.09604
 offset_top = -12.933
 offset_right = 58.096

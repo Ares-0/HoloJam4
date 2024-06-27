@@ -93,4 +93,6 @@ func activate() -> void:
 
 func deactivate() -> void:
 	active = false
+	LabelL.visible = false
+	LabelR.visible = false
 	# reset position and other states?

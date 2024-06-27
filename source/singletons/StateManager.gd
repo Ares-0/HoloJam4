@@ -130,11 +130,11 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("debug_01"):
 		# execute_ending_two()
-		# if final_door.active:
-		# 	final_door.deactivate()
-		# else:
-		# 	final_door.activate()
-		get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
+		if final_door.active:
+			final_door.deactivate()
+		else:
+			final_door.activate()
+		# get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
 
 func on_update_holder(inner: bool, number: int, filled: bool):
 	# print("updating holder")
@@ -189,7 +189,7 @@ func update_pause_goals():
 		"Bring the 8 talismans to the center",
 		"Wake up",
 		"Leave the talisman, then look around",
-		"Bring the 8 talismans to the outsides",
+		"Leave the talisman, then look around",
 		"Bring the 8 talismans to the outsides",
 		"",
 		"",

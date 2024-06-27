@@ -1,6 +1,8 @@
 class_name FinalCutscene
 extends Node2D
 
+var playing: bool = false
+
 @onready var sprites = $AnimatedSprite2D
 @onready var animation_p = $AnimationPlayer
 
@@ -8,15 +10,17 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 	sprites.frame = 0
-	
+	#$HandheldOverlay.visible = true
 	# print("final cutscene active")
-	play_scene()
+	#play_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	if not playing:
+		play_scene()
 
 func play_scene():
+	playing = true
 	DialogBus.display_text_big.emit("big dialog with overlay")
 	await DialogBus.dialog_done
 
@@ -38,7 +42,9 @@ func play_scene():
 	end_scene()
 
 func end_scene():
-	await get_tree().create_timer(5.0).timeout
-	# TODO: fade to white here
-	# oo if I could make this go to the credits scene that would be cool
+	await get_tree().create_timer(2.0).timeout
+	animation_p.play("FadeToBlack")
+	await animation_p.animation_finished
+	await get_tree().create_timer(1.0).timeout
+
 	get_tree().change_scene_to_file("res://source/levels/TitleScreen.tscn")

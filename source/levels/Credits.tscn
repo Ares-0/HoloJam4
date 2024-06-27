@@ -17,6 +17,7 @@ script = ExtResource("1_5fvk4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.666, 0.666)
@@ -24,11 +25,13 @@ texture = ExtResource("1_8cw7v")
 
 [node name="BG Color" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.856067, 0.856067, 0.856067, 1)
 
 [node name="Thanks" type="Label" parent="."]
+layout_mode = 0
 offset_left = 300.0
 offset_top = 88.0
 offset_right = 798.0
@@ -37,6 +40,7 @@ text = "Thanks for Playing!"
 label_settings = SubResource("LabelSettings_223x3")
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = -90.0
 offset_top = 90.0
 offset_right = 162.0
@@ -53,6 +57,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Jam Text" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 110.0
 offset_top = 326.0
 offset_right = 575.0
@@ -62,6 +67,7 @@ label_settings = SubResource("LabelSettings_2am8k")
 
 [node name="Holo Text" type="RichTextLabel" parent="Control"]
 modulate = Color(0.152941, 0.780392, 1, 1)
+layout_mode = 0
 offset_left = 110.0
 offset_top = 405.0
 offset_right = 936.0
@@ -72,6 +78,7 @@ This fan-made game complies with the Cover Derivative Works Guidelines
 found at [u]https://hololivepro.com/en/terms/[/u]"
 
 [node name="Links" type="RichTextLabel" parent="Control"]
+layout_mode = 0
 offset_left = 110.0
 offset_top = 515.0
 offset_right = 1088.0
