@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://e5443xa653xu" path="res://assets/kennyl-contrast.png" id="1_wue3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6hpi"]
-radius = 110.0
+radius = 75.5357
 
 [node name="Oddity" type="Node2D"]
 z_index = 5
@@ -18,7 +18,6 @@ position = Vector2(0, -128)
 texture = ExtResource("1_wue3m")
 
 [node name="Area2D" type="Area2D" parent="Body"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Area2D"]
 shape = SubResource("CircleShape2D_r6hpi")

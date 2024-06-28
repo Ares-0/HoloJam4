@@ -29,6 +29,7 @@ Bug Tracker
     Grass tiles too scruffy
     Continue Game does not store all necessary states?
         door status and stuff?
+    possible to have an extra talisman in the inventory during part 2
 
 Stretch Goals
     lock first 4 inner talismans during day 1

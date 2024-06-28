@@ -192,7 +192,7 @@ func update_pause_goals():
 		"Leave the talisman, then look around",
 		"Leave the talisman, then look around",
 		"Bring the 8 talismans to the outsides",
-		"",
+		"then return to the center",
 		"",
 		"",
 		"",
