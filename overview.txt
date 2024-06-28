@@ -1,4 +1,7 @@
 
+HTML Incompatabilities
+    font arrow dont render
+    sizing is weird
 
 MVP Requirements
 *   can easily double the enemies in most screens
@@ -7,8 +10,6 @@ MVP Requirements
         contact info
 
     always double check dialog
-        COOL ONE LINER
-        BIG DIALOG WITH OVERLAY
         objective in pause menu
         oddity stuff
         talisman wording
@@ -19,7 +20,10 @@ Post Jam
     something glitches when switching to final scene
         I think its the world unspawning everything
             known issue, slotted for 4.3
-    dude how did I number the talismans inconsistently
+    fix talisman numbering
+    mobs shake when angry
+    stop moving on quantized positions
+    walking animation
 
 Bug Tracker
     Grass tiles too scruffy

@@ -50,6 +50,7 @@ autowrap_mode = 2
 clip_text = true
 
 [node name="NextLabel" type="Label" parent="Background/Control"]
+layout_mode = 0
 offset_left = 166.667
 offset_top = 33.75
 offset_right = 210.667

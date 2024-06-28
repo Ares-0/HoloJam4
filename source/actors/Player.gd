@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 var talisman_inventory = []
-@export var SPEED: int = 400
+@export var SPEED: int = 450
 @export var SPRINT_SCALE: float = 2.0 # debug only
 var movement_frozen: bool = false # used to stop movement during dialog # feels awk
 var sprinting = 0 # debug only
@@ -59,6 +59,11 @@ func move(_delta: float):
 	# velocity.y = move_toward(velocity.y, 0, SPEED)
 	choose_sprite(direction)
 	move_and_slide()
+	
+	# if no longer moving, snap to pixel
+	if direction.length_squared() == 0:
+		var pos = get_position().round()
+		self.set_position(pos)
 
 func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> void:
 	# limit_position: top left corner of clamp rect

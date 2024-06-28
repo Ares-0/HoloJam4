@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdw6d7knrxeit"]
+[gd_scene load_steps=22 format=3 uid="uid://cdw6d7knrxeit"]
 
 [ext_resource type="Script" path="res://source/levels/TestRoom.gd" id="1_wvqtp"]
 [ext_resource type="TileSet" uid="uid://mndoxu163t1" path="res://source/levels/tilemap_t.tres" id="2_ky2lq"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b0per6ccqcing" path="res://source/actors/FinalDoorway.tscn" id="15_d0alk"]
 [ext_resource type="PackedScene" uid="uid://iy5mrohbpkhv" path="res://source/actors/Enemy.tscn" id="16_jb708"]
 [ext_resource type="PackedScene" uid="uid://di55cl41cedjx" path="res://source/actors/FakeFence.tscn" id="17_8hudl"]
+[ext_resource type="LabelSettings" uid="uid://csp3ovhuww377" path="res://source/levels/World_notes.tres" id="18_e85cp"]
 
 [sub_resource type="Animation" id="Animation_bycd4"]
 resource_name = "Ending01"
@@ -1621,26 +1622,32 @@ position = Vector2(-508, -1272)
 talisman_number = 7
 
 [node name="Controls_Label1" type="Label" parent="."]
-offset_left = 439.0
-offset_top = -2045.0
-offset_right = 589.0
-offset_bottom = -1996.0
-text = "Interact: 
-SPACEBAR"
-
-[node name="Controls_Label2" type="Label" parent="."]
-offset_left = 139.0
-offset_top = -2046.0
-offset_right = 289.0
-offset_bottom = -1997.0
+offset_left = 117.0
+offset_top = -2063.0
+offset_right = 190.0
+offset_bottom = -2032.0
+scale = Vector2(2.5, 2.5)
 text = "Move:
 WASD / ↑←↓→"
+label_settings = ExtResource("18_e85cp")
+
+[node name="Controls_Label2" type="Label" parent="."]
+offset_left = 445.0
+offset_top = -2059.0
+offset_right = 508.0
+offset_bottom = -2024.0
+scale = Vector2(2.5, 2.5)
+text = "Interact: 
+SPACEBAR"
+label_settings = ExtResource("18_e85cp")
 
 [node name="Controls_Label3" type="Label" parent="."]
 z_index = 7
-offset_left = 335.0
-offset_top = -1156.0
-offset_right = 485.0
-offset_bottom = -1107.0
+offset_left = 343.0
+offset_top = -1164.0
+offset_right = 393.0
+offset_bottom = -1130.0
+scale = Vector2(2.5, 2.5)
 text = "Pause:
 ESC"
+label_settings = ExtResource("18_e85cp")

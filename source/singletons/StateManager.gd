@@ -129,11 +129,12 @@ func _process(_delta):
 	# ending 2 triggered from final doorway overlap
 
 	if Input.is_action_just_pressed("debug_01"):
+		pass
 		# execute_ending_two()
-		if final_door.active:
-			final_door.deactivate()
-		else:
-			final_door.activate()
+		# if final_door.active:
+		# 	final_door.deactivate()
+		# else:
+		# 	final_door.activate()
 		# get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
 
 func on_update_holder(inner: bool, number: int, filled: bool):
