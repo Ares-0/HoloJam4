@@ -10,8 +10,11 @@ extends Node
 # Something else should be doing logic for the game
 # Something that isn't an always on singleton
 
+const PLAYER_START: Vector2 = Vector2(278, -1808)
+
 var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
 var outer_talisman_states = []
+
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
 var plot_point: int = 0
@@ -34,7 +37,7 @@ var t_holders_inner = []
 var t_holders_outer = []
 var noise_barriers = []
 
-var version_number = "0.5.0" # this is totally here temporarily
+var version_number = "1.0.1" # this is totally here temporarily
 
 signal update_holder(inner: bool, number: int, filled: bool)
 
@@ -275,6 +278,7 @@ func new_game() -> void:
 	plot_point = 0
 	part_num = 0
 	day_num = 57392
+	player_position = PLAYER_START
 
 func resume() -> void:
 	if plot_point >= 0:

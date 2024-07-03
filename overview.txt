@@ -1,19 +1,4 @@
 
-HTML Incompatabilities
-    font arrow dont render
-    sizing is weird
-
-MVP Requirements
-*   can easily double the enemies in most screens
-
-    upload to itch
-        contact info
-
-    always double check dialog
-        objective in pause menu
-        oddity stuff
-        talisman wording
-
 Post Jam
     Music
     SFX
@@ -21,17 +6,19 @@ Post Jam
         I think its the world unspawning everything
             known issue, slotted for 4.3
     fix talisman numbering
-    mobs shake when angry
     stop moving on quantized positions
-    walking animation
+    fix continue system
+        door status and stuff?
+    replace plot logic with state machine
 
 Bug Tracker
-    Grass tiles too scruffy
-    Continue Game does not store all necessary states?
-        door status and stuff?
+    Possible to get stuck against takos and walls
+        Probable from takos too close to the edge during screen transition clamping
     possible to have an extra talisman in the inventory during part 2
 
 Stretch Goals
+    mobs shake when angry
+    walking animation
     lock first 4 inner talismans during day 1
     Camera zooms in very slightly during dialog
     Text splays out over time
