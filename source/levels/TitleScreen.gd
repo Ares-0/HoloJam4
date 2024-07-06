@@ -8,10 +8,12 @@ func _ready():
 	VersionL.text = "v" + StateManager.version_number
 	# if StateManager.hh_overlay != null: # coming from game case?
 	# 	StateManager.hh_overlay.hide()
-	if StateManager.plot_point > 0:
-		continue_B.disabled = false
-	else:
+	print(StateManager.current_state)
+	#if StateManager.current_state == null:
+	if StateManager.state_str == "":
 		continue_B.disabled = true
+	else:
+		continue_B.disabled = false
 
 func _on_new_game_pressed():
 	StateManager.new_game()

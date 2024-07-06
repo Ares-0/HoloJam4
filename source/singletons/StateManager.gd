@@ -19,9 +19,10 @@ var outer_talisman_states = []
 
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = 0
+var plot_point: int = 0		# now almost useless
 var player_position: Vector2 = Vector2(278, -1808)
 var current_state: State
+var state_str: StringName = ""
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -32,6 +33,7 @@ var hh_overlay
 var pauser
 var game_room
 var final_door
+var plot_machine
 
 var Ending01Player # animation player
 
@@ -104,7 +106,7 @@ func on_update_holder(inner: bool, number: int, filled: bool):
 		inner_talisman_states[number] = filled
 	else:
 		outer_talisman_states[number] = filled
-	update_state_string()
+	update_debug_string()
 
 func update_pause_goals(new_goal: String):
 	pauser.update_goal(new_goal)
@@ -114,14 +116,21 @@ func increment_day_num():
 	day_num += 1
 
 func new_game() -> void:
-	plot_point = 0
 	part_num = 0
 	day_num = 57392
 	player_position = PLAYER_START
+	state_str = StringName()
+	current_state = null
+
+func return_to_menu_prep() -> void:
+	hh_overlay.hide()
+	game_room.game_ready = false
+	player_position = player.global_position
 
 func resume() -> void:
-	if plot_point >= 0:
-		player.set_global_position(player_position)
+	if not state_str.is_empty():
+		plot_machine.return_to_state(state_str)
+	player.set_global_position(player_position)
 
 func are_references_ready() -> bool:
 	var references = [player, camera, debug_ui, hh_overlay, pauser, game_room]
@@ -143,11 +152,11 @@ func set_noise_barriers(new_states) -> void:
 	for i in range(len(noise_barriers)):
 		noise_barriers[i].set_state(new_states[i])
 
-func update_state_string() -> void:
+func update_debug_string() -> void:
 	debug_ui.update_left_text(0, str(Engine.get_frames_drawn()))
 	debug_ui.update_left_text(1, str("ti: ", inner_talisman_states))
 	debug_ui.update_left_text(2, str("to: ", outer_talisman_states))
-	debug_ui.update_left_text(3, str("part: ", part_num, "\t\tplot_point: " , plot_point))
+	debug_ui.update_left_text(3, str("part: ", part_num, "    plot_point: " , plot_point))
 
 func show_all_dialog() -> void:
 	# I could make this smart or...

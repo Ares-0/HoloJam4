@@ -21,7 +21,7 @@ func _ready():
 	shadow_DR.visible = false
 	shadow_DL.visible = false
 	StateManager.hh_overlay = self
-	$ColorRectBlack.color.a = 1
+	set_fade(0) # set by states enter() also
 
 func _process(_delta):
 	if Input.is_action_just_pressed("action_button"):
@@ -52,3 +52,5 @@ func _process(_delta):
 func set_fade(alpha) -> void:
 	$ColorRectBlack.color.a = alpha
 
+func get_fade() -> float:
+	return $ColorRectBlack.color.a

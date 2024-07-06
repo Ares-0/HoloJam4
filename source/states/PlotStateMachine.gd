@@ -8,6 +8,8 @@ var states: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	StateManager.plot_machine = self
+
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
@@ -23,6 +25,9 @@ func _process(delta):
 		current_state.update(delta)
 
 func on_child_transition(state, new_state_name):
+	# state: state doing the transition
+	# new_state_name: name of state to transition to
+
 	# if debug states active, return
 	# replace with more proper check later
 	if StateManager.plot_point < 0:
@@ -41,5 +46,12 @@ func on_child_transition(state, new_state_name):
 	current_state = new_state
 
 	StateManager.current_state = current_state
-	StateManager.update_state_string()
+	StateManager.state_str = current_state.name
+	# print("changing state to: ", StateManager.state_str)
+	StateManager.update_debug_string()
 	StateManager.debug_ui.update_left_text(5, str("State: ", current_state))
+
+func return_to_state(state_str: StringName):
+	# print("returning to : ", state_str)
+	var returnee = states[str(state_str.to_lower())]
+	returnee.Transitioned.emit(current_state, state_str)

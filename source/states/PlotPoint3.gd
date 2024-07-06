@@ -10,6 +10,7 @@ var in_progress: bool = false
 func enter():
 	StateManager.set_noise_barriers([0, 1, 0, 1, 0, 1, 0, 1])
 	StateManager.update_pause_goals(pause_goal)
+	StateManager.hh_overlay.set_fade(0)
 	in_progress = false
 
 func update(_delta: float):

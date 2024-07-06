@@ -18,6 +18,7 @@ func _ready():
 
 func _process(_delta):
 	check_for_update()
+	update_debug_string()
 
 func check_for_update():
 	var old_cell = current_cell
@@ -29,9 +30,7 @@ func check_for_update():
 		change_screen.emit()
 
 		# debug output
-		if StateManager.debug_ui != null:
-			StateManager.debug_ui.update_right_text(1, str(current_cell))
-			StateManager.debug_ui.update_left_text(4, str(nearby_bodies))
+		# update_debug_string()
 
 func update_camera_position() -> void:
 	global_position = current_cell * size + ui_offset
@@ -39,6 +38,12 @@ func update_camera_position() -> void:
 func update_player_pos() -> void:
 	player.clamp_position_to_limits(global_position - Vector2(ui_offset), size)
 	StateManager.player_position = player.global_position
+
+func update_debug_string() -> void:
+	if StateManager.debug_ui != null and StateManager.debug_ui.visible:
+		StateManager.debug_ui.update_right_text(1, str(current_cell))
+		StateManager.debug_ui.update_right_text(2, str(StateManager.player.global_position))
+		StateManager.debug_ui.update_left_text(4, str(nearby_bodies))
 
 func get_current_cell() -> Vector2i:
 	var last: Vector2 = player.global_position / Vector2(size)

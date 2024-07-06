@@ -37,7 +37,6 @@ func _on_resume_b_pressed():
 
 func _on_menu_b_pressed():
 	paused = false
-	StateManager.hh_overlay.hide()
+	StateManager.return_to_menu_prep()
 	get_tree().paused = false
-	StateManager.game_room.game_ready = false
 	get_tree().change_scene_to_file("res://source/levels/TitleScreen.tscn")

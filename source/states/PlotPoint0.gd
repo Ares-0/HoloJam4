@@ -6,17 +6,24 @@ extends State
 # Transition is automatic
 
 var pause_goal: String = "Wake up"
+var in_progress: bool = false
 
 func enter():
+	# when resuming, there is a frame in which this enter is called
+	# I'd rather that didn't happen, but until then, take note
 	StateManager.set_noise_barriers([1, 1, 1, 1, 1, 1, 1, 1])
 	StateManager.update_pause_goals(pause_goal)
+	StateManager.hh_overlay.set_fade(1)
+	in_progress = false
 
+func update(_delta: float):
+	if in_progress:
+		return
+
+	in_progress = true
 	execute_intro_one()
 	await work_done
 	Transitioned.emit(self, "plotpoint1a")
-
-func update(_delta: float):
-	pass
 
 func execute_intro_one():
 	# hh_overlay.set_fade(1)
