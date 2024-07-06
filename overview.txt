@@ -10,11 +10,14 @@ Post Jam
     fix continue system
         door status and stuff?
     replace plot logic with state machine
+    tako eyes left and right
 
 Bug Tracker
     Possible to get stuck against takos and walls
         Probable from takos too close to the edge during screen transition clamping
     possible to have an extra talisman in the inventory during part 2
+    tako text should be above takos
+    I never randomized the tako text!
 
 Stretch Goals
     mobs shake when angry
@@ -64,26 +67,28 @@ plot point number and the actions that cause the transitions
 -2 - debug with all doors off
 -1 - debug
 0 - new game
-wake up 1 (auto)
-1 - player can move around in the main area
-talk to oddity 1
+    wake up 1 (auto)
+1a - player can move around the top area
+    pick up talisman
+1b - player can move around in the main area
+    talk to oddity 1
 2 - player can walk around in main area and 3 initial spokes
-pickup first talisman
-play that dialog
+    pickup first talisman
+    play that dialog
 3 - same as 2 but that dialog is done now
-all talismans to center
-ending 1
+    all talismans to center
+    ending 1
 4 - starting day 2
-wake up II (auto)
+    wake up II (auto)
 5 - player can walk around top area only (blocked by plot armor dab)
-pickup first talisman II
+    pickup first talisman II
 6 - player can walk around in the main area
     maybe can't pick up talismans from outer?
 talk to oddity II
 7 - player can walk around the spokes (if the doors are opened)
-all talismans to outer -> door opens in middle
-player goes through door
-ending 2
+    all talismans to outer -> door opens in middle
+    player goes through door
+    ending 2
 8 - done
 
 notes

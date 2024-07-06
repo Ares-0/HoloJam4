@@ -29,3 +29,9 @@ func deactivate() -> void:
 		await get_tree().create_timer(15.0).timeout
 	self.visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
+
+func set_state(state: bool) -> void:
+	if state:
+		activate()
+	else:
+		deactivate()

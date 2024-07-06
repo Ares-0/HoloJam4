@@ -10,6 +10,8 @@ extends Node
 # Something else should be doing logic for the game
 # Something that isn't an always on singleton
 
+signal plot_progressed
+
 const PLAYER_START: Vector2 = Vector2(278, -1808)
 
 var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
@@ -19,7 +21,12 @@ var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
 var plot_point: int = 0
 var player_position: Vector2 = Vector2(278, -1808)
-var plot_in_progress: bool = false
+
+var plot_in_progress: bool = false:
+	set(value):
+		plot_in_progress = value
+		if not value:
+			plot_progressed.emit()
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -31,7 +38,7 @@ var pauser
 var game_room
 var final_door
 
-var Ending01Player
+var Ending01Player # animation player
 
 var t_holders_inner = []
 var t_holders_outer = []
@@ -87,8 +94,7 @@ func _process(_delta):
 
 	if plot_point == -2:
 		hh_overlay.set_fade(0)
-		for bar in noise_barriers:
-			bar.deactivate()
+		set_noise_barriers([0, 0, 0, 0, 0, 0, 0, 0])
 	
 	if plot_point == -3:
 		show_all_dialog()
@@ -218,6 +224,7 @@ func execute_intro_one():
 	hh_overlay.animplayer.play("FadeFromBlack")
 
 	DialogBus.display_dialog.emit("plot_0_intro")
+	await DialogBus.dialog_done
 	
 	plot_in_progress = false
 	increment_plot_point()
@@ -300,6 +307,10 @@ func reset_talismans() -> void:
 		else:
 			t_holders_outer[i].reset(false)
 			t_holders_inner[i].reset(true)
+
+func set_noise_barriers(new_states) -> void:
+	for i in range(len(noise_barriers)):
+		noise_barriers[i].set_state(new_states[i])
 
 func get_state_string() -> String:
 	# return a string format of current state
