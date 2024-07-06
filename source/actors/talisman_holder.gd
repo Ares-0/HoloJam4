@@ -60,20 +60,33 @@ func receive_talisman(num) -> void:
 	# StateManager.update_holder.emit(inner, talisman_number, filled)
 	StateManager.update_holder.emit(inner, holder_number, filled)
 
-func give_talisman() -> int:
-	# if plot point 2, play first time dialog
-	if StateManager.plot_point == 1:
+func give_talisman() -> int:	
+	# new batch of state checks, to replace above
+	if StateManager.current_state is PlotPoint1a:
 		DialogBus.display_dialog.emit("plot_1_talisman")
-	if StateManager.plot_point == 2:
-		DialogBus.display_dialog.emit("plot_2_talisman")
-		StateManager.increment_plot_point()
-	if StateManager.plot_point == 5:
+		# just advance here?
+	if StateManager.current_state is PlotPoint2:
+		if talisman_number in [0, 2, 4, 6]:
+			DialogBus.display_dialog.emit("plot_2_talisman")
+			StateManager.current_state.advance()
+	if StateManager.current_state is PlotPoint5:
 		DialogBus.display_dialog.emit("plot_5_talisman")
-		StateManager.increment_plot_point()
+		StateManager.current_state.advance()
 		return -1
 
 	# Read talisman descriptions on pickup
-	if StateManager.plot_point == 7 or StateManager.plot_point == 6:
+	var curr_state = StateManager.current_state
+	# Generic descriptions
+	# Don't pick up middle talismans
+	if curr_state is PlotPoint1b or curr_state is PlotPoint2 or curr_state is PlotPoint3:
+		match talisman_number:
+			1, 3, 5, 7:
+				DialogBus.display_dialog.emit("talisman_generic")
+				return -1
+	
+	# Specific descriptions
+	# Dont pick up outside talismans
+	if curr_state is PlotPoint6 or curr_state is PlotPoint7:
 		match talisman_number:
 			0:
 				DialogBus.display_dialog.emit("talisman_00")

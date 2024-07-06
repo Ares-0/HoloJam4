@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdw6d7knrxeit"]
+[gd_scene load_steps=23 format=3 uid="uid://cdw6d7knrxeit"]
 
 [ext_resource type="Script" path="res://source/levels/TestRoom.gd" id="1_wvqtp"]
 [ext_resource type="TileSet" uid="uid://mndoxu163t1" path="res://source/levels/tilemap_t.tres" id="2_ky2lq"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://iy5mrohbpkhv" path="res://source/actors/Enemy.tscn" id="16_jb708"]
 [ext_resource type="PackedScene" uid="uid://di55cl41cedjx" path="res://source/actors/FakeFence.tscn" id="17_8hudl"]
 [ext_resource type="LabelSettings" uid="uid://csp3ovhuww377" path="res://source/levels/World_notes.tres" id="18_e85cp"]
+[ext_resource type="PackedScene" uid="uid://bjpo75vy5iy08" path="res://source/states/PlotStateMachine.tscn" id="19_5na0r"]
 
 [sub_resource type="Animation" id="Animation_bycd4"]
 resource_name = "Ending01"
@@ -287,6 +288,7 @@ position = Vector2(361, 1110)
 
 [node name="DebugInfo" parent="UICanvasLayer" instance=ExtResource("6_8su5i")]
 layer = 5
+visible = false
 
 [node name="HandheldOverlay" parent="UICanvasLayer" instance=ExtResource("7_yafbw")]
 visible = false
@@ -1851,3 +1853,5 @@ scale = Vector2(2.5, 2.5)
 text = "Pause:
 ESC"
 label_settings = ExtResource("18_e85cp")
+
+[node name="PlotStateMachine" parent="." instance=ExtResource("19_5na0r")]

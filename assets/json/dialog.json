@@ -169,5 +169,9 @@
     "talisman_bad": [
         "On second thought, not here",
         "I want to keep these safe"
+    ],
+    "talisman_generic": [
+        "A talisman of sorts",
+        "It's fine here"
     ]
 }

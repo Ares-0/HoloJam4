@@ -1,0 +1,51 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjpo75vy5iy08"]
+
+[ext_resource type="Script" path="res://source/states/PlotStateMachine.gd" id="1_qu4m0"]
+[ext_resource type="Script" path="res://source/states/PlotPoint0.gd" id="2_mlyyc"]
+[ext_resource type="Script" path="res://source/states/PlotPoint1a.gd" id="3_oj5w5"]
+[ext_resource type="Script" path="res://source/states/PlotPoint1b.gd" id="4_ynmgw"]
+[ext_resource type="Script" path="res://source/states/PlotPoint2.gd" id="5_2wvd3"]
+[ext_resource type="Script" path="res://source/states/PlotPoint3.gd" id="6_kdgye"]
+[ext_resource type="Script" path="res://source/states/PlotPoint4.gd" id="7_85uw0"]
+[ext_resource type="Script" path="res://source/states/PlotPoint5.gd" id="8_yvww5"]
+[ext_resource type="Script" path="res://source/states/PlotPoint6.gd" id="9_hbksx"]
+[ext_resource type="Script" path="res://source/states/PlotPoint7.gd" id="10_ens5i"]
+[ext_resource type="Script" path="res://source/states/PlotPoint8.gd" id="11_ktfly"]
+[ext_resource type="Script" path="res://source/states/PlotPoint9.gd" id="12_lhrmi"]
+
+[node name="PlotStateMachine" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_qu4m0")
+initial_state = NodePath("PlotPoint0")
+
+[node name="PlotPoint0" type="Node" parent="."]
+script = ExtResource("2_mlyyc")
+
+[node name="PlotPoint1a" type="Node" parent="."]
+script = ExtResource("3_oj5w5")
+
+[node name="PlotPoint1b" type="Node" parent="."]
+script = ExtResource("4_ynmgw")
+
+[node name="PlotPoint2" type="Node" parent="."]
+script = ExtResource("5_2wvd3")
+
+[node name="PlotPoint3" type="Node" parent="."]
+script = ExtResource("6_kdgye")
+
+[node name="PlotPoint4" type="Node" parent="."]
+script = ExtResource("7_85uw0")
+
+[node name="PlotPoint5" type="Node" parent="."]
+script = ExtResource("8_yvww5")
+
+[node name="PlotPoint6" type="Node" parent="."]
+script = ExtResource("9_hbksx")
+
+[node name="PlotPoint7" type="Node" parent="."]
+script = ExtResource("10_ens5i")
+
+[node name="PlotPoint8" type="Node" parent="."]
+script = ExtResource("11_ktfly")
+
+[node name="PlotPoint9" type="Node" parent="."]
+script = ExtResource("12_lhrmi")

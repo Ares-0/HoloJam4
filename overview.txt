@@ -18,6 +18,7 @@ Bug Tracker
     possible to have an extra talisman in the inventory during part 2
     tako text should be above takos
     I never randomized the tako text!
+    After interacting, short time where can't reinteract
 
 Stretch Goals
     mobs shake when angry
@@ -84,12 +85,15 @@ plot point number and the actions that cause the transitions
     pickup first talisman II
 6 - player can walk around in the main area
     maybe can't pick up talismans from outer?
-talk to oddity II
-7 - player can walk around the spokes (if the doors are opened)
+    talk to oddity II
+7 - player can walk around the spokes
     all talismans to outer -> door opens in middle
+8 - player can walk around the spokes
+    return to center -> dialog
+9 - player can walk around the spokes
     player goes through door
     ending 2
-8 - done
+10 - done
 
 notes
 oddity probably has to bitch more at some point

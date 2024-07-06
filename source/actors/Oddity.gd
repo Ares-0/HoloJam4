@@ -16,12 +16,12 @@ func _process(delta):
 	body.set_rotation(randi_range(0, 1000))
 
 func converse():
-	if StateManager.plot_point == 1:
-		DialogBus.display_dialog.emit("plot_1_oddity") # plot_1_oddity_debug
-		StateManager.increment_plot_point()
-	if StateManager.plot_point == 6:
-		DialogBus.display_dialog.emit("plot_6_oddity") # plot_6_oddity_debug
-		StateManager.increment_plot_point()
+	if StateManager.current_state is PlotPoint1b:
+		DialogBus.display_dialog.emit("plot_1_oddity_debug")
+		StateManager.current_state.advance()
+	if StateManager.current_state is PlotPoint6:
+		DialogBus.display_dialog.emit("plot_6_oddity_debug")
+		StateManager.current_state.advance()
 
 func _on_area_2d_area_entered(area):
 	# print(area.get_parent())

@@ -21,12 +21,7 @@ var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
 var plot_point: int = 0
 var player_position: Vector2 = Vector2(278, -1808)
-
-var plot_in_progress: bool = false:
-	set(value):
-		plot_in_progress = value
-		if not value:
-			plot_progressed.emit()
+var current_state: State
 
 # Other things everyone should have access to
 # Should this go in a different singleton? Maybe
@@ -87,67 +82,23 @@ func _process(_delta):
 		return
 	if game_room.game_ready == false:
 		return
-	# update_state_string()
+
 	# check for triggers and advance state
 	if plot_point == -1:
 		return
 
+	# these being in process is weird
 	if plot_point == -2:
 		hh_overlay.set_fade(0)
 		set_noise_barriers([0, 0, 0, 0, 0, 0, 0, 0])
-	
+
 	if plot_point == -3:
 		show_all_dialog()
 
-	# Ok so what's actually happening here is annoying
-	# The awaits mean these checks are going to complete multiple times
-	# And the plot points incrementing was luckily hiding bugs
-	# But a flag might be prudent
-	if plot_in_progress:
-		return
-
-	if plot_point == 0:
-		# any initial setup?
-		execute_intro_one()
-	
-	if plot_point == 1:
-		if true in player.talisman_inventory:
-			noise_barriers[0].deactivate()
-		# DO NOT ADVANCE PLOT POINT
-		# THIS IS WHY I NEED A REAL STATE MACHINE
-
-	if plot_point == 3 and not false in inner_talisman_states:
-		# If all inner talismans are full, trigger ending 1
-		execute_ending_one()
-
-	if plot_point == 4:
-		# DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
-		DialogBus.display_text.emit(str("Day ", day_num))
-		DialogBus.display_dialog.emit("plot_4_intro")
-		increment_plot_point()
-
-	if plot_point == 7 and not false in outer_talisman_states:
-		# If all outer talismans are full, open door
-		final_door.activate()
-		increment_plot_point()
-
-	if plot_point == 8 and camera.current_cell == Vector2i(0, 1):
-		DialogBus.display_dialog.emit("plot_8_ending")
-		increment_plot_point()
-
-	# ending 2 triggered from final doorway overlap
-
 	if Input.is_action_just_pressed("debug_01"):
 		pass
-		# execute_ending_two()
-		# if final_door.active:
-		# 	final_door.deactivate()
-		# else:
-		# 	final_door.activate()
-		# get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
 
 func on_update_holder(inner: bool, number: int, filled: bool):
-	# print("updating holder")
 	# currently assumes everything is valid
 	if inner:
 		inner_talisman_states[number] = filled
@@ -155,131 +106,12 @@ func on_update_holder(inner: bool, number: int, filled: bool):
 		outer_talisman_states[number] = filled
 	update_state_string()
 
-func increment_plot_point(dry_run: bool = false):
-	# used by other actors to setup next plot state
-	# dry run is like doing the work but not changing the plot point
-
-	if not dry_run:
-		plot_point += 1
-
-	update_state_string()
-	update_pause_goals()
-
-	# check if any work needs to be done for new state
-	if plot_point == 2:
-		# turn off part 1 barriers
-		noise_barriers[2].deactivate()
-		noise_barriers[4].deactivate()
-		noise_barriers[6].deactivate()
-	
-	if plot_point == 4:
-		# activate everything
-		for bar in noise_barriers:
-			bar.activate()
-	
-	if plot_point == 5:
-		noise_barriers[0].activate()
-	
-	if plot_point == 6:
-		noise_barriers[0].deactivate()
-	
-	if plot_point == 7:
-		# turn off part 2 barriers
-		noise_barriers[1].deactivate()
-		noise_barriers[3].deactivate()
-		noise_barriers[5].deactivate()
-		noise_barriers[7].deactivate()
-
-func update_pause_goals():
-	var last = ""
-	var goals_list = [
-		"Wake up",
-		"Take the talisman, then look around",
-		"Bring the 8 talismans to the center",
-		"Bring the 8 talismans to the center",
-		"Wake up",
-		"Leave the talisman, then look around",
-		"Leave the talisman, then look around",
-		"Bring the 8 talismans to the outsides",
-		"then return to the center",
-		"",
-		"",
-		"",
-	]
-	
-	last = goals_list[plot_point]
-	pauser.update_goal(last)
+func update_pause_goals(new_goal: String):
+	pauser.update_goal(new_goal)
 
 func increment_day_num():
-	# TODO: make it pick from a random range
+	# TODO: low pri: make it pick from a random range
 	day_num += 1
-
-func execute_intro_one():
-	plot_in_progress = true
-	# hh_overlay.set_fade(1)
-	await get_tree().create_timer(1.0).timeout
-	# DialogBus.display_text.emit(str("Day ", day_num, " of the nightmares"))
-	DialogBus.display_text.emit(str("Day ", day_num))
-	await DialogBus.dialog_done
-	hh_overlay.animplayer.play("FadeFromBlack")
-
-	DialogBus.display_dialog.emit("plot_0_intro")
-	await DialogBus.dialog_done
-	
-	plot_in_progress = false
-	increment_plot_point()
-
-func execute_ending_one():
-	plot_in_progress = true
-	Ending01Player.play("Ending01")
-	await Ending01Player.animation_finished
-
-	DialogBus.display_dialog.emit("plot_3_ending")
-	await DialogBus.dialog_done
-
-	hh_overlay.animplayer.play("FadeToBlack")
-	await hh_overlay.animplayer.animation_finished
-	DialogBus.display_dialog.emit("plot_3_ending_b")
-	await DialogBus.dialog_done
-
-	# wait 3 seconds
-	await get_tree().create_timer(3.0).timeout
-
-	DialogBus.display_dialog_big.emit("plot_3_ending_c")
-	await DialogBus.dialog_done
-
-	# Setup next day
-	increment_day_num()
-	reset_talismans()
-	part_num += 1
-	player.set_position(player.ORIGIN)
-	camera.check_for_update()
-	Ending01Player.play("reset_fires") # lmao even
-
-	hh_overlay.animplayer.play("FadeFromBlack")
-	# hh_overlay.set_fade(0) # feels cool but feels unintentional
-	await hh_overlay.animplayer.animation_finished
-
-	plot_in_progress = false
-	increment_plot_point()
-
-func execute_ending_two():
-	plot_in_progress = true
-	# DialogBus.display_dialog.emit("plot_8_one_liner")
-	# await DialogBus.dialog_done
-
-	hh_overlay.animplayer.play("FadeToBlack")
-	await hh_overlay.animplayer.animation_finished
-	
-	DialogBus.display_dialog.emit("plot_9_ending")
-	await DialogBus.dialog_done
-
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
-
-	# does code get here
-	plot_in_progress = false
-	increment_plot_point()
 
 func new_game() -> void:
 	plot_point = 0
@@ -290,7 +122,6 @@ func new_game() -> void:
 func resume() -> void:
 	if plot_point >= 0:
 		player.set_global_position(player_position)
-	increment_plot_point(true)
 
 func are_references_ready() -> bool:
 	var references = [player, camera, debug_ui, hh_overlay, pauser, game_room]
@@ -311,16 +142,6 @@ func reset_talismans() -> void:
 func set_noise_barriers(new_states) -> void:
 	for i in range(len(noise_barriers)):
 		noise_barriers[i].set_state(new_states[i])
-
-func get_state_string() -> String:
-	# return a string format of current state
-	var last = ""
-	last += str(Engine.get_frames_drawn(), ":\n\t")
-	last += str("ti: ", inner_talisman_states, "\n\t")
-	last += str("to: ", outer_talisman_states, "\n\t")
-	last += str("part: ", part_num, "\t\tplot_point: " , plot_point, "\n\t")
-
-	return last
 
 func update_state_string() -> void:
 	debug_ui.update_left_text(0, str(Engine.get_frames_drawn()))
