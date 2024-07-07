@@ -10,11 +10,13 @@ signal change_screen()
 var current_cell: Vector2i
 var nearby_bodies = [] # list of mobs on the current screen
 var previous_nearby_bodies = [] # list of mobs just left screen
+var screen_locked: bool = false # If true, player cannot leave the screen
 
 func _ready():
 	StateManager.camera = self
 	current_cell = get_current_cell()
 	update_camera_position()
+	unlock_screen()
 
 func _process(_delta):
 	check_for_update()
@@ -53,6 +55,20 @@ func get_current_cell() -> Vector2i:
 	if last.y < 0:
 		last.y -= 1
 	return Vector2i(last)
+
+func lock_screen():
+	$ScreenLockShape.collision_layer = 1
+	screen_locked = true
+
+func unlock_screen():
+	$ScreenLockShape.collision_layer = 20
+	screen_locked = false
+
+func toggle_lock_screen():
+	if screen_locked:
+		unlock_screen()
+	else:
+		lock_screen()
 
 func _on_area_2d_body_entered(body):
 	#print(Engine.get_frames_drawn(), "\t", body, body.get_parent())

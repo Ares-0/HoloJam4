@@ -23,6 +23,7 @@ func update(_delta: float):
 		Transitioned.emit(self, "plotpoint4")
 
 func execute_ending_one():
+	StateManager.camera.lock_screen()
 	StateManager.Ending01Player.play("Ending01")
 	await StateManager.Ending01Player.animation_finished
 
@@ -51,5 +52,6 @@ func execute_ending_one():
 	StateManager.hh_overlay.animplayer.play("FadeFromBlack")
 	# hh_overlay.set_fade(0) # feels cool but feels unintentional
 	await StateManager.hh_overlay.animplayer.animation_finished
+	StateManager.camera.unlock_screen()
 
 	work_done.emit()

@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1k3e0lthweoo"]
+[gd_scene load_steps=5 format=3 uid="uid://d1k3e0lthweoo"]
 
 [ext_resource type="Script" path="res://source/actors/CameraMain.gd" id="1_vtafx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nupaa"]
 size = Vector2(720, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0dva"]
+size = Vector2(50, 867.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hokrd"]
+size = Vector2(877, 50)
 
 [node name="CameraMain" type="Camera2D"]
 anchor_mode = 0
@@ -23,6 +29,26 @@ offset_top = 50.0
 offset_right = 950.0
 offset_bottom = 670.0
 color = Color(1, 1, 1, 0.305882)
+
+[node name="ScreenLockShape" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 524288
+
+[node name="ShapeLeft" type="CollisionShape2D" parent="ScreenLockShape"]
+position = Vector2(255, 360)
+shape = SubResource("RectangleShape2D_l0dva")
+
+[node name="ShapeRight" type="CollisionShape2D" parent="ScreenLockShape"]
+position = Vector2(1025, 360)
+shape = SubResource("RectangleShape2D_l0dva")
+
+[node name="ShapeUp" type="CollisionShape2D" parent="ScreenLockShape"]
+position = Vector2(636, -25)
+shape = SubResource("RectangleShape2D_hokrd")
+
+[node name="ShapeDown" type="CollisionShape2D" parent="ScreenLockShape"]
+position = Vector2(636, 745)
+shape = SubResource("RectangleShape2D_hokrd")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
