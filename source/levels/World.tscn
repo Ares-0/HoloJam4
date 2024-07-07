@@ -318,46 +318,39 @@ position = Vector2(612, 900)
 filled = true
 inner = true
 holder_number = 1
-talisman_number = 1
 
 [node name="TalismanHolder2" parent="T Holders Inside" instance=ExtResource("11_mkha7")]
 position = Vector2(607, 1237)
 inner = true
 holder_number = 2
-talisman_number = 2
 
 [node name="TalismanHolder3" parent="T Holders Inside" instance=ExtResource("11_mkha7")]
 position = Vector2(530, 1322)
 filled = true
 inner = true
 holder_number = 3
-talisman_number = 3
 
 [node name="TalismanHolder4" parent="T Holders Inside" instance=ExtResource("11_mkha7")]
 position = Vector2(188, 1329)
 inner = true
 holder_number = 4
-talisman_number = 4
 
 [node name="TalismanHolder5" parent="T Holders Inside" instance=ExtResource("11_mkha7")]
 position = Vector2(102, 1250)
 filled = true
 inner = true
 holder_number = 5
-talisman_number = 5
 
 [node name="TalismanHolder6" parent="T Holders Inside" instance=ExtResource("11_mkha7")]
 position = Vector2(104, 923)
 inner = true
 holder_number = 6
-talisman_number = 6
 
 [node name="TalismanHolder7" parent="T Holders Inside" instance=ExtResource("11_mkha7")]
 position = Vector2(179, 814)
 filled = true
 inner = true
 holder_number = 7
-talisman_number = 7
 
 [node name="T Holders Outside" type="Node2D" parent="."]
 
@@ -368,40 +361,33 @@ filled = true
 [node name="TalismanHolder1" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(-360, -2514)
 holder_number = 1
-talisman_number = 1
 
 [node name="TalismanHolder2" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(4034, 383)
 filled = true
 holder_number = 2
-talisman_number = 2
 
 [node name="TalismanHolder3" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(3386, 1888)
 holder_number = 3
-talisman_number = 3
 
 [node name="TalismanHolder4" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(351, 2461)
 filled = true
 holder_number = 4
-talisman_number = 4
 
 [node name="TalismanHolder5" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(-2647, 3158)
 holder_number = 5
-talisman_number = 5
 
 [node name="TalismanHolder6" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(-1995, 334)
 filled = true
 holder_number = 6
-talisman_number = 6
 
 [node name="TalismanHolder7" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(-2610, -1134)
 holder_number = 7
-talisman_number = 7
 
 [node name="Area Outlines" type="Node2D" parent="."]
 visible = false

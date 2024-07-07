@@ -33,9 +33,8 @@ var hh_overlay
 var pauser
 var game_room
 var final_door
-var plot_machine
-
 var Ending01Player # animation player
+var plot_machine
 
 var t_holders_inner = []
 var t_holders_outer = []
@@ -48,7 +47,7 @@ signal update_holder(inner: bool, number: int, filled: bool)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# I gotta see how returning to main menu affects stuff
-	# print("readying") 
+	# print("readying state manager")
 
 	# signals
 	self.connect("update_holder", on_update_holder)
@@ -115,7 +114,8 @@ func increment_day_num():
 	# TODO: low pri: make it pick from a random range
 	day_num += 1
 
-func new_game() -> void:
+func reset_progress() -> void:
+	# called on .this before loading the world
 	part_num = 0
 	day_num = 57392
 	player_position = PLAYER_START
@@ -127,10 +127,19 @@ func return_to_menu_prep() -> void:
 	game_room.game_ready = false
 	player_position = player.global_position
 
-func resume() -> void:
-	if not state_str.is_empty():
+func final_setup() -> void:
+	# THIS IS ALWAYS CALLED WHEN THE WORLD ENTERS THE TREE
+	# ITS CALLED BASICALLY LAST
 		plot_machine.return_to_state(state_str)
+	# one of many data points that depends on if its a new game or a resumed game
 	player.set_global_position(player_position)
+
+func set_resuming() -> void:
+	# called by title screen to begin resuming process
+	resuming = true
+
+func on_game_is_ready() -> void:
+	resuming = false
 
 func are_references_ready() -> bool:
 	var references = [player, camera, debug_ui, hh_overlay, pauser, game_room]

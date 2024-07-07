@@ -5,7 +5,7 @@ extends Node2D
 @export var filled: bool = false # is it holding a talisman
 @export var inner: bool = false # flag if this is inner or outer holder
 @export var holder_number: int = 0 # what number holder this is
-@export var talisman_number: int = 0 # what talisman it's actually holding
+var talisman_number: int = 0 # what talisman it's actually holding
 # half of the t holders SHOULD start with a particular talisman number, for plot
 # If they get swapped around and mixed up thats fine, but the start is deterministic
 
@@ -13,15 +13,17 @@ extends Node2D
 var locked: bool = false
 
 func _ready():
-	StateManager.update_holder.emit(inner, holder_number, filled)
-	talisman_number = holder_number
-	update_sprites()
-	
-	# gross
+	# update the object references
 	if inner:
 		StateManager.t_holders_inner[holder_number] = self
 	else:
 		StateManager.t_holders_outer[holder_number] = self
+
+	# Inform manager of current state
+	# this can be overwritten by the manager
+	talisman_number = holder_number
+	update_sprites()
+	StateManager.update_holder.emit(inner, holder_number, filled)
 
 func _process(_delta):
 	pass
@@ -31,6 +33,12 @@ func reset(fill: bool):
 	filled = fill
 	update_sprites()
 	StateManager.update_holder.emit(inner, holder_number, filled)
+
+func set_holder(fill: bool):
+	# in theory, something setting should know the state, so no need to send the signal back
+	talisman_number = holder_number
+	filled = fill
+	update_sprites()
 
 func is_filled() -> bool:
 	return filled

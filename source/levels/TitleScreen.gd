@@ -8,20 +8,18 @@ func _ready():
 	VersionL.text = "v" + StateManager.version_number
 	# if StateManager.hh_overlay != null: # coming from game case?
 	# 	StateManager.hh_overlay.hide()
-	print(StateManager.current_state)
-	#if StateManager.current_state == null:
 	if StateManager.state_str == "":
 		continue_B.disabled = true
 	else:
 		continue_B.disabled = false
 
 func _on_new_game_pressed():
-	StateManager.new_game()
+	StateManager.reset_progress()
 	get_tree().change_scene_to_file("res://source/levels/World.tscn")
 
 func _on_continue_pressed():
 	# Keep the already existing save data
-	# TODO: Probably need to check if any exists first?
+	StateManager.set_resuming()
 	get_tree().change_scene_to_file("res://source/levels/World.tscn")
 
 func _on_quit_pressed():
