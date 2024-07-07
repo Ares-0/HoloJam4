@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-var talisman_inventory = []
+var talisman_inventory: Array[bool] = []
 @export var SPEED: int = 450
 @export var SPRINT_SCALE: float = 2.0 # debug only
 var movement_frozen: bool = false # used to stop movement during dialog # feels awk

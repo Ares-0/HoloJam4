@@ -10,6 +10,7 @@ var game_ready: bool = false
 func _ready():
 	StateManager.game_room = self
 	StateManager.final_setup()
+	# print("all ready")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -7,9 +7,6 @@ Post Jam
             known issue, slotted for 4.3
     fix talisman numbering
     stop moving on quantized positions
-    fix continue system
-        door status and stuff?
-    replace plot logic with state machine
     tako eyes left and right
 
 Bug Tracker

@@ -288,6 +288,7 @@ position = Vector2(361, 1110)
 
 [node name="DebugInfo" parent="UICanvasLayer" instance=ExtResource("6_8su5i")]
 layer = 5
+visible = false
 
 [node name="HandheldOverlay" parent="UICanvasLayer" instance=ExtResource("7_yafbw")]
 visible = false

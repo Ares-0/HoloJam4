@@ -52,6 +52,7 @@ func on_child_transition(state, new_state_name):
 	StateManager.debug_ui.update_left_text(5, str("State: ", current_state))
 
 func return_to_state(state_str: StringName):
+	# no error checking atm
 	# print("returning to : ", state_str)
 	var returnee = states[str(state_str.to_lower())]
 	returnee.Transitioned.emit(current_state, state_str)

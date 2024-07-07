@@ -14,8 +14,8 @@ signal plot_progressed
 
 const PLAYER_START: Vector2 = Vector2(278, -1808)
 
-var inner_talisman_states = [] # array of bools, if true, inner T holder has talisman at that index
-var outer_talisman_states = []
+var inner_talisman_states: Array[bool] = [] # if true, inner T holder has talisman at that index
+var outer_talisman_states: Array[bool] = []
 
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
@@ -24,7 +24,11 @@ var player_position: Vector2 = Vector2(278, -1808)
 var current_state: State
 var state_str: StringName = ""
 
-# Other things everyone should have access to
+var save_data: game_data = game_data.new()
+
+var resuming: bool = false	# when true, taking special care to load the world state
+
+# a ton of references to things everyone should have access to
 # Should this go in a different singleton? Maybe
 var player
 var camera
@@ -63,28 +67,27 @@ func _ready():
 	t_holders_outer.resize(8)
 	noise_barriers.resize(8)
 
+	# game data structure
+	save_data.reset()
+
 	# if player != null:
 	# 	player.global_position = player_position
 
 # func _enter_tree():
 # 	print("state manager entering")
 
+func _enter_tree():
+	pass
+	# print("entering")
+
 func _process(_delta):
-	# if Engine.get_frames_drawn() % 60 == 0:
+	# print(resuming) # resuming == true for two frames
 
-	# Ok so in hindsight, a lot of this should not have been so automatic
-	# So, gotta make sure stuff is actually ready
-	# await self.ready
+	if game_room == null or game_room.game_ready == false:
+		return
+	# print("ready process")
 
-	if debug_ui == null: # awk
-		return
-	
-	if game_room == null:
-		return
-	if game_room.game_ready == false:
-		return
-
-	# check for triggers and advance state
+	# handle debug states
 	if plot_point == -1:
 		return
 
@@ -126,11 +129,21 @@ func return_to_menu_prep() -> void:
 	hh_overlay.hide()
 	game_room.game_ready = false
 	player_position = player.global_position
+	store_save_data()
 
 func final_setup() -> void:
 	# THIS IS ALWAYS CALLED WHEN THE WORLD ENTERS THE TREE
 	# ITS CALLED BASICALLY LAST
+	game_room.connect("game_is_ready", on_game_is_ready)
+	print("resuming: ", resuming)
+	if resuming:
+		load_save_data()
 		plot_machine.return_to_state(state_str)
+		# propogate holder states out to the holders
+		for idx in range(0, 8):
+			t_holders_inner[idx].reset(inner_talisman_states[idx])
+			t_holders_outer[idx].reset(outer_talisman_states[idx])
+
 	# one of many data points that depends on if its a new game or a resumed game
 	player.set_global_position(player_position)
 
@@ -147,6 +160,20 @@ func are_references_ready() -> bool:
 	if null in references:
 		return false
 	return true
+
+func store_save_data() -> void:
+	save_data.fill_values(day_num, part_num, state_str, player_position)
+	save_data.fill_arrays(inner_talisman_states, outer_talisman_states, player.talisman_inventory)
+
+func load_save_data() -> void:
+	day_num = save_data.day
+	part_num = save_data.part
+	state_str = save_data.state_str
+	player_position = save_data.player_position
+
+	inner_talisman_states = save_data.inner_states.duplicate()
+	outer_talisman_states = save_data.outer_states.duplicate()
+	player.talisman_inventory = save_data.inventory.duplicate()
 
 func reset_talismans() -> void:
 	for i in range(0, 8):
@@ -166,6 +193,7 @@ func update_debug_string() -> void:
 	debug_ui.update_left_text(1, str("ti: ", inner_talisman_states))
 	debug_ui.update_left_text(2, str("to: ", outer_talisman_states))
 	debug_ui.update_left_text(3, str("part: ", part_num, "    plot_point: " , plot_point))
+	debug_ui.update_right_text(0, str("inv: ", player.talisman_inventory))
 
 func show_all_dialog() -> void:
 	# I could make this smart or...
