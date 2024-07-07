@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://iy5mrohbpkhv"]
+[gd_scene load_steps=15 format=3 uid="uid://iy5mrohbpkhv"]
 
 [ext_resource type="Script" path="res://source/actors/Enemy.gd" id="1_h6whk"]
-[ext_resource type="Texture2D" uid="uid://b4e3xsnk8n28q" path="res://assets/mobs/tako_evil.png" id="2_mxamx"]
-[ext_resource type="Texture2D" uid="uid://d4lcq87df2x6x" path="res://assets/mobs/tako_creepy.png" id="3_5s8cw"]
+[ext_resource type="Texture2D" uid="uid://6qjhlna81wvr" path="res://assets/mobs/tako_creepy_blank.png" id="2_v6v3q"]
+[ext_resource type="Texture2D" uid="uid://b88hv0ks4dblo" path="res://assets/mobs/tako_evil_blank.png" id="3_2t817"]
 [ext_resource type="Texture2D" uid="uid://d2i017nlwpr5l" path="res://assets/mobs/tako_normal.png" id="4_3c81e"]
 [ext_resource type="Texture2D" uid="uid://cdtorfrf76lwr" path="res://assets/mobs/tako_creepy_back.png" id="5_ieyul"]
 [ext_resource type="Texture2D" uid="uid://ewtlj3oldn34" path="res://assets/mobs/tako_evil_back.png" id="6_rkkq1"]
 [ext_resource type="Texture2D" uid="uid://daavk2lw5l3x5" path="res://assets/mobs/tako_normal_back.png" id="7_470r0"]
+[ext_resource type="Texture2D" uid="uid://bqwwictholen5" path="res://assets/mobs/tako_creepy_face.png" id="8_3ly6p"]
 [ext_resource type="FontFile" uid="uid://f3oi0feh6n3g" path="res://assets/fonts/monogram_a.ttf" id="8_jcypu"]
+[ext_resource type="Texture2D" uid="uid://rvuo72nwb1ye" path="res://assets/mobs/take_evil_face.png" id="9_3cidq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqflf"]
 size = Vector2(38, 33)
@@ -16,10 +18,10 @@ size = Vector2(38, 33)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5s8cw")
+"texture": ExtResource("2_v6v3q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_mxamx")
+"texture": ExtResource("3_2t817")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_3c81e")
@@ -38,6 +40,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_roj0a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3ly6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3cidq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3c81e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="LabelSettings" id="LabelSettings_3j8ed"]
 font = ExtResource("8_jcypu")
 
@@ -46,14 +65,23 @@ z_index = 11
 script = ExtResource("1_h6whk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_eqflf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_2im2g")
 
+[node name="EyesOrigin" type="Node2D" parent="."]
+
+[node name="EyeSprite" type="AnimatedSprite2D" parent="EyesOrigin"]
+z_index = 11
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_roj0a")
+
 [node name="LabelAor" type="Control" parent="."]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_top = -16.0

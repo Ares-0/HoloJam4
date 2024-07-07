@@ -12,14 +12,14 @@ extends Node
 
 signal plot_progressed
 
-const PLAYER_START: Vector2 = Vector2(278, -1808)
+const PLAYER_START: Vector2 = Vector2(272, -1808)
 
 var inner_talisman_states: Array[bool] = [] # if true, inner T holder has talisman at that index
 var outer_talisman_states: Array[bool] = []
 
+var plot_point: int = -2	# now almost useless
 var day_num: int = 57392
 var part_num: int = 0 		# part one or two of the story # potentially redundant
-var plot_point: int = 0		# now almost useless
 var player_position: Vector2 = Vector2(278, -1808)
 var current_state: State
 var state_str: StringName = ""

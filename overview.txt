@@ -7,14 +7,12 @@ Post Jam
             known issue, slotted for 4.3
     fix talisman numbering
     stop moving on quantized positions
-    tako eyes left and right
+        really replace with movement state machine
 
 Bug Tracker
     Possible to get stuck against takos and walls
         Probable from takos too close to the edge during screen transition clamping
     possible to have an extra talisman in the inventory during part 2
-    tako text should be above takos
-    I never randomized the tako text!
     After interacting, short time where can't reinteract
 
 Stretch Goals
@@ -41,7 +39,7 @@ Path Progress
                                 0
                 1
                 2
-3
+                3
                 4
                 5
                 6

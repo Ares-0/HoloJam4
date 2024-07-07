@@ -62,7 +62,8 @@ func move(_delta: float):
 	
 	# if no longer moving, snap to pixel
 	if direction.length_squared() == 0:
-		var pos = get_position().round()
+		var pos = get_position().round() # pixel snap
+		pos = get_position().snapped(Vector2(16, 16)) # this is good mechanically, not visually
 		self.set_position(pos)
 
 func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> void:

@@ -17,6 +17,8 @@ func enter():
 	in_progress = false
 
 func update(_delta: float):
+	if StateManager.plot_point < 0:
+		return
 	if in_progress:
 		return
 

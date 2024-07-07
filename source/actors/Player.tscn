@@ -30,8 +30,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl13w"]
-size = Vector2(90, 98)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxoio"]
+radius = 44.0
+height = 98.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uh8ab"]
 size = Vector2(54, 64)
@@ -47,7 +48,7 @@ sprite_frames = SubResource("SpriteFrames_1embp")
 visible = false
 position = Vector2(0, -0.5)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_sl13w")
+shape = SubResource("CapsuleShape2D_rxoio")
 
 [node name="InteractArea" type="Area2D" parent="."]
 visible = false

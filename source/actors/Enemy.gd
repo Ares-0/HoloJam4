@@ -11,7 +11,9 @@ var last_update: int = 0
 var use_left_label: bool = true
 var next_update: int = 20
 
-@onready var sprites = $AnimatedSprite2D
+@onready var sprite_body = $BodySprite
+@onready var sprite_eyes = $EyesOrigin/EyeSprite
+@onready var eyes_origin = $EyesOrigin
 @onready var aor = $LabelAor
 @onready var LabelL = $LabelAor/LabelLeft
 @onready var LabelR = $LabelAor/LabelRight
@@ -28,6 +30,7 @@ func _process(_delta):
 	if active:
 		# face player if need be
 		update_facing()
+		turn_eyes()
 
 		# spit curses
 		var current_frame: int = Engine.get_frames_drawn()
@@ -39,14 +42,25 @@ func _process(_delta):
 func update_facing() -> void:
 	var line = StateManager.player.position.y
 	if line > position.y:
-		sprites.frame = frame
+		sprite_body.frame = frame
+		sprite_eyes.visible = true
 	else:
-		sprites.frame = frame + 3
+		sprite_body.frame = frame + 3
+		sprite_eyes.visible = false
+
+func turn_eyes() -> void:
+	var angle = self.global_position.angle_to_point(StateManager.player.position) # rads
+	var dir = round(angle / (PI/4)) * (PI/4)
+	eyes_origin.set_rotation(dir)
+	sprite_eyes.set_rotation(-dir)
 
 func update_curses() -> void:
 	var idx = randi_range(-3, 3)
 	aor.set_rotation_degrees(15*idx)
 	chance_swap_label(0.9)
+	# jumble text
+	LabelL.text = generate_string()
+	LabelR.text = LabelL.text
 
 func chance_swap_label(odds: float) -> void:
 	var swap = randf()

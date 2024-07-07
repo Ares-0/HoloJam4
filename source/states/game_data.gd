@@ -11,7 +11,7 @@ var part: int
 var state_str: StringName
 
 func reset() -> void:
-	player_position = Vector2(278, -1808)
+	player_position = Vector2(272, -1808)
 	inner_states = [0, 1, 0, 1, 0, 1, 0, 1]
 	outer_states = [1, 0, 1, 0, 1, 0, 1, 0]
 	inventory = [0, 0, 0, 0, 0, 0, 0, 0]

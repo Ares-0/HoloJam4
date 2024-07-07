@@ -29,7 +29,8 @@ func on_child_transition(state, new_state_name):
 	# new_state_name: name of state to transition to
 
 	# if debug states active, return
-	# replace with more proper check later
+	# this is too late to catch a value passed from world
+	# maybe await all ready?
 	if StateManager.plot_point < 0:
 		return
 
