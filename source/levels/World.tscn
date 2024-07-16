@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://cdw6d7knrxeit"]
+[gd_scene load_steps=25 format=3 uid="uid://cdw6d7knrxeit"]
 
 [ext_resource type="Script" path="res://source/levels/TestRoom.gd" id="1_wvqtp"]
 [ext_resource type="TileSet" uid="uid://mndoxu163t1" path="res://source/levels/tilemap_t.tres" id="2_ky2lq"]
 [ext_resource type="PackedScene" uid="uid://d1k3e0lthweoo" path="res://source/actors/CameraMain.tscn" id="3_emjnr"]
+[ext_resource type="PackedScene" uid="uid://cyd2lr63cmggd" path="res://source/actors/AudioManager.tscn" id="4_5kqac"]
 [ext_resource type="PackedScene" uid="uid://d21n3yip8h2sk" path="res://source/actors/Player.tscn" id="4_h6476"]
 [ext_resource type="PackedScene" uid="uid://byntc7irdjwfm" path="res://source/actors/Oddity.tscn" id="5_snidi"]
 [ext_resource type="PackedScene" uid="uid://cu1pxn25e2v02" path="res://source/gui/DebugInfo.tscn" id="6_8su5i"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dglk5ltyn0tqd" path="res://source/actors/NoiseBarrier.tscn" id="12_jtd2k"]
 [ext_resource type="Script" path="res://source/levels/Ending01_Player.gd" id="13_cxdxb"]
 [ext_resource type="PackedScene" uid="uid://c1blisy7u0f6j" path="res://source/actors/Fire.tscn" id="13_m8jw4"]
+[ext_resource type="PackedScene" uid="uid://eg7kfrg0p7qg" path="res://source/levels/ZoneHelper.tscn" id="13_qyy8n"]
 [ext_resource type="PackedScene" uid="uid://b0per6ccqcing" path="res://source/actors/FinalDoorway.tscn" id="15_d0alk"]
 [ext_resource type="PackedScene" uid="uid://iy5mrohbpkhv" path="res://source/actors/Enemy.tscn" id="16_jb708"]
 [ext_resource type="PackedScene" uid="uid://di55cl41cedjx" path="res://source/actors/FakeFence.tscn" id="17_8hudl"]
@@ -277,6 +279,11 @@ layer_2/tile_data = PackedInt32Array()
 [node name="CameraMain" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_emjnr")]
 player = NodePath("../Player")
 
+[node name="ZoneHelper" parent="." instance=ExtResource("13_qyy8n")]
+visible = false
+
+[node name="AudioManager" parent="." instance=ExtResource("4_5kqac")]
+
 [node name="Player" parent="." instance=ExtResource("4_h6476")]
 z_index = 10
 position = Vector2(272, -1808)
@@ -288,7 +295,6 @@ position = Vector2(361, 1110)
 
 [node name="DebugInfo" parent="UICanvasLayer" instance=ExtResource("6_8su5i")]
 layer = 5
-visible = false
 
 [node name="HandheldOverlay" parent="UICanvasLayer" instance=ExtResource("7_yafbw")]
 visible = false
@@ -389,48 +395,6 @@ holder_number = 6
 [node name="TalismanHolder7" parent="T Holders Outside" instance=ExtResource("11_mkha7")]
 position = Vector2(-2610, -1134)
 holder_number = 7
-
-[node name="Area Outlines" type="Node2D" parent="."]
-visible = false
-z_index = 4
-
-[node name="AreaOutline_0" type="Polygon2D" parent="Area Outlines"]
-color = Color(0.929412, 0, 0.247059, 0.447059)
-polygon = PackedVector2Array(0, -2160, 720, -2160, 720, -720, 0, -720)
-
-[node name="AreaOutline_1" type="Polygon2D" parent="Area Outlines"]
-color = Color(0.0784314, 0, 0.929412, 0.447059)
-polygon = PackedVector2Array(720, 0, 1440, 0, 1440, -2880, -720, -2880, -720, -1440, 0, -1440, 0, -2160, 720, -2160)
-
-[node name="AreaOutline_2" type="Polygon2D" parent="Area Outlines"]
-position = Vector2(1808, 1068)
-color = Color(0.93, 0, 0.248, 0.447059)
-polygon = PackedVector2Array(352, -1068, 352, -1788, 1072, -1788, 1072, -1068, 2512, -1068, 2512, -348, 1792, -348, 1792, 372, 1072, 372, 1072, -348, -1088, -348, -1088, -1068)
-
-[node name="AreaOutline_3" type="Polygon2D" parent="Area Outlines"]
-color = Color(0.0775001, 0, 0.93, 0.447059)
-polygon = PackedVector2Array(720, 1440, 720, 720, 1440, 720, 2880, 720, 2880, 1440, 3600, 1440, 3600, 2160, 1440, 2160, 1440, 1440)
-
-[node name="AreaOutline_4" type="Polygon2D" parent="Area Outlines"]
-color = Color(0.929412, 0, 0.247059, 0.447059)
-polygon = PackedVector2Array(0, 1440, 1440, 1440, 1440, 4320, 0, 4320)
-
-[node name="AreaOutline_5" type="Polygon2D" parent="Area Outlines"]
-color = Color(0.0775001, 0, 0.93, 0.447059)
-polygon = PackedVector2Array(0, 720, -720, 720, -720, 1440, -1440, 1440, -1440, 2160, -2880, 2160, -2880, 3600, -720, 3600, -720, 2160, 0, 2160)
-
-[node name="AreaOutline_6" type="Polygon2D" parent="Area Outlines"]
-scale = Vector2(1.20169, 1.8275)
-color = Color(0.929412, 0, 0.247059, 0.447059)
-polygon = PackedVector2Array(-599.158, 393.981, 0, 393.981, 0, 0, -599.158, 0, -599.158, -393.981, -2396.63, -393.981, -2396.63, 787.961, -599.158, 787.961)
-
-[node name="AreaOutline_7" type="Polygon2D" parent="Area Outlines"]
-color = Color(0.0784314, 0, 0.929412, 0.447059)
-polygon = PackedVector2Array(0, 0, -720, 0, -720, -720, -2880, -720, -2880, -1440, -2160, -1440, -2160, -2160, -1440, -2160, -1440, -1440, 0, -1440)
-
-[node name="AreaOutline_Main" type="Polygon2D" parent="Area Outlines"]
-color = Color(0.1705, 0.93, 0, 0.447059)
-polygon = PackedVector2Array(0, -720, 720, -720, 720, 1440, 0, 1440)
 
 [node name="Barriers" type="Node2D" parent="."]
 

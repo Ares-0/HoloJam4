@@ -13,6 +13,7 @@ Bug Tracker
     Possible to get stuck against takos and walls
         Probable from takos too close to the edge during screen transition clamping
     possible to have an extra talisman in the inventory during part 2
+    angry mobs seem quiet for too long after entering their screen
 
 Stretch Goals
     mobs shake when angry
@@ -103,3 +104,5 @@ https://opengameart.org/content/zelda-like-tilesets-and-sprites
 https://datagoblin.itch.io/monogram
 https://godotengine.org/asset-library/asset/1806
 https://opengameart.org/content/fire-0
+
+https://joshuuu.itch.io/short-loopable-background-music

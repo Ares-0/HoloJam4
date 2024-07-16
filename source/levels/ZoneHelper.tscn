@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3 uid="uid://eg7kfrg0p7qg"]
+
+[ext_resource type="Script" path="res://source/levels/ZoneHelper.gd" id="1_j0k0i"]
+
+[node name="ZoneHelper" type="Node2D"]
+z_index = 4
+script = ExtResource("1_j0k0i")
+
+[node name="Outlines" type="Node2D" parent="."]
+visible = false
+
+[node name="AreaOutline_Main" type="Polygon2D" parent="Outlines"]
+color = Color(0.1705, 0.93, 0, 0.447059)
+polygon = PackedVector2Array(0, -720, 720, -720, 720, 1440, 0, 1440)
+
+[node name="AreaOutline_0" type="Polygon2D" parent="Outlines"]
+color = Color(0.929412, 0, 0.247059, 0.447059)
+polygon = PackedVector2Array(0, -2160, 720, -2160, 720, -720, 0, -720)
+
+[node name="AreaOutline_1" type="Polygon2D" parent="Outlines"]
+color = Color(0.0784314, 0, 0.929412, 0.447059)
+polygon = PackedVector2Array(720, 0, 1440, 0, 1440, -2880, -720, -2880, -720, -1440, 0, -1440, 0, -2160, 720, -2160)
+
+[node name="AreaOutline_2" type="Polygon2D" parent="Outlines"]
+position = Vector2(1808, 1068)
+color = Color(0.93, 0, 0.248, 0.447059)
+polygon = PackedVector2Array(352, -1068, 352, -1788, 1072, -1788, 1072, -1068, 2512, -1068, 2512, -348, 1792, -348, 1792, 372, 1072, 372, 1072, -348, -1088, -348, -1088, -1068)
+
+[node name="AreaOutline_3" type="Polygon2D" parent="Outlines"]
+color = Color(0.0775001, 0, 0.93, 0.447059)
+polygon = PackedVector2Array(720, 1440, 720, 720, 1440, 720, 2880, 720, 2880, 1440, 3600, 1440, 3600, 2160, 1440, 2160, 1440, 1440)
+
+[node name="AreaOutline_4" type="Polygon2D" parent="Outlines"]
+color = Color(0.929412, 0, 0.247059, 0.447059)
+polygon = PackedVector2Array(0, 1440, 1440, 1440, 1440, 4320, 0, 4320)
+
+[node name="AreaOutline_5" type="Polygon2D" parent="Outlines"]
+color = Color(0.0775001, 0, 0.93, 0.447059)
+polygon = PackedVector2Array(0, 720, -720, 720, -720, 1440, -1440, 1440, -1440, 2160, -2880, 2160, -2880, 3600, -720, 3600, -720, 2160, 0, 2160)
+
+[node name="AreaOutline_6" type="Polygon2D" parent="Outlines"]
+scale = Vector2(1.20169, 1.8275)
+color = Color(0.929412, 0, 0.247059, 0.447059)
+polygon = PackedVector2Array(-599.158, 393.981, 0, 393.981, 0, 0, -599.158, 0, -599.158, -393.981, -2396.63, -393.981, -2396.63, 787.961, -599.158, 787.961)
+
+[node name="AreaOutline_7" type="Polygon2D" parent="Outlines"]
+color = Color(0.0784314, 0, 0.929412, 0.447059)
+polygon = PackedVector2Array(0, 0, -720, 0, -720, -720, -2880, -720, -2880, -1440, -2160, -1440, -2160, -2160, -1440, -2160, -1440, -1440, 0, -1440)
+
+[node name="ZoneMain" type="Area2D" parent="."]
+
+[node name="AreaOutline_Main" type="CollisionPolygon2D" parent="ZoneMain"]
+polygon = PackedVector2Array(0, -720, 720, -720, 720, 1440, 0, 1440)
+
+[node name="Zone0" type="Area2D" parent="."]
+
+[node name="AreaOutline_0" type="CollisionPolygon2D" parent="Zone0"]
+polygon = PackedVector2Array(0, -2160, 720, -2160, 720, -720, 0, -720)
+
+[node name="Zone1" type="Area2D" parent="."]
+
+[node name="AreaOutline_1" type="CollisionPolygon2D" parent="Zone1"]
+polygon = PackedVector2Array(720, 0, 1440, 0, 1440, -2880, -720, -2880, -720, -1440, 0, -1440, 0, -2160, 720, -2160)
+
+[node name="Zone2" type="Area2D" parent="."]
+
+[node name="AreaOutline_2" type="CollisionPolygon2D" parent="Zone2"]
+position = Vector2(1808, 1068)
+polygon = PackedVector2Array(352, -1068, 352, -1788, 1072, -1788, 1072, -1068, 2512, -1068, 2512, -348, 1792, -348, 1792, 372, 1072, 372, 1072, -348, -1088, -348, -1088, -1068)
+
+[node name="Zone3" type="Area2D" parent="."]
+
+[node name="AreaOutline_3" type="CollisionPolygon2D" parent="Zone3"]
+polygon = PackedVector2Array(720, 1440, 720, 720, 1440, 720, 2880, 720, 2880, 1440, 3600, 1440, 3600, 2160, 1440, 2160, 1440, 1440)
+
+[node name="Zone4" type="Area2D" parent="."]
+
+[node name="AreaOutline_4" type="CollisionPolygon2D" parent="Zone4"]
+polygon = PackedVector2Array(0, 1440, 1440, 1440, 1440, 4320, 0, 4320)
+
+[node name="Zone5" type="Area2D" parent="."]
+
+[node name="AreaOutline_5" type="CollisionPolygon2D" parent="Zone5"]
+polygon = PackedVector2Array(0, 720, -720, 720, -720, 1440, -1440, 1440, -1440, 2160, -2880, 2160, -2880, 3600, -720, 3600, -720, 2160, 0, 2160)
+
+[node name="Zone6" type="Area2D" parent="."]
+
+[node name="AreaOutline_6" type="CollisionPolygon2D" parent="Zone6"]
+scale = Vector2(1.20169, 1.8275)
+polygon = PackedVector2Array(-599.158, 393.981, 0, 393.981, 0, 0, -599.158, 0, -599.158, -393.981, -2396.63, -393.981, -2396.63, 787.961, -599.158, 787.961)
+
+[node name="Zone7" type="Area2D" parent="."]
+
+[node name="AreaOutline_7" type="CollisionPolygon2D" parent="Zone7"]
+polygon = PackedVector2Array(0, 0, -720, 0, -720, -720, -2880, -720, -2880, -1440, -2160, -1440, -2160, -2160, -1440, -2160, -1440, -1440, 0, -1440)
+
+[connection signal="body_entered" from="ZoneMain" to="." method="_on_zone_main_body_entered"]
+[connection signal="body_entered" from="Zone0" to="." method="_on_zone_0_body_entered"]
+[connection signal="body_entered" from="Zone1" to="." method="_on_zone_1_body_entered"]
+[connection signal="body_entered" from="Zone2" to="." method="_on_zone_2_body_entered"]
+[connection signal="body_entered" from="Zone3" to="." method="_on_zone_3_body_entered"]
+[connection signal="body_entered" from="Zone4" to="." method="_on_zone_4_body_entered"]
+[connection signal="body_entered" from="Zone5" to="." method="_on_zone_5_body_entered"]
+[connection signal="body_entered" from="Zone6" to="." method="_on_zone_6_body_entered"]
+[connection signal="body_entered" from="Zone7" to="." method="_on_zone_7_body_entered"]

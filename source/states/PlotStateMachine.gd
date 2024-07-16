@@ -10,6 +10,10 @@ var states: Dictionary = {}
 func _ready():
 	StateManager.plot_machine = self
 
+	# debug modes, do no state logic
+	if StateManager.plot_point < 0:
+		return
+
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child

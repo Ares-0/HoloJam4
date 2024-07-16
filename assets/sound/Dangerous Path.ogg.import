@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmba7m3utbdfo"
+path="res://.godot/imported/Dangerous Path.ogg-59c3ad17107a36bc1f1f396af84e0dbb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/Dangerous Path.ogg"
+dest_files=["res://.godot/imported/Dangerous Path.ogg-59c3ad17107a36bc1f1f396af84e0dbb.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -39,6 +39,7 @@ var game_room
 var final_door
 var Ending01Player # animation player
 var plot_machine
+var zone_helper
 
 var t_holders_inner = []
 var t_holders_outer = []

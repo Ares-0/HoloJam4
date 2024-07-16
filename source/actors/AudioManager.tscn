@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyd2lr63cmggd"]
+
+[ext_resource type="Script" path="res://source/actors/AudioManager.gd" id="1_07x08"]
+[ext_resource type="AudioStream" uid="uid://cijds2swlgeih" path="res://assets/sound/Shiori Loading.mp3" id="2_ftm3x"]
+[ext_resource type="AudioStream" uid="uid://cpbcqmtcuk1gk" path="res://assets/sound/VIOLET.mp3" id="3_jcg0t"]
+[ext_resource type="AudioStream" uid="uid://bmba7m3utbdfo" path="res://assets/sound/Dangerous Path.ogg" id="4_hqc8l"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_07x08")
+
+[node name="CenterPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ftm3x")
+volume_db = -20.0
+bus = &"Music"
+
+[node name="OuterPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jcg0t")
+volume_db = -30.0
+bus = &"Music"
+
+[node name="OuterPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hqc8l")
+volume_db = -30.0
+mix_target = 2
+bus = &"Music"
