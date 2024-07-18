@@ -1,12 +1,16 @@
 class_name Player
 extends CharacterBody2D
 
-var talisman_inventory: Array[bool] = []
+var ORIGIN: Vector2 = Vector2(289, -1798)
+
 @export var SPEED: int = 450
 @export var SPRINT_SCALE: float = 2.0 # debug only
+
+var talisman_inventory: Array[bool] = []
 var movement_frozen: bool = false # used to stop movement during dialog # feels awk
 var sprinting = 0 # debug only
-var ORIGIN: Vector2 = Vector2(289, -1798)
+
+@onready var animation_player = $AnimatedSprite2D
 
 func _ready():
 	talisman_inventory.resize(8)
@@ -113,14 +117,17 @@ func interact_talisman_holder(object):
 func choose_sprite(direction: Vector2) -> void:
 	# left and right are shown if moving left or right
 	if direction.x == -1:
-		$AnimatedSprite2D.frame = 2
+		animation_player.play("shiori_left")
 	if direction.x == 1:
-		$AnimatedSprite2D.frame = 3
+		animation_player.play("shiori_right")
 	# diagonals overwrite LR with UD
 	if direction.y > 0.5:
-		$AnimatedSprite2D.frame = 0
+		animation_player.play("shiori_down")
 	if direction.y <= -0.5:
-		$AnimatedSprite2D.frame = 1
+		animation_player.play("shiori_up")
+	
+	if direction.length_squared() <= 0:
+		animation_player.stop()
 
 func movement_freeze():
 	movement_frozen = true

@@ -5,8 +5,6 @@ Post Jam
     something glitches when switching to final scene
         I think its the world unspawning everything
             known issue, slotted for 4.3
-    fix talisman numbering
-    movement state machine
     After interacting, short time where can't reinteract
 
 Bug Tracker
@@ -17,7 +15,6 @@ Bug Tracker
 
 Stretch Goals
     mobs shake when angry
-    walking animation
     dialog
         Camera zooms in very slightly during dialog
         Text splays out over time

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi30bea5tyt07"
-path="res://.godot/imported/shiori_back.png-545d141c66de6dcf7a872174cad23107.ctex"
+uid="uid://qwg0ey0p3bs3"
+path="res://.godot/imported/character_sheet.png-92b3fe3b7d97df2c04a86156f668a7c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/shiori_back.png"
-dest_files=["res://.godot/imported/shiori_back.png-545d141c66de6dcf7a872174cad23107.ctex"]
+source_file="res://assets/character/character_sheet.png"
+dest_files=["res://.godot/imported/character_sheet.png-92b3fe3b7d97df2c04a86156f668a7c8.ctex"]
 
 [params]
 
