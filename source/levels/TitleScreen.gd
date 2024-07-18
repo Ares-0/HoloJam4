@@ -3,9 +3,11 @@ extends Control
 
 @onready var VersionL = $VersionL
 @onready var continue_B = $MarginContainer/HBoxContainer/VBoxContainer/MenuActions/Continue
+@onready var newgame_B = $"MarginContainer/HBoxContainer/VBoxContainer/MenuActions/New Game"
 
 func _ready():
 	VersionL.text = "v" + StateManager.version_number
+	newgame_B.grab_focus()
 	# if StateManager.hh_overlay != null: # coming from game case?
 	# 	StateManager.hh_overlay.hide()
 	if StateManager.state_str == "":

@@ -6,6 +6,7 @@ extends Control
 var paused: bool = false
 
 @onready var goal_label = $MarginContainer/CenterContainer/VBoxContainer/Goal
+@onready var resume_button = $MarginContainer/CenterContainer/VBoxContainer/ResumeB
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,7 @@ func _process(_delta):
 func pause():
 	paused = true
 	get_tree().paused = true
+	resume_button.grab_focus()
 	show()
 
 func unpause():

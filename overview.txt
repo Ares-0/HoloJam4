@@ -1,9 +1,9 @@
 
 Post Jam
     Music
-        music pauses during dialog
     SFX
     Options menu
+    update credits page
     Lock more talisman holders depending on plot point
 
 Bug Tracker
@@ -61,6 +61,10 @@ Updates in v1.1:
         Replaced all plot advancement logic with a state machine
         Occasionally lock player on screen
         Small cooldown after interacting with something so very quick button presses are ignored
+
+    UI
+        Added keyboard focus to UI buttons
+
 
 TODO still??
     Some takos be actual enemies to fight / avoid
