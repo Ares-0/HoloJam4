@@ -104,6 +104,10 @@ func unanger() -> void:
 
 func activate() -> void:
 	active = true
+	if angry:
+		LabelL.visible = use_left_label
+		LabelR.visible = !use_left_label
+		chance_swap_label(0.5)
 
 func deactivate() -> void:
 	active = false

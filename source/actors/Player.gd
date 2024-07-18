@@ -20,6 +20,9 @@ var sprinting = 0 # debug only
 var input_history = [] # list of recently pressed directional buttons. Always listen to most recent press
 var last_direction: Vector2 = Vector2.ZERO # last non-zero direction player moved in
 
+var INTERACT_COOLDOWN_DURATION: float = 0.5 # max cooldown timer length in seconds
+var interact_cooldown_time: float = 0.0 # timer for temporarily locking out interactions
+
 @onready var animation_player = $AnimatedSprite2D
 
 func _ready():
@@ -34,20 +37,28 @@ func _ready():
 	# StateManager.debug_ui.update_right_text(0, str("inv: ", talisman_inventory))
 
 func _process(delta: float):
+	if interact_cooldown_time > 0:
+		interact_cooldown_time -= delta
+	
 	if Input.is_action_just_pressed("sprint"):
 		sprinting = not sprinting
 	if Input.is_action_just_pressed("action_button"):
+		if interact_cooldown_time > 0:
+			return
+		
+		interact_cooldown_time = INTERACT_COOLDOWN_DURATION
 		for object in $InteractArea.get_overlapping_areas():
-			# TODO: maybe only interact with one thing
+			# The break means the player only interacts with the first thing in the list
+			# Which is fine, assuming that everything is properly spaced so overlaps are minimal
 
 			var parent = object.get_parent()
-			# Ground talisman # technically doesn't happen
-			if parent is Talisman:
-				pickup_talisman(parent)
-				break
 			# T Holder
 			if parent is TalismanHolder:
 				interact_talisman_holder(parent)
+				break
+			# Ground talisman # debug only
+			if parent is Talisman:
+				pickup_talisman(parent)
 				break
 
 	# if Input.is_action_just_pressed("debug_02"):
@@ -136,12 +147,11 @@ func choose_sprite(direction: Vector2) -> void:
 		animation_player.play("shiori_left")
 	if direction.x == 1:
 		animation_player.play("shiori_right")
-	# diagonals overwrite LR with UD
-	if direction.y > 0.5:
+	if direction.y == 1:
 		animation_player.play("shiori_down")
-	if direction.y <= -0.5:
+	if direction.y == -1:
 		animation_player.play("shiori_up")
-	
+
 	if direction.length_squared() <= 0:
 		animation_player.stop()
 
