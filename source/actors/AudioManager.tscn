@@ -9,16 +9,19 @@
 script = ExtResource("1_07x08")
 
 [node name="CenterPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("2_ftm3x")
 volume_db = -20.0
 bus = &"Music"
 
-[node name="OuterPlayer" type="AudioStreamPlayer" parent="."]
+[node name="OuterPlayerCalm" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("3_jcg0t")
 volume_db = -30.0
 bus = &"Music"
 
-[node name="OuterPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="OuterPlayerSpooky" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("4_hqc8l")
 volume_db = -30.0
 mix_target = 2

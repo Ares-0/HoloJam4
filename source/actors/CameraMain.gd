@@ -43,8 +43,8 @@ func update_player_pos() -> void:
 
 func update_debug_string() -> void:
 	if StateManager.debug_ui != null and StateManager.debug_ui.visible:
-		StateManager.debug_ui.update_right_text(1, str(current_cell))
-		StateManager.debug_ui.update_right_text(2, str(StateManager.player.global_position))
+		StateManager.debug_ui.update_right_text(1, str("Cell: ", current_cell))
+		StateManager.debug_ui.update_right_text(2, str("Pos: ", StateManager.player.global_position))
 		StateManager.debug_ui.update_left_text(4, str(nearby_bodies))
 
 func get_current_cell() -> Vector2i:

@@ -21,8 +21,8 @@ var b_velocity_up: float = 0.25 # how quickly volume raises
 var b_velocity_down: float = 0.55 # how quickly volume falls
 
 @onready var StreamCenter = $CenterPlayer
-@onready var StreamOuterA = $OuterPlayer
-@onready var StreamOuterB = $OuterPlayer2
+@onready var StreamOuterA = $OuterPlayerCalm
+@onready var StreamOuterB = $OuterPlayerSpooky
 @onready var StreamOuter = StreamOuterA
 
 func _ready():
@@ -117,3 +117,6 @@ func on_zone_changed(zone: int):
 				StreamOuterB._set_playing(true)
 		_:
 			return
+	
+	on_holder_update(false, current_zone, StateManager.outer_talisman_states[current_zone])
+	StateManager.debug_ui.update_right_text(3, str("A Zone: ", current_zone))

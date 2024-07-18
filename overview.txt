@@ -14,6 +14,8 @@ Bug Tracker
     something glitches when switching to final scene
         I think its the world unspawning everything
             known issue, slotted for 4.3
+    technically theres a bug where the music is all somber until you touch the first talisman
+        this is naturally solved by the plot progression, only a problem in debug
 
 Stretch Goals
     keyboard on menus
