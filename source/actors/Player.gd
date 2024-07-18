@@ -3,12 +3,22 @@ extends CharacterBody2D
 
 var ORIGIN: Vector2 = Vector2(289, -1798)
 
+const MOVEMENTS = {
+	'move_left': Vector2.LEFT,
+	'move_right': Vector2.RIGHT,
+	'move_up': Vector2.UP,
+	'move_down': Vector2.DOWN
+}
+
 @export var SPEED: int = 450
 @export var SPRINT_SCALE: float = 2.0 # debug only
 
 var talisman_inventory: Array[bool] = []
 var movement_frozen: bool = false # used to stop movement during dialog # feels awk
 var sprinting = 0 # debug only
+
+var input_history = [] # list of recently pressed directional buttons. Always listen to most recent press
+var last_direction: Vector2 = Vector2.ZERO # last non-zero direction player moved in
 
 @onready var animation_player = $AnimatedSprite2D
 
@@ -43,32 +53,38 @@ func _process(delta: float):
 	# if Input.is_action_just_pressed("debug_02"):
 	# 	debug_conjure_talisman()
 
+	for input in MOVEMENTS:
+		if Input.is_action_just_pressed(input):
+			input_history.append(input)
+		if Input.is_action_just_released(input):
+			var idx = input_history.find(input)
+			if idx != -1:
+				input_history.remove_at(idx)
+
 	if not movement_frozen:
 		move(delta)
 	# print(talisman_inventory)
 	# print($InteractArea.get_overlapping_areas())
 
 func move(_delta: float):
-	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
-	# squash diagonals?
-	if abs(direction.x) > 0 and direction.y > 0:
-		direction = Vector2(0, 1)
-	if abs(direction.x) > 0 and direction.y < 0:
-		direction = Vector2(0, -1)
+	var direction: Vector2 = Vector2.ZERO
+	if input_history.size() > 0:
+		direction = MOVEMENTS[input_history.back()]
+		last_direction = direction
 
 	var total_speed = SPEED + SPEED*SPRINT_SCALE*int(sprinting)
 	velocity = direction * total_speed
-	# velocity.x = move_toward(velocity.x, 0, SPEED)
-	# velocity.y = move_toward(velocity.y, 0, SPEED)
+
 	choose_sprite(direction)
 	move_and_slide()
-	
+
 	# if no longer moving, snap to pixel
-	if direction.length_squared() == 0:
+	if direction.length_squared() == 0 and last_direction != Vector2.ZERO:
 		var pos = get_position().round() # pixel snap
-		pos = get_position().snapped(Vector2(16, 16)) # this is good mechanically, not visually
+		pos = pos + last_direction*6 # adjusts larger snap rounding. 12 means 4 back, 12 forward
+		pos = pos.snapped(Vector2(8, 8)) # looks awkward by itself
 		self.set_position(pos)
+		last_direction = Vector2.ZERO
 
 func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> void:
 	# limit_position: top left corner of clamp rect

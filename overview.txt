@@ -22,13 +22,6 @@ Stretch Goals
     Some edgy filter on top of the game screen
     The paths you go on first are less mobbed, later paths more mobbed
 
-Movement
-    4 way movement
-    collide into walls
-    move down one ways
-    slide down ramps (totally lose control)
-    sliding -> while on the object (/tile?) you have a constant velocity in a direction
-
 
 Path Progress
     Layout      Decoration      Hazards
