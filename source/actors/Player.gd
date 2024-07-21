@@ -157,9 +157,11 @@ func choose_sprite(direction: Vector2) -> void:
 
 func movement_freeze():
 	movement_frozen = true
+	input_history.clear()
 
 func movement_unfreeze(): 
 	movement_frozen = false
+	input_history.clear()
 
 func _on_interact_area_area_entered(_area):
 	pass

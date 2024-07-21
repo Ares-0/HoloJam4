@@ -6,10 +6,6 @@ Post Jam
     Lock more talisman holders depending on plot point
 
 Bug Tracker
-    After dialog, player is stuck moving in last direction
-        talismans too
-            fixed by returning to menu
-
     Possible to get stuck against takos and walls
         From takos too close to the edge during screen transition clamping
     possible to have an extra talisman in the inventory during part 2
