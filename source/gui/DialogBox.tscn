@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtvvxxrnavdoc"]
+[gd_scene load_steps=6 format=3 uid="uid://dtvvxxrnavdoc"]
 
 [ext_resource type="Script" path="res://source/gui/DialogBox.gd" id="1_ejpx0"]
 [ext_resource type="Texture2D" uid="uid://3v6ph0ov2kb3" path="res://assets/dialog_box.png" id="3_vvkpp"]
+[ext_resource type="AudioStream" uid="uid://clyn0obwkffva" path="res://assets/sound/blip.wav" id="4_d4q85"]
 [ext_resource type="FontFile" uid="uid://f3oi0feh6n3g" path="res://assets/fonts/monogram_a.ttf" id="4_pqfes"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uhw0b"]
@@ -12,6 +13,10 @@ font = ExtResource("4_pqfes")
 process_mode = 3
 script = ExtResource("1_ejpx0")
 metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d4q85")
+volume_db = -10.0
 
 [node name="Background" type="NinePatchRect" parent="."]
 anchors_preset = 7
@@ -55,53 +60,6 @@ offset_left = 166.667
 offset_top = 33.75
 offset_right = 210.667
 offset_bottom = 51.75
-text = "SPACE →"
-label_settings = SubResource("LabelSettings_uhw0b")
-autowrap_mode = 2
-clip_text = true
-
-[node name="BackgroundBig" type="NinePatchRect" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -458.0
-offset_top = -332.0
-offset_right = -90.0
-offset_bottom = -228.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("3_vvkpp")
-patch_margin_left = 30
-patch_margin_top = 43
-patch_margin_right = 42
-patch_margin_bottom = 14
-
-[node name="Control" type="Control" parent="BackgroundBig"]
-anchors_preset = 0
-offset_left = 19.3333
-offset_top = 15.3333
-offset_right = 59.3333
-offset_bottom = 55.3333
-scale = Vector2(1.6, 1.6)
-
-[node name="TextLabel" type="Label" parent="BackgroundBig/Control"]
-layout_mode = 0
-offset_right = 205.0
-offset_bottom = 46.0
-text = "the quick brown fox jumps over the lazy dog"
-label_settings = SubResource("LabelSettings_uhw0b")
-autowrap_mode = 2
-clip_text = true
-
-[node name="NextLabel" type="Label" parent="BackgroundBig/Control"]
-layout_mode = 0
-offset_left = 166.917
-offset_top = 33.9167
-offset_right = 210.917
-offset_bottom = 51.9167
 text = "SPACE →"
 label_settings = SubResource("LabelSettings_uhw0b")
 autowrap_mode = 2
