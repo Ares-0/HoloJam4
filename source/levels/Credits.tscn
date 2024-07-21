@@ -82,7 +82,7 @@ layout_mode = 0
 offset_left = 110.0
 offset_top = 515.0
 offset_right = 1088.0
-offset_bottom = 658.0
+offset_bottom = 710.0
 focus_mode = 2
 bbcode_enabled = true
 text = "CC0 Assets
@@ -96,6 +96,15 @@ text = "CC0 Assets
 [cell]Fire Sprite[/cell]
 [cell]Spring Sprint[/cell]
 [cell][u]https://opengameart.org/content/fire-0[/u][/cell]
+[cell]Song: Dangerous Path   [/cell]
+[cell]Joshuuu[/cell]
+[cell][u]https://joshuuu.itch.io/short-loopable-background-music[/u][/cell]
+[cell]Song: Doodle   [/cell]
+[cell]StumpyStrust[/cell]
+[cell][u]https://opengameart.org/content/doodle-menu-like-song[/u][/cell]
+[cell]Song: Shiori Intro BGM   [/cell]
+[cell]Shiori Novella / Hololive[/cell]
+[cell][/cell]
 [/table]"
 selection_enabled = true
 

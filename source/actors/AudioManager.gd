@@ -18,7 +18,7 @@ var mode = MODE.NONE # if center, playing center music, if outer playing outer m
 var balance_center: float = 0.0
 var balance_outer: float = 0.0
 var b_velocity_up: float = 0.25 # how quickly volume raises
-var b_velocity_down: float = 0.55 # how quickly volume falls
+var b_velocity_down: float = 0.45 # how quickly volume falls
 
 @onready var StreamCenter = $CenterPlayer
 @onready var StreamOuterA = $OuterPlayerCalm
@@ -48,7 +48,7 @@ func update_balances(delta: float):
 			return
 
 		balance_outer -= b_velocity_down*delta
-		if balance_outer < 0.4: # waits a bit before lifting other
+		if balance_outer < 0.25: # waits a bit before lifting other
 			balance_center += b_velocity_up*delta
 
 	# trend to outer stream
@@ -57,7 +57,7 @@ func update_balances(delta: float):
 			return
 
 		balance_center -= b_velocity_down*delta
-		if balance_center < 0.4:
+		if balance_center < 0.25:
 			balance_outer += b_velocity_up*delta
 	
 	if mode == MODE.NONE:
@@ -83,6 +83,7 @@ func update_balances(delta: float):
 	StreamOuter.set_volume_db(linear_to_db(outer_volume))
 	# print("\nA: ", center_volume, "\t\tdB: ", linear_to_db(center_volume))
 	# print("B: ", outer_volume, "\t\tdB: ", linear_to_db(outer_volume))
+	StateManager.debug_ui.update_right_text(4, str("Balances: ", snappedf(balance_outer, 0.01), ", ", snappedf(balance_center, 0.01)))
 
 func on_holder_update(inner: bool, number: int, filled: bool):
 	# print(inner, number, filled)
@@ -118,5 +119,7 @@ func on_zone_changed(zone: int):
 		_:
 			return
 	
+	var a = balance_outer
 	on_holder_update(false, current_zone, StateManager.outer_talisman_states[current_zone])
+	balance_outer = a	# dont want to change this on zone change # awk
 	StateManager.debug_ui.update_right_text(3, str("A Zone: ", current_zone))

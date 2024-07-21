@@ -1,6 +1,5 @@
 
 Post Jam
-    Music
     SFX
     Options menu
     update credits page
@@ -10,12 +9,9 @@ Bug Tracker
     Possible to get stuck against takos and walls
         From takos too close to the edge during screen transition clamping
     possible to have an extra talisman in the inventory during part 2
-    angry mobs seem quiet for too long after entering their screen
     something glitches when switching to final scene
         I think its the world unspawning everything
             known issue, slotted for 4.3
-    technically theres a bug where the music is all somber until you touch the first talisman
-        this is naturally solved by the plot progression, only a problem in debug
 
 Stretch Goals
     keyboard on menus
@@ -138,7 +134,12 @@ Assets etc Used
 https://kenney.nl/assets/game-icons
 https://opengameart.org/content/zelda-like-tilesets-and-sprites
 https://datagoblin.itch.io/monogram
-https://godotengine.org/asset-library/asset/1806
 https://opengameart.org/content/fire-0
 
+Music
 https://joshuuu.itch.io/short-loopable-background-music
+https://opengameart.org/content/doodle-menu-like-song
+
+Addons
+https://godotengine.org/asset-library/asset/1806
+https://godotengine.org/asset-library/asset/2067

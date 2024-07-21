@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://source/actors/AudioManager.gd" id="1_07x08"]
 [ext_resource type="AudioStream" uid="uid://cijds2swlgeih" path="res://assets/sound/Shiori Loading.mp3" id="2_ftm3x"]
-[ext_resource type="AudioStream" uid="uid://cpbcqmtcuk1gk" path="res://assets/sound/VIOLET.mp3" id="3_jcg0t"]
+[ext_resource type="AudioStream" uid="uid://dsfga8vsbnixj" path="res://assets/sound/doodle_0.mp3" id="3_yc838"]
 [ext_resource type="AudioStream" uid="uid://bmba7m3utbdfo" path="res://assets/sound/Dangerous Path.ogg" id="4_hqc8l"]
 
 [node name="AudioManager" type="Node2D"]
@@ -16,7 +16,7 @@ bus = &"Music"
 
 [node name="OuterPlayerCalm" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("3_jcg0t")
+stream = ExtResource("3_yc838")
 volume_db = -30.0
 bus = &"Music"
 
