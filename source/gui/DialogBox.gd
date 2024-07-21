@@ -4,13 +4,20 @@ extends CanvasLayer
 @export_file ("*json") var scene_text_file
 
 var scene_text = {}
-var in_progress = false
+var in_progress = false # if dialog is currently happening. Manages pausing and such
 var frame_updated = 0
 var text_queue = []
 var box_size_normal = true
 
+var is_typing: bool = false # if dialog is currently being typed out
+var current_line: String = ""
+var type_period: float = 0.01
+var current_char: int = 0
+
 @onready var background = $Background
 @onready var text_label = $Background/Control/TextLabel
+@onready var char_timer = $TypeTimer
+@onready var audio_player = $AudioStreamPlayer
 
 func _ready():
 	background.visible = false
@@ -21,6 +28,8 @@ func _ready():
 	DialogBus.connect("display_dialog_big", on_display_dialog_big)
 	DialogBus.connect("display_text_big", on_display_text_big)
 	self.visible = true # ?
+
+	char_timer.set_wait_time(type_period)
 
 func _process(_delta):
 	# if pausing isn't fully ready, dont accept inputs
@@ -35,9 +44,12 @@ func _process(_delta):
 
 	if in_progress:
 		if Input.is_action_just_pressed("action_button"):
-			# this is annoying but I dont have time rn
+			# without this check, action triggers on same frame as setup
 			if Engine.get_frames_drawn() != frame_updated:
-				next_line()
+				if is_typing:
+					skip_typing()
+				else:
+					next_line()
 	
 	if in_progress and not get_tree().paused:
 		get_tree().paused = true
@@ -46,16 +58,42 @@ func load_scene_text():
 	var file = FileAccess.open(scene_text_file, FileAccess.READ)
 	return JSON.parse_string(file.get_as_text())
 
-func show_text():
-	text_label.text = text_queue.pop_front()
-
 func next_line():
+	audio_player.pitch_scale = 1
+	audio_player.play()
 	if text_queue.size() > 0:
-		show_text()
+		start_typing()
 	else:
 		finish()
 
+func show_text():
+	# immediately display a line of text
+	text_label.text = text_queue.pop_front()
+
+func start_typing():
+	is_typing = true
+	current_line = text_queue.pop_front()
+	text_label.text = ""
+	current_char = 0
+	char_timer.start()
+
+func skip_typing():
+	text_label.text = current_line
+	is_typing = false
+	char_timer.stop()
+
+func _on_type_timer_timeout():
+	if current_char < len(current_line):
+		text_label.text += current_line[current_char]
+		current_char += 1
+		audio_player.pitch_scale = 1.25
+		audio_player.play()
+	else:
+		char_timer.stop()
+		is_typing = false
+
 func finish():
+	# cleans up the box and hides everything
 	text_label.text = ""
 	background.visible = false
 	in_progress = false
@@ -63,12 +101,13 @@ func finish():
 	DialogBus.dialog_done.emit()
 
 func display():
+	# sets up the box and makes everything visible
 	frame_updated = Engine.get_frames_drawn()
 	if not in_progress:
 		get_tree().paused = true
 		background.visible = true
 		in_progress = true
-		show_text()
+		start_typing()
 		DialogBus.dialog_start.emit()
 
 func toggle_box_size():
