@@ -58,6 +58,7 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3j8ed"]
+resource_local_to_scene = true
 font = ExtResource("8_jcypu")
 
 [node name="Enemy" type="CharacterBody2D"]

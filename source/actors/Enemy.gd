@@ -9,7 +9,7 @@ var active: bool = false # if on screen and performing logic
 var angry: bool = false # if currently shooting words
 var last_update: int = 0
 var use_left_label: bool = true
-var next_update: int = 20
+var next_update: int = 20 # in hindsight I'd rather count down than up
 
 @onready var sprite_body = $BodySprite
 @onready var sprite_eyes = $EyesOrigin/EyeSprite
@@ -29,15 +29,27 @@ func _ready() -> void:
 func _process(_delta):
 	if active:
 		# face player if need be
-		update_facing()
-		turn_eyes()
+		if StateManager.player != null:
+			update_facing()
+			turn_eyes()
 
 		# spit curses
 		var current_frame: int = Engine.get_frames_drawn()
+		update_label_alpha()
 		if angry and current_frame > last_update + next_update:
 			update_curses()
 			last_update = current_frame
-			next_update = randi_range(10, 25)
+			next_update = randi_range(25, 50)
+
+func update_label_alpha():
+	var frames_left: int = last_update + next_update - Engine.get_frames_drawn()
+	var color_temp: Color = LabelL.label_settings.get_font_color()
+	if frames_left < 15:
+		color_temp.a = 0.1 * (frames_left-5)
+	else:
+		color_temp.a = 1.0
+	LabelL.label_settings.set_font_color(color_temp)
+	LabelR.label_settings.set_font_color(color_temp)
 
 func update_facing() -> void:
 	var line = StateManager.player.position.y
