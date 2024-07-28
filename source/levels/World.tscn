@@ -1437,7 +1437,7 @@ position = Vector2(-2509, 3057)
 talisman_number = 5
 
 [node name="Enemy64" parent="Mobs/Path05" instance=ExtResource("16_jb708")]
-position = Vector2(-2616, 3076)
+position = Vector2(-2583, 3076)
 talisman_number = 5
 
 [node name="Enemy65" parent="Mobs/Path05" instance=ExtResource("16_jb708")]

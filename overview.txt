@@ -1,11 +1,14 @@
 
 Post Jam
+    Rebellion instrumental for ending
     SFX
     Options menu
     update credits page
-    Lock more talisman holders depending on plot point
 
 Bug Tracker
+    Dialog box dialog is stretched / squashed
+    Theres a way to press space and get movement stuck
+
     Possible to get stuck against takos and walls
         From takos too close to the edge during screen transition clamping
     possible to have an extra talisman in the inventory during part 2
@@ -13,12 +16,14 @@ Bug Tracker
         I think its the world unspawning everything
             known issue, slotted for 4.3
 
+Accessibility
+    .
+
 Stretch Goals
-    keyboard on menus
+    highlight the holder player will interact with
     mobs shake when angry
     dialog
         Camera zooms in very slightly during dialog
-        Text splays out over time
         Avatars by box during dialog
     Some edgy filter on top of the game screen
     The paths you go on first are less mobbed, later paths more mobbed

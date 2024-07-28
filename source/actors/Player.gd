@@ -132,13 +132,17 @@ func interact_talisman_holder(object):
 			talisman_inventory[num] = true
 	else:
 		# move talisman from inventory to holder
-		var idx: int = talisman_inventory.find(true)
+		var idx: int = talisman_inventory.find(true) # first t in inventory
+		# try to match objects number
+		if talisman_inventory[object.talisman_number]:
+			idx = object.talisman_number
+
 		if idx >= 0:
+			var result: int = object.receive_talisman(idx)
+			if result >= 0: # -1 means receive refused
 			talisman_inventory[idx] = false
-			object.receive_talisman(idx)
 		else:
-			# Kinda awkward place for this but uhh
-			# If I pass the players inventory to the t holder it can figure this out
+			# If inventory empty
 			DialogBus.display_dialog.emit("t_holder_empty")
 
 	StateManager.debug_ui.update_right_text(0, str("inv: ", talisman_inventory))
