@@ -30,15 +30,15 @@ Stretch Goals
 
 
 Sound Effects
-    Player step
-    Dialog
+x   Player step
+x   Dialog
         player
         narrator
         oddity
     tako wah (calm)
     tako angry yell
-    talisman drop
-    talisman pick
+.   talisman drop
+.   talisman pick
     fire
 
 

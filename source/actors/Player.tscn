@@ -1,6 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://d21n3yip8h2sk"]
+[gd_scene load_steps=47 format=3 uid="uid://d21n3yip8h2sk"]
 
 [ext_resource type="Script" path="res://source/actors/Player.gd" id="1_lubg3"]
+[ext_resource type="AudioStream" uid="uid://byk7amppee1yb" path="res://assets/sound/scratch_blip.wav" id="3_u4cuj"]
 [ext_resource type="Texture2D" uid="uid://qwg0ey0p3bs3" path="res://assets/character/character_sheet.png" id="7_aygwd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pqox"]
@@ -414,5 +415,10 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 shape = SubResource("RectangleShape2D_uh8ab")
 
+[node name="StepSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u4cuj")
+volume_db = -30.0
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="InteractArea" to="." method="_on_interact_area_area_exited"]

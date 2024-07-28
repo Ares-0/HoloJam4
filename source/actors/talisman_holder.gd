@@ -112,6 +112,7 @@ func receive_talisman(num) -> int:
 	# and not the holder number??
 	# StateManager.update_holder.emit(inner, talisman_number, filled)
 	StateManager.update_holder.emit(inner, holder_number, filled)
+	$AudioDown.play()
 	return num
 
 func give_talisman() -> int:	
@@ -135,7 +136,7 @@ func give_talisman() -> int:
 			1, 3, 5, 7:
 				DialogBus.display_dialog.emit("talisman_generic")
 				return -1
-	
+
 	# Day 2
 	if curr_state is PlotPoint6 or curr_state is PlotPoint7 or curr_state is PlotPoint8:
 		# inner generic dialog
@@ -143,19 +144,19 @@ func give_talisman() -> int:
 			DialogBus.display_dialog.emit("talisman_unknown")
 		# Outer dont pick up, special dialog
 		else:
-		match talisman_number:
-			0:
-				DialogBus.display_dialog.emit("talisman_00")
-			1:
-				DialogBus.display_dialog.emit("talisman_01")
-			3:
-				DialogBus.display_dialog.emit("talisman_03")
-			5:
-				DialogBus.display_dialog.emit("talisman_05")
-			7:
-				DialogBus.display_dialog.emit("talisman_07")
-			_:
-				DialogBus.display_text.emit("A talisman, or rather a work of art")
+			match talisman_number:
+				0:
+					DialogBus.display_dialog.emit("talisman_00")
+				1:
+					DialogBus.display_dialog.emit("talisman_01")
+				3:
+					DialogBus.display_dialog.emit("talisman_03")
+				5:
+					DialogBus.display_dialog.emit("talisman_05")
+				7:
+					DialogBus.display_dialog.emit("talisman_07")
+				_:
+					DialogBus.display_text.emit("A talisman, or rather a work of art")
 			return -1
 
 	# Mid ending, just cancel
@@ -168,4 +169,5 @@ func give_talisman() -> int:
 	update_sprites()
 	# StateManager.update_holder.emit(inner, talisman_number, filled)
 	StateManager.update_holder.emit(inner, holder_number, filled)
+	$AudioUp.play()
 	return talisman_number

@@ -24,6 +24,7 @@ var INTERACT_COOLDOWN_DURATION: float = 0.5 # max cooldown timer length in secon
 var interact_cooldown_time: float = 0.0 # timer for temporarily locking out interactions
 
 @onready var animation_player = $AnimatedSprite2D
+@onready var step_sfx = $StepSFX
 
 func _ready():
 	talisman_inventory.resize(8)
@@ -61,10 +62,10 @@ func _process(delta: float):
 				pickup_talisman(parent)
 				break
 
-	# if Input.is_action_just_pressed("debug_03"):
-	# 	StateManager.current_state.advance() # potentially fucky
-	# if Input.is_action_just_pressed("debug_02"):
-	# 	debug_conjure_talisman()
+	if Input.is_action_just_pressed("debug_03"):
+		StateManager.current_state.advance() # potentially fucky
+	if Input.is_action_just_pressed("debug_02"):
+		debug_conjure_talisman()
 
 	for input in MOVEMENTS:
 		if Input.is_action_just_pressed(input):
@@ -88,7 +89,7 @@ func move(_delta: float):
 	var total_speed = SPEED + SPEED*SPRINT_SCALE*int(sprinting)
 	velocity = direction * total_speed
 
-	choose_sprite(direction)
+	choose_sprite(direction) # this is called every frame but it doesn't have to be
 	move_and_slide()
 
 	# if no longer moving, snap to pixel
@@ -140,7 +141,7 @@ func interact_talisman_holder(object):
 		if idx >= 0:
 			var result: int = object.receive_talisman(idx)
 			if result >= 0: # -1 means receive refused
-			talisman_inventory[idx] = false
+				talisman_inventory[idx] = false
 		else:
 			# If inventory empty
 			DialogBus.display_dialog.emit("t_holder_empty")
@@ -178,3 +179,9 @@ func _on_interact_area_area_exited(_area):
 	pass
 	# print(area.get_parent())
 	# $InteractArea.get_overlapping_areas()
+
+func _on_animated_sprite_2d_frame_changed():
+	# Not a bug but leads to weird interaction
+	# Tapping an arrow stutter steps without the sound
+	if animation_player.frame % 2 == 1:
+		step_sfx.play()
