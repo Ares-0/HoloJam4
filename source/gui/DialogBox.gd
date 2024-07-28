@@ -50,6 +50,11 @@ func _process(_delta):
 					skip_typing()
 				else:
 					next_line()
+
+	if in_progress and not is_typing:
+		# when typing done, holding space advances too
+		if Input.is_action_pressed("action_button"):
+			next_line()
 	
 	if in_progress and not get_tree().paused:
 		get_tree().paused = true
