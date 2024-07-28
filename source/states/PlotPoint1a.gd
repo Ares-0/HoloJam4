@@ -18,3 +18,5 @@ func update(_delta: float):
 	if true in StateManager.player.talisman_inventory:
 		Transitioned.emit(self, "plotpoint1b")
 
+func advance():
+	Transitioned.emit(self, "plotpoint1b")

@@ -25,3 +25,6 @@ func execute_intro_two():
 	DialogBus.display_dialog.emit("plot_4_intro")
 	await DialogBus.dialog_done
 	work_done.emit()
+
+func advance():
+	Transitioned.emit(self, "plotpoint5")

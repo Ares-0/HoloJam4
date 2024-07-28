@@ -61,6 +61,8 @@ func _process(delta: float):
 				pickup_talisman(parent)
 				break
 
+	# if Input.is_action_just_pressed("debug_03"):
+	# 	StateManager.current_state.advance() # potentially fucky
 	# if Input.is_action_just_pressed("debug_02"):
 	# 	debug_conjure_talisman()
 

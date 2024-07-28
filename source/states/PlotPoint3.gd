@@ -55,3 +55,6 @@ func execute_ending_one():
 	StateManager.camera.unlock_screen()
 
 	work_done.emit()
+
+func advance():
+	Transitioned.emit(self, "plotpoint4")
