@@ -1,12 +1,20 @@
 class_name Enemy
 extends CharacterBody2D
 
+const WAH_01 = preload("res://assets/sound/wah1.wav")
+const WAH_02 = preload("res://assets/sound/wah2.wav")
+const WAH_03 = preload("res://assets/sound/wah3.wav")
+const WAH_04 = preload("res://assets/sound/wah4.wav")
+const WAH_05 = preload("res://assets/sound/wah5.wav")
+
 @export var talisman_number: int = 0 # what talisman this is linked too
 # these mobs are only angry when the talisman is in the outer holder
 
-var frame: int = 0
+# note to self: making these exports doesnt help with debugging without a lot of extra work
 var active: bool = false # if on screen and performing logic
 var angry: bool = false # if currently shooting words
+
+var frame: int = 0
 var last_update: int = 0
 var use_left_label: bool = true
 var next_update: int = 20 # in hindsight I'd rather count down than up
@@ -14,9 +22,10 @@ var next_update: int = 20 # in hindsight I'd rather count down than up
 @onready var sprite_body = $BodySprite
 @onready var sprite_eyes = $EyesOrigin/EyeSprite
 @onready var eyes_origin = $EyesOrigin
-@onready var aor = $LabelAor
+@onready var aor = $LabelAor # axis of rotation
 @onready var LabelL = $LabelAor/LabelLeft
 @onready var LabelR = $LabelAor/LabelRight
+@onready var audio_stream = $AudioStreamPlayer
 
 func _ready() -> void:
 	pass
@@ -38,6 +47,7 @@ func _process(_delta):
 		update_label_alpha()
 		if angry and current_frame > last_update + next_update:
 			update_curses()
+			update_audio()
 			last_update = current_frame
 			next_update = randi_range(25, 50)
 
@@ -65,6 +75,15 @@ func turn_eyes() -> void:
 	var dir = round(angle / (PI/4)) * (PI/4)
 	eyes_origin.set_rotation(dir)
 	sprite_eyes.set_rotation(-dir)
+
+func update_audio() -> void:
+	var sfx_array = [WAH_01, WAH_02, WAH_03, WAH_04, WAH_05]
+	audio_stream.stream = sfx_array[randi_range(0, sfx_array.size()-1)]
+	audio_stream.pitch_scale = [0.65, 0.75, 0.85, 0.9, 1.0][randi_range(0, 4)]
+
+	var play_odds: float = 0.0
+	if randf() > play_odds: # feels a little weird
+		audio_stream.play()
 
 func update_curses() -> void:
 	var idx = randi_range(-3, 3)
@@ -113,6 +132,7 @@ func unanger() -> void:
 	angry = false
 	LabelL.visible = false
 	LabelR.visible = false
+	audio_stream.stop()
 
 func activate() -> void:
 	active = true
@@ -120,6 +140,10 @@ func activate() -> void:
 		LabelL.visible = use_left_label
 		LabelR.visible = !use_left_label
 		chance_swap_label(0.5)
+
+		# so all mobs dont work at the same next frame
+		last_update = Engine.get_frames_drawn()
+		next_update = randi_range(15, 50)
 
 func deactivate() -> void:
 	active = false

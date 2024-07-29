@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://iy5mrohbpkhv"]
+[gd_scene load_steps=16 format=3 uid="uid://iy5mrohbpkhv"]
 
 [ext_resource type="Script" path="res://source/actors/Enemy.gd" id="1_h6whk"]
 [ext_resource type="Texture2D" uid="uid://6qjhlna81wvr" path="res://assets/mobs/tako_creepy_blank.png" id="2_v6v3q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bqwwictholen5" path="res://assets/mobs/tako_creepy_face.png" id="8_3ly6p"]
 [ext_resource type="FontFile" uid="uid://f3oi0feh6n3g" path="res://assets/fonts/monogram_a.ttf" id="8_jcypu"]
 [ext_resource type="Texture2D" uid="uid://rvuo72nwb1ye" path="res://assets/mobs/take_evil_face.png" id="9_3cidq"]
+[ext_resource type="AudioStream" uid="uid://5bdkxrllbrim" path="res://assets/sound/wah3.wav" id="11_24e6g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqflf"]
 size = Vector2(38, 33)
@@ -63,6 +64,7 @@ font = ExtResource("8_jcypu")
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 11
+position = Vector2(120, 110)
 script = ExtResource("1_h6whk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -119,3 +121,8 @@ offset_bottom = 10.067
 rotation = -0.785398
 text = "!@#$#$%^"
 label_settings = SubResource("LabelSettings_3j8ed")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_24e6g")
+volume_db = -20.0
+pitch_scale = 0.65
