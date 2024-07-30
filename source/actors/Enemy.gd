@@ -79,7 +79,10 @@ func turn_eyes() -> void:
 func update_audio() -> void:
 	var sfx_array = [WAH_01, WAH_02, WAH_03, WAH_04, WAH_05]
 	audio_stream.stream = sfx_array[randi_range(0, sfx_array.size()-1)]
-	audio_stream.pitch_scale = [0.65, 0.75, 0.85, 0.9, 1.0][randi_range(0, 4)]
+	# audio_stream.pitch_scale = [0.65, 0.75, 0.85, 0.9, 1.0][randi_range(0, 4)]
+	#  "Neighbouring semitones differ in pitch by a factor of 2^(1/12), so you can do smth like pitch *= pow(2, k/12) with k = randInt(-2, 2)"
+	var k = randi_range(-4, 0) # only down
+	audio_stream.pitch_scale = pow(2, k/12.0)
 
 	var play_odds: float = 0.0
 	if randf() > play_odds: # feels a little weird

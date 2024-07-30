@@ -81,24 +81,34 @@ func _process(delta: float):
 	# print($InteractArea.get_overlapping_areas())
 
 func move(_delta: float):
+	# get current movement direction from input history
 	var direction: Vector2 = Vector2.ZERO
 	if input_history.size() > 0:
 		direction = MOVEMENTS[input_history.back()]
-		last_direction = direction
 
+	# update velocity and move
 	var total_speed = SPEED + SPEED*SPRINT_SCALE*int(sprinting)
 	velocity = direction * total_speed
-
-	choose_sprite(direction) # this is called every frame but it doesn't have to be
 	move_and_slide()
 
 	# if no longer moving, snap to pixel
 	if direction.length_squared() == 0 and last_direction != Vector2.ZERO:
+		choose_sprite(direction)
 		var pos = get_position().round() # pixel snap
 		pos = pos + last_direction*6 # adjusts larger snap rounding. 12 means 4 back, 12 forward
 		pos = pos.snapped(Vector2(8, 8)) # looks awkward by itself
 		self.set_position(pos)
-		last_direction = Vector2.ZERO
+	
+	# if started moving play sound
+	if direction.length_squared() > 0 and last_direction == Vector2.ZERO:
+		# play_step_sfx()
+		pass
+
+	# if changed directions change sprite
+	if direction.length_squared() > 0 and direction != last_direction:
+		choose_sprite(direction)
+
+	last_direction = direction
 
 func clamp_position_to_limits(limit_position: Vector2, limit_size: Vector2) -> void:
 	# limit_position: top left corner of clamp rect
@@ -148,6 +158,11 @@ func interact_talisman_holder(object):
 
 	StateManager.debug_ui.update_right_text(0, str("inv: ", talisman_inventory))
 
+func play_step_sfx():
+	var k = [-1, 0, 0, 0, 1][randi_range(0, 4)] # fake bell shape
+	step_sfx.pitch_scale = pow(2, k/12.0)
+	step_sfx.play()
+
 func choose_sprite(direction: Vector2) -> void:
 	# left and right are shown if moving left or right
 	if direction.x == -1:
@@ -181,7 +196,5 @@ func _on_interact_area_area_exited(_area):
 	# $InteractArea.get_overlapping_areas()
 
 func _on_animated_sprite_2d_frame_changed():
-	# Not a bug but leads to weird interaction
-	# Tapping an arrow stutter steps without the sound
 	if animation_player.frame % 2 == 1:
-		step_sfx.play()
+		play_step_sfx()
