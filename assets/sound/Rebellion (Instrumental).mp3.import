@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj2drsf670vsc"
+path="res://.godot/imported/Rebellion (Instrumental).mp3-01b03e2185f6bf1466757a9ea823bb30.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Rebellion (Instrumental).mp3"
+dest_files=["res://.godot/imported/Rebellion (Instrumental).mp3-01b03e2185f6bf1466757a9ea823bb30.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

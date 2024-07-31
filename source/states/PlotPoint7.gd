@@ -13,5 +13,7 @@ func enter():
 
 func update(_delta: float):
 	if not false in StateManager.outer_talisman_states:
-		StateManager.final_door.activate()
 		Transitioned.emit(self, "plotpoint8")
+
+func advance():
+	Transitioned.emit(self, "plotpoint8")

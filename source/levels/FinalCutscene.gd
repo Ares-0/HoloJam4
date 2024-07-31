@@ -4,7 +4,8 @@ extends Node2D
 var playing: bool = false
 
 @onready var sprites = $AnimatedSprite2D
-@onready var animation_p = $AnimationPlayer
+@onready var animation_b = $AnimationPlayer
+@onready var animation_m = $AnimationPlayer2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,11 +22,12 @@ func _process(_delta):
 
 func play_scene():
 	playing = true
+	$RebellionMusic.play()
 	DialogBus.display_text_big.emit("instead...")
 	await DialogBus.dialog_done
 
-	animation_p.play("DropHandheld")
-	await animation_p.animation_finished
+	animation_b.play("DropHandheld")
+	await animation_b.animation_finished
 
 	DialogBus.display_text_big.emit("Day 1 of the escape")
 	await DialogBus.dialog_done
@@ -43,8 +45,10 @@ func play_scene():
 
 func end_scene():
 	await get_tree().create_timer(2.0).timeout
-	animation_p.play("FadeToBlack")
-	await animation_p.animation_finished
+	animation_b.play("FadeToBlack")
+	animation_m.play("FadeMusic")
+	await animation_b.animation_finished
+	await animation_m.animation_finished
 	await get_tree().create_timer(1.0).timeout
 
 	get_tree().change_scene_to_file("res://source/levels/TitleScreen.tscn")

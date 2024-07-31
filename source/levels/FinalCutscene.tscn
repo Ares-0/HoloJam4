@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7lrn50pxi332"]
+[gd_scene load_steps=14 format=3 uid="uid://b7lrn50pxi332"]
 
 [ext_resource type="Script" path="res://source/levels/FinalCutscene.gd" id="1_5gmxx"]
 [ext_resource type="Texture2D" uid="uid://bvn3ha7d6fnp6" path="res://assets/cutscene/shiori_final_01.png" id="1_5kta5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cv20385xdtnfc" path="res://assets/cutscene/shiori_final_03.png" id="3_cj5pj"]
 [ext_resource type="PackedScene" uid="uid://5coeu8nb6y1e" path="res://source/gui/HandheldOverlay.tscn" id="5_nnu50"]
 [ext_resource type="PackedScene" uid="uid://dtvvxxrnavdoc" path="res://source/gui/DialogBox.tscn" id="7_bnskf"]
+[ext_resource type="AudioStream" uid="uid://bj2drsf670vsc" path="res://assets/sound/Rebellion (Instrumental).mp3" id="8_hx10j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h2ty1"]
 animations = [{
@@ -71,9 +72,26 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_fbfgu"]
+resource_name = "FadeMusic"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RebellionMusic:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-35.0, -60.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3e633"]
 _data = {
 "DropHandheld": SubResource("Animation_aj374"),
+"FadeMusic": SubResource("Animation_fbfgu"),
 "FadeToBlack": SubResource("Animation_nb3fm")
 }
 
@@ -92,6 +110,11 @@ libraries = {
 "": SubResource("AnimationLibrary_3e633")
 }
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3e633")
+}
+
 [node name="DialogBox" parent="." instance=ExtResource("7_bnskf")]
 scene_text_file = "res://assets/json/dialog.json"
 
@@ -99,3 +122,8 @@ scene_text_file = "res://assets/json/dialog.json"
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0)
+
+[node name="RebellionMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_hx10j")
+volume_db = -35.0

@@ -34,6 +34,7 @@ func execute_ending_one():
 	await StateManager.hh_overlay.animplayer.animation_finished
 	DialogBus.display_dialog.emit("plot_3_ending_b")
 	await DialogBus.dialog_done
+	StateManager.player.set_position(StateManager.player.ORIGIN)
 
 	# wait a bit
 	await get_tree().create_timer(1.5).timeout
@@ -45,7 +46,6 @@ func execute_ending_one():
 	StateManager.increment_day_num()
 	StateManager.reset_talismans()
 	StateManager.part_num += 1
-	StateManager.player.set_position(StateManager.player.ORIGIN)
 	StateManager.camera.check_for_update()
 	StateManager.Ending01Player.play("reset_fires") # lmao even
 

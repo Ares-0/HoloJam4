@@ -1,7 +1,5 @@
 
 Post Jam
-    Rebellion instrumental for ending
-    SFX
     Options menu
     update credits page
 
