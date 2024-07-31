@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://source/levels/PauseMenu.gd" id="1_mt21t"]
 [ext_resource type="PackedScene" uid="uid://cjp6ih8f50i66" path="res://source/gui/InventoryUI.tscn" id="2_7fmw7"]
-[ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/hh_overlay.png" id="3_yh45n"]
+[ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/ui/hh_overlay.png" id="3_yh45n"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3

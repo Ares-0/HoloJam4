@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://5coeu8nb6y1e"]
 
-[ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/hh_overlay.png" id="1_0lym4"]
+[ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/ui/hh_overlay.png" id="1_0lym4"]
 [ext_resource type="Script" path="res://source/gui/HandheldOverlay.gd" id="1_imlce"]
-[ext_resource type="Texture2D" uid="uid://bhw1lpd06kthp" path="res://assets/overlay_B_press.png" id="3_4netq"]
-[ext_resource type="Texture2D" uid="uid://1rb4cuhjuetr" path="res://assets/overlay_D_press.png" id="4_gebjk"]
+[ext_resource type="Texture2D" uid="uid://bhw1lpd06kthp" path="res://assets/ui/overlay_B_press.png" id="3_4netq"]
+[ext_resource type="Texture2D" uid="uid://1rb4cuhjuetr" path="res://assets/ui/overlay_D_press.png" id="4_gebjk"]
 
 [sub_resource type="Animation" id="Animation_2julw"]
 resource_name = "FadeFromBlack"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e5443xa653xu"
-path="res://.godot/imported/kennyl-contrast.png-9e4b26eb3a7ddceeed35d0552a2b5758.ctex"
+uid="uid://bhw1lpd06kthp"
+path="res://.godot/imported/overlay_B_press.png-e4b837c0421fa63b774df37099b15142.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kennyl-contrast.png"
-dest_files=["res://.godot/imported/kennyl-contrast.png-9e4b26eb3a7ddceeed35d0552a2b5758.ctex"]
+source_file="res://assets/ui/overlay_B_press.png"
+dest_files=["res://.godot/imported/overlay_B_press.png-e4b837c0421fa63b774df37099b15142.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://byntc7irdjwfm"]
 
 [ext_resource type="Script" path="res://source/actors/Oddity.gd" id="1_b13d8"]
-[ext_resource type="Texture2D" uid="uid://e5443xa653xu" path="res://assets/kennyl-contrast.png" id="1_wue3m"]
+[ext_resource type="Texture2D" uid="uid://e5443xa653xu" path="res://assets/ui/kennyl-contrast.png" id="1_wue3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6hpi"]
 radius = 75.5357

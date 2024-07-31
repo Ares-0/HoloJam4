@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://source/levels/TitleScreen.gd" id="1_ksgbn"]
 [ext_resource type="Texture2D" uid="uid://dwdo0jocfnnh" path="res://assets/main_menu_mock/label_options.png" id="4_fturt"]
 [ext_resource type="Texture2D" uid="uid://daiobq78nsj3a" path="res://assets/talismans/talismans_fan.png" id="5_ja55n"]
-[ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/hh_overlay.png" id="6_dtuwm"]
+[ext_resource type="Texture2D" uid="uid://d3blhmava5q0s" path="res://assets/ui/hh_overlay.png" id="6_dtuwm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hd33d"]
 font_size = 61
