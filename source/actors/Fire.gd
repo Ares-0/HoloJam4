@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var sprite = $Scalar/AnimatedSprite2D
 @onready var animation = $AnimationPlayer
+@onready var sound = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,7 @@ func start() -> void:
 	visible = true
 	animation.play("fire start")
 	sprite.play("default")
+	sound.play()
 
 func end() -> void:
 	visible = false

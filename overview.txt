@@ -26,21 +26,19 @@ Stretch Goals
     dialog
         Camera zooms in very slightly during dialog
         Avatars by box during dialog
+        Dialog sfx per speaker
     Some edgy filter on top of the game screen
     The paths you go on first are less mobbed, later paths more mobbed
 
 
 Sound Effects
 .   Player step
-x   Dialog
-        player
-        narrator
-        oddity
+.   Dialog
 x   tako wah (calm)
 .   tako angry yell
 .   talisman drop
 .   talisman pick
-    fire
+.    fire
 
 
 

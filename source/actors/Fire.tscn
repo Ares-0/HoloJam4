@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1blisy7u0f6j"]
+[gd_scene load_steps=11 format=3 uid="uid://c1blisy7u0f6j"]
 
 [ext_resource type="Script" path="res://source/actors/Fire.gd" id="1_6ljpr"]
 [ext_resource type="Texture2D" uid="uid://fbyyivhcq375" path="res://assets/effects/fire_01.png" id="1_f8c6c"]
 [ext_resource type="Texture2D" uid="uid://belw072lhjqjy" path="res://assets/effects/fire_02.png" id="2_l4oum"]
 [ext_resource type="Texture2D" uid="uid://iuu4t2cpe4uc" path="res://assets/effects/fire_03.png" id="3_es8a2"]
 [ext_resource type="Texture2D" uid="uid://ckyxa2oxgx0mu" path="res://assets/effects/fire_04.png" id="4_8tqoa"]
+[ext_resource type="AudioStream" uid="uid://cjmapwqc47pe6" path="res://assets/sound/fire.wav" id="6_e2wfv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uq16o"]
 animations = [{
@@ -26,6 +27,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_5gibv"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_ttort"]
 resource_name = "fire start"
 length = 0.3
@@ -41,9 +45,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0.6, 0.6), Vector2(1.4, 1.4), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_5gibv"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ncpm"]
 _data = {
@@ -67,3 +68,7 @@ frame_progress = 0.14807
 libraries = {
 "": SubResource("AnimationLibrary_0ncpm")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e2wfv")
+volume_db = -20.0
