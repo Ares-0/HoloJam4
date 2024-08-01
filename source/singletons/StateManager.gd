@@ -45,7 +45,7 @@ var t_holders_inner = []
 var t_holders_outer = []
 var noise_barriers = []
 
-var version_number = "1.0.1" # this is totally here temporarily
+var version_number = "1.1.0" # this is totally here temporarily
 
 signal update_holder(inner: bool, number: int, filled: bool)
 

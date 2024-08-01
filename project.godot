@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="HoloJam4"
-config/version="1.0.1"
+config/name="Archivers Bookmarks"
+config/version="1.1.0"
 run/main_scene="res://source/levels/TitleScreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/icon.svg"
