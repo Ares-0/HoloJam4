@@ -27,6 +27,7 @@ Stretch Goals
         Dialog sfx per speaker
     Some edgy filter on top of the game screen
     The paths you go on first are less mobbed, later paths more mobbed
+    Some mobs be actual enemies to fight / avoid
 
 
 Sound Effects
@@ -54,19 +55,22 @@ Updates in v1.1:
     
     Sound:
         Added music! Changes depending on location and talisman placement
+        Added sound effects to a lot of things
+            The tako wahs might be a bit much and a little goofy but they get across the experience I want them too
 
     Plot stuff
         Ability to return to main menu and then resume game where left off
         Replaced all plot advancement logic with a state machine
-        Occasionally lock player on screen
         Small cooldown after interacting with something so very quick button presses are ignored
+        Moved true talisman dialog
+        Added some guardrails to help keep players from getting on the wrong track
+            Occasionally lock player on screen
+            Keep players from putting talismans in unhelpful places
 
     UI
         Added keyboard focus to UI buttons
+        Holding space advances dialog as well
 
-
-TODO still??
-    Some takos be actual enemies to fight / avoid
 
 Path Progress
     Layout      Decoration      Hazards
