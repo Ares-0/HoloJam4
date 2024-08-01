@@ -115,8 +115,7 @@ func update_pause_goals(new_goal: String):
 	pauser.update_goal(new_goal)
 
 func increment_day_num():
-	# TODO: low pri: make it pick from a random range
-	day_num += 1
+	day_num += randi_range(1, 15)
 
 func reset_progress() -> void:
 	# called on .this before loading the world

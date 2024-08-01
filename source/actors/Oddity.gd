@@ -17,10 +17,10 @@ func _process(delta):
 
 func converse():
 	if StateManager.current_state is PlotPoint1b:
-		DialogBus.display_dialog.emit("plot_1_oddity_debug")
+		DialogBus.display_dialog.emit("plot_1_oddity")
 		StateManager.current_state.advance()
 	if StateManager.current_state is PlotPoint6:
-		DialogBus.display_dialog.emit("plot_6_oddity_debug")
+		DialogBus.display_dialog.emit("plot_6_oddity")
 		StateManager.current_state.advance()
 
 func _on_area_2d_area_entered(area):

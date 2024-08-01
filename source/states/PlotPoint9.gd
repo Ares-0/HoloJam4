@@ -25,6 +25,7 @@ func execute_ending_two():
 	await DialogBus.dialog_done
 
 	await get_tree().create_timer(1.0).timeout
+	StateManager.state_str = "" # kills the save file, little awkward
 	get_tree().change_scene_to_file("res://source/levels/FinalCutscene.tscn")
 
 	# does code get here
