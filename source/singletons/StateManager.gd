@@ -137,7 +137,7 @@ func final_setup() -> void:
 	# THIS IS ALWAYS CALLED WHEN THE WORLD ENTERS THE TREE
 	# ITS CALLED BASICALLY LAST
 	game_room.connect("game_is_ready", on_game_is_ready)
-	print("resuming: ", resuming)
+	# print("resuming: ", resuming)
 	if resuming:
 		load_save_data()
 		plot_machine.return_to_state(state_str)

@@ -120,6 +120,7 @@ func on_zone_changed(zone: int):
 			return
 	
 	var a = balance_outer
-	on_holder_update(false, current_zone, StateManager.outer_talisman_states[current_zone])
+	if current_zone > 0: # dont check holder for middle
+		on_holder_update(false, current_zone, StateManager.outer_talisman_states[current_zone])
 	balance_outer = a	# dont want to change this on zone change # awk
 	StateManager.debug_ui.update_right_text(3, str("A Zone: ", current_zone))

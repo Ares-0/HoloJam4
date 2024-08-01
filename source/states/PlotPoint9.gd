@@ -10,6 +10,7 @@ func enter():
 	StateManager.set_noise_barriers([0, 0, 1, 0, 1, 0, 1, 0])
 	StateManager.update_pause_goals(pause_goal)
 	StateManager.hh_overlay.set_fade(0)
+	StateManager.final_door.activate()
 
 func advance():
 	execute_ending_two()

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bmba7m3utbdfo" path="res://assets/sound/Dangerous Path.ogg" id="4_hqc8l"]
 
 [node name="AudioManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_07x08")
 
 [node name="CenterPlayer" type="AudioStreamPlayer" parent="."]

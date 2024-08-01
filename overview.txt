@@ -3,13 +3,12 @@ Post Jam
     .
 
 Bug Tracker
-    Audiomanager is playing wrong music when returning to middle
-    Audiomanager should maybe run while paused
-    Freeze player movement after going through final door
-    Can try to return to completed game
     Dialog box dialog is stretched / squashed
+    Can try to return to completed game (false alarm?)
     Theres a way to press space and get movement stuck
     You can change the song by standing real close to the edge of the screen but not changing screens
+        probably triggered by area overlap signals
+        maybe switch to camera location checker instead
 
     Possible to get stuck against takos and walls
         From takos too close to the edge during screen transition clamping

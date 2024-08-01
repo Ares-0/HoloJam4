@@ -180,6 +180,7 @@ func choose_sprite(direction: Vector2) -> void:
 func movement_freeze():
 	movement_frozen = true
 	input_history.clear()
+	animation_player.stop()
 
 func movement_unfreeze(): 
 	movement_frozen = false

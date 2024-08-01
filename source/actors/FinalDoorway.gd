@@ -28,5 +28,6 @@ func deactivate():
 	active = false
 
 func _on_area_entered(area):
-	if area.get_parent() == StateManager.player: 
+	if area.get_parent() == StateManager.player:
+		StateManager.player.movement_freeze()
 		StateManager.current_state.advance()
