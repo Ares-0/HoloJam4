@@ -126,3 +126,4 @@ label_settings = SubResource("LabelSettings_3j8ed")
 stream = ExtResource("11_24e6g")
 volume_db = -20.0
 pitch_scale = 0.65
+bus = &"SFX"

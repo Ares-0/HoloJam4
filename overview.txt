@@ -1,9 +1,12 @@
 
 Post Jam
-    Options menu
-    update credits page
+    .
 
 Bug Tracker
+    Audiomanager is playing wrong music when returning to middle
+    Audiomanager should maybe run while paused
+    Freeze player movement after going through final door
+    Can try to return to completed game
     Dialog box dialog is stretched / squashed
     Theres a way to press space and get movement stuck
     You can change the song by standing real close to the edge of the screen but not changing screens
@@ -70,6 +73,7 @@ Updates in v1.1:
     UI
         Added keyboard focus to UI buttons
         Holding space advances dialog as well
+        Options menu with audio sliders
 
 
 Path Progress

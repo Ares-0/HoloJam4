@@ -418,6 +418,7 @@ shape = SubResource("RectangleShape2D_uh8ab")
 [node name="StepSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_u4cuj")
 volume_db = -30.0
+bus = &"SFX"
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]

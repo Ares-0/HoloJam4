@@ -5,8 +5,8 @@ extends Control
 
 var paused: bool = false
 
-@onready var goal_label = $MarginContainer/CenterContainer/VBoxContainer/Goal
-@onready var resume_button = $MarginContainer/CenterContainer/VBoxContainer/ResumeB
+@onready var goal_label = $PauseMenuUI/CenterContainer/VBoxContainer/Goal
+@onready var resume_button = $PauseMenuUI/CenterContainer/VBoxContainer/ResumeB
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +27,9 @@ func pause():
 	show()
 
 func unpause():
+	$InventoryUI.visible = true
+	$PauseMenuUI.visible = true
+	$OptionsMenu.visible = false
 	paused = false
 	hide()
 	get_tree().paused = false
@@ -42,3 +45,14 @@ func _on_menu_b_pressed():
 	StateManager.return_to_menu_prep()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://source/levels/TitleScreen.tscn")
+
+func _on_options_b_pressed():
+	$InventoryUI.visible = false
+	$PauseMenuUI.visible = false
+	$OptionsMenu.visible = true
+	$OptionsMenu.open(self)
+
+func return_from_options():
+	$InventoryUI.visible = true
+	$PauseMenuUI.visible = true
+	$OptionsMenu.visible = false

@@ -30,10 +30,12 @@ shape = SubResource("RectangleShape2D_ntddk")
 [node name="AudioUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_r56uu")
 volume_db = -13.0
+bus = &"SFX"
 
 [node name="AudioDown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_tbwct")
 volume_db = -13.0
+bus = &"SFX"
 
 [node name="DebugLabel" type="Label" parent="."]
 visible = false
